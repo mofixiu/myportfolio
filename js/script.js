@@ -314,8 +314,8 @@ function showNotification(message, type = 'info') {
     // Set background color based on type
     switch(type) {
         case 'success':
-            notification.style.backgroundColor = '#00ff88';
-            notification.style.color = '#000';
+            notification.style.backgroundColor = '#1e3a8a';
+            notification.style.color = '#fff';
             break;
         case 'error':
             notification.style.backgroundColor = '#ff6b35';
@@ -521,32 +521,3 @@ function initializeAccessibility() {
 
 // Initialize accessibility features
 document.addEventListener('DOMContentLoaded', initializeAccessibility);
-
-// Screenshot Gallery Functions
-function changeScreenshot(mainImgId, newSrc) {
-    const mainImg = document.getElementById(mainImgId);
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    
-    // Update main image
-    mainImg.src = newSrc;
-    
-    // Update active thumbnail
-    thumbnails.forEach(thumb => {
-        if (thumb.src === newSrc) {
-            thumb.classList.add('active');
-        } else {
-            thumb.classList.remove('active');
-        }
-    });
-}
-
-// Error handling for missing screenshots
-document.addEventListener('DOMContentLoaded', function() {
-    // Handle missing screenshots gracefully
-    const screenshots = document.querySelectorAll('.screenshot-gallery img');
-    screenshots.forEach(img => {
-        img.addEventListener('error', function() {
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzMzMyIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPgogICAgU2NyZWVuc2hvdCBDb21pbmcgU29vbgogIDwvdGV4dD4KPC9zdmc+';
-        });
-    });
-});

@@ -853,8 +853,11 @@ section {
         gap: 1rem;
     }
     
-    .btn {
+    .hero-cta .btn {
         text-align: center;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
     }
     
     .social-links {
