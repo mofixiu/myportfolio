@@ -441,6 +441,112 @@ body.light-theme .social-links a:hover {
     60% { transform: translateY(-5px); }
 }
 
+/* Chess Board Styles */
+.chess-board-container {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.15;
+    z-index: 1;
+    animation: chessFloat 6s ease-in-out infinite;
+}
+
+@keyframes chessFloat {
+    0%, 100% { transform: translateY(-50%) rotate(0deg); }
+    33% { transform: translateY(-45%) rotate(1deg); }
+    66% { transform: translateY(-55%) rotate(-1deg); }
+}
+
+.chess-board {
+    display: grid;
+    grid-template-columns: repeat(8, 25px);
+    grid-template-rows: repeat(8, 25px);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 8px;
+    background: var(--surface-color);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+    position: relative;
+    transform: rotate(15deg);
+}
+
+.chess-square {
+    width: 25px;
+    height: 25px;
+    transition: all 0.3s ease;
+}
+
+.chess-square.light {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.chess-square.dark {
+    background-color: var(--primary-color);
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    box-shadow: inset 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.chess-piece {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--text-primary);
+    text-shadow: 0 0 8px var(--primary-color);
+    animation: pieceGlow 3s ease-in-out infinite alternate;
+    pointer-events: none;
+    width: 25px;
+    height: 25px;
+    z-index: 2;
+}
+
+@keyframes pieceGlow {
+    0% { 
+        text-shadow: 0 0 8px var(--primary-color);
+        transform: scale(1);
+    }
+    100% { 
+        text-shadow: 0 0 15px var(--primary-color), 0 0 20px var(--primary-color);
+        transform: scale(1.1);
+    }
+}
+
+.chess-board:hover {
+    transform: rotate(15deg) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 255, 136, 0.3);
+}
+
+.chess-board:hover .chess-square.dark {
+    background-color: var(--primary-color);
+    box-shadow: inset 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.chess-board:hover .chess-piece {
+    animation-duration: 1.5s;
+}
+
+/* Larger screens get a bigger board */
+@media (min-width: 1400px) {
+    .chess-board {
+        grid-template-columns: repeat(8, 30px);
+        grid-template-rows: repeat(8, 30px);
+    }
+    
+    .chess-square {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .chess-piece {
+        width: 30px;
+        height: 30px;
+        font-size: 22px;
+    }
+}
+
 /* Section Styles */
 section {
     padding: 6rem 0;
@@ -582,6 +688,147 @@ section {
     color: var(--primary-color);
     font-weight: 600;
     margin-bottom: 1rem;
+}
+
+/* Achievements Sidebar (Education Section) */
+.achievements-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-left: 2rem;
+}
+
+.achievement-card {
+    background: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.achievement-card h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.achievement-card h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: var(--gradient-primary);
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: var(--surface-color);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.achievement-item:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.achievement-item i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    width: 20px;
+    text-align: center;
+}
+
+.achievement-item div strong {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.achievement-item div span {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.skills-highlight {
+    background: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.skills-highlight h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.skills-highlight h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: var(--gradient-primary);
+}
+
+.focus-area {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--surface-color);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.focus-area:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.focus-icon {
+    background: var(--gradient-primary);
+    color: var(--background-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+}
+
+.focus-content strong {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+.focus-content p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
 }
 
 /* Experience Section */
