@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebo Mofiyinfoluwa David - Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="mofixiu.png">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="typing">
+                <img src="mofixiu.png" alt="MOFIXIU Logo" class="loading-logo">
+            </div>
+            <div class="loading-text">
+                <span id="typing-text"></span>
+                <span class="cursor">|</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                 <img src="mofixiu.png" 
+                             alt="MOFIXIU Logo">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">WORK</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">PROJECTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-bg">
+            <div class="code-snippet">
+                <pre><code>function createDeveloper() {
+  const skills = ["Flutter","Node.js","JavaScript","Dart"];
+  const projects = ["EduTraining","OtakuPlanner","TheMentRent"];
+  
+  // Initialize experience
+  const experience = {
+    company: "Alusoft Technologies",
+    role: "Software Engineering Intern"
+  };
+
+  // Build mobile applications
+  return {
+    buildApps() {
+      return skills.map(skill => (
+        &lt;Component key={skill} type="framework"&gt;
+          {skill}
+        &lt;/Component&gt;
+      ));
+    },
+    createSolution(problem) {
+      projects.push(problem);
+      return this;
+    }
+  };
+}</code></pre>
+            </div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="greeting">Hello, I'm</span>
+                    <span class="name">Ebo Mofiyinfoluwa David</span>
+                </h1>
+                <p class="hero-subtitle">SOFTWARE DEVELOPER // PROBLEM SOLVER</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary me-3">Get In Touch</a>
+                    <a href="#projects" class="btn btn-outline">View My Work</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/mofiyinfoluwa-ebo-57b65423a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/mofixiu" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:ebomofiyin@outlook.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>scroll</span>
+                <div class="scroll-arrow">↓</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>about me</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="about-content">
+                        <p class="lead">
+                            Aspiring full-stack mobile developer with strong academic background and hands-on experience in Flutter and 
+                            backend technologies. Currently pursuing B.S. in Computer Science at Covenant University.
+                        </p>
+                        <p>
+                            I am passionate about creating clean, scalable, and user-centred applications. My experience as a Software Engineering 
+                            Intern at Alusoft Technologies has given me practical exposure to building real-world applications using Flutter, 
+                            Node.js, and PostgreSQL.
+                        </p>
+                        <p>
+                            I thrive in collaborative environments and enjoy solving complex problems through innovative solutions. 
+                            My goal is to contribute to meaningful projects that make a positive impact on users' lives.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="profile-image">
+                        <img src="mofiyin.PNG" 
+                             alt="Ebo Mofiyinfoluwa David">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>skills</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">Dart</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Node.js</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">C++</span>
+                        <span class="skill-badge">C#</span>
+                        <span class="skill-badge">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Tools</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">Flutter</span>
+                        <span class="skill-badge">Express.js</span>
+                        <span class="skill-badge">PostgreSQL</span>
+                        <span class="skill-badge">Git</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">Problem Solving</span>
+                        <span class="skill-badge">Team Collaboration</span>
+                        <span class="skill-badge">Fast Learning</span>
+                        <span class="skill-badge">Attention to Detail</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>education</h2>
+            </div>
+            <div class="education-item">
+                <div class="education-header">
+                    <h3>B.S. Computer Science</h3>
+                    <span class="duration">Aug 2022 - May 2026</span>
+                </div>
+                <div class="education-details">
+                    <h4>Covenant University</h4>
+                    <p><strong>Relevant Coursework:</strong> Data Structures & Algorithms, Object Oriented Programming, 
+                       Problem Solving, Systems Analysis and Design</p>
+                    <p><strong>Member:</strong> Nigeria Association of Computing Students (NACOS), Hebron Startup Lab (HSL)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>work experience</h2>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company-info">
+                        <h3>Alusoft Technologies Ltd / Software Engineering Intern</h3>
+                        <span class="duration">Mar 2025 - Sep 2025</span>
+                    </div>
+                    <div class="location">Ibadan, Nigeria</div>
+                </div>
+                <div class="experience-details">
+                    <div class="tech-stack">
+                        <span class="tech-badge">Dart</span>
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Git</span>
+                        <span class="tech-badge">Express.js</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                    <ul class="achievements">
+                        <li>Worked on a team project called EduTraining, a learning platform for students to explore courses, programs, and instructors.</li>
+                        <li>Built and maintained UI components using Flutter, contributed to backend APIs using Node.js and Express, and integrated PostgreSQL for structured data storage.</li>
+                        <li>Created the OtakuPlanner app from idea to prototype, participated in sprint planning, code reviews, and testing.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>projects</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- EduTraining Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>EduTraining</h3>
+                        <span class="project-duration">May 2025 – Sep 2025</span>
+                    </div>
+                    <p class="project-description">
+                        Developed an interactive platform for students to view courses, programs, and available instructors.
+                    </p>
+                    <div class="project-details">
+                        <ul>
+                            <li>Built full UI with Flutter, implemented REST API endpoints with Node.js and Express</li>
+                            <li>Connected data storage with PostgreSQL</li>
+                            <li>Used Git for version control and collaborated with teammates via code reviews and task boards (Agile setup)</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Dart</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">Git</span>
+                        <span class="tech-badge">Express.js</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-bs-toggle="modal" data-bs-target="#edutrainingModal">View Project</a>
+                    </div>
+                </div>
+
+                <!-- OtakuPlanner Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>OtakuPlanner</h3>
+                        <span class="project-duration">Mar 2025 - May 2025</span>
+                    </div>
+                    <p class="project-description">
+                        Created a productivity app for users to track anime shows, document daily tasks, and plan routines.
+                    </p>
+                    <div class="project-details">
+                        <ul>
+                            <li>Implemented custom calendar UI, CRUD operations using Flutter and local database integration</li>
+                            <li>Managed development timeline, integrated backend features with Express.js</li>
+                            <li>Added task automation and AI integration, prepared the app for release</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Dart</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">Git</span>
+                        <span class="tech-badge">Express.js</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-bs-toggle="modal" data-bs-target="#otakuplannerModal">View Project</a>
+                    </div>
+                </div>
+
+                <!-- TheMentRent Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>TheMentRent</h3>
+                        <span class="project-duration">Mar 2025 – April 2025</span>
+                    </div>
+                    <p class="project-description">
+                        Built a mentorship matching app to connect users with professionals based on industry and field.
+                    </p>
+                    <div class="project-details">
+                        <ul>
+                            <li>Designed signup/login flows, profile creation screens, and chat mockups using Flutter</li>
+                            <li>Contributed to backend user logic, including matching algorithm design</li>
+                            <li>Developed early-stage database schema</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Dart</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">Git</span>
+                        <span class="tech-badge">Express.js</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-bs-toggle="modal" data-bs-target="#thementrentModal">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Thriller</h3>
+                        <span class="project-duration">Dec 2023 - Feb 2024</span>
+                    </div>
+                    <p class="project-description">
+                        Designed a frontend movie streaming app inspired by Netflix and ShowMax.
+                    </p>
+                    <div class="project-details">
+                        <ul>
+                            <li>Created multi-screen navigation, category browsing, and movie previews with Flutter</li>
+                            <li>Used iterative prototyping to test UI components and gradually enhance user interaction</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Dart</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">Git</span>
+                        <span class="tech-badge">Express.js</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-bs-toggle="modal" data-bs-target="#thrillerModal">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>contact</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="contact-content">
+                        <h3>Send an Email</h3>
+                        <p>Drop me a message directly to my inbox. I usually respond within 24-48 hours.</p>
+                        <a href="mailto:ebomofiyin@outlook.com?subject=Hello%20from%20your%20portfolio" class="btn btn-primary">
+                            <i class="fas fa-envelope me-2"></i>Email
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+234-7054315799</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>ebomofiyin@outlook.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Nigeria</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 | designed and built by MOFIXIU | All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://linkedin.com/in/ebo-mofiyinfoluwa" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/ebo-mofiyinfoluwa" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:ebomofiyin@outlook.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modals -->
+    <!-- EduTraining Modal -->
+    <div class="modal fade" id="edutrainingModal" tabindex="-1" aria-labelledby="edutrainingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edutrainingModalLabel">EduTraining - Learning Platform</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-modal-content">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="screenshot-gallery">
+                                    <div class="main-screenshot">
+                                        <img src="screenshots/edutraining-1.png" alt="EduTraining Main Screen" class="img-fluid rounded" id="edutrainingMainImg">
+                                    </div>
+                                    <div class="screenshot-thumbnails mt-3">
+                                        <img src="screenshots/edutraining-1.png" alt="Home Screen" class="thumbnail active" onclick="changeScreenshot('edutrainingMainImg', this.src)">
+                                        <img src="screenshots/edutraining-2.png" alt="Course List" class="thumbnail" onclick="changeScreenshot('edutrainingMainImg', this.src)">
+                                        <img src="screenshots/edutraining-3.png" alt="Course Details" class="thumbnail" onclick="changeScreenshot('edutrainingMainImg', this.src)">
+                                        <img src="screenshots/edutraining-4.png" alt="Instructor Profile" class="thumbnail" onclick="changeScreenshot('edutrainingMainImg', this.src)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="project-info">
+                                    <h6>Project Overview</h6>
+                                    <p>An interactive learning platform built with Flutter that allows students to explore courses, programs, and connect with instructors.</p>
+                                    
+                                    <h6>Key Features</h6>
+                                    <ul>
+                                        <li>Course browsing and search</li>
+                                        <li>Instructor profiles and ratings</li>
+                                        <li>Program enrollment system</li>
+                                        <li>User authentication</li>
+                                        <li>Responsive mobile design</li>
+                                    </ul>
+                                    
+                                    <h6>Technologies Used</h6>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Flutter</span>
+                                        <span class="tech-badge">Dart</span>
+                                        <span class="tech-badge">Node.js</span>
+                                        <span class="tech-badge">Express.js</span>
+                                        <span class="tech-badge">PostgreSQL</span>
+                                    </div>
+                                    
+                                    <div class="project-stats mt-4">
+                                        <div class="stat">
+                                            <strong>Duration:</strong> May 2025 - Sep 2025
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Team Size:</strong> 4 developers
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Role:</strong> Full-stack Developer
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OtakuPlanner Modal -->
+    <div class="modal fade" id="otakuplannerModal" tabindex="-1" aria-labelledby="otakuplannerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="otakuplannerModalLabel">OtakuPlanner - Productivity App</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-modal-content">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="screenshot-gallery">
+                                    <div class="main-screenshot">
+                                        <img src="screenshots/otakuplanner-1.png" alt="OtakuPlanner Dashboard" class="img-fluid rounded" id="otakuplannerMainImg">
+                                    </div>
+                                    <div class="screenshot-thumbnails mt-3">
+                                        <img src="screenshots/otakuplanner-1.png" alt="Dashboard" class="thumbnail active" onclick="changeScreenshot('otakuplannerMainImg', this.src)">
+                                        <img src="screenshots/otakuplanner-2.png" alt="Calendar View" class="thumbnail" onclick="changeScreenshot('otakuplannerMainImg', this.src)">
+                                        <img src="screenshots/otakuplanner-3.png" alt="Anime Tracker" class="thumbnail" onclick="changeScreenshot('otakuplannerMainImg', this.src)">
+                                        <img src="screenshots/otakuplanner-4.png" alt="Task Management" class="thumbnail" onclick="changeScreenshot('otakuplannerMainImg', this.src)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="project-info">
+                                    <h6>Project Overview</h6>
+                                    <p>A productivity app designed for anime enthusiasts to track shows, manage daily tasks, and plan routines with AI-powered features.</p>
+                                    
+                                    <h6>Key Features</h6>
+                                    <ul>
+                                        <li>Custom calendar interface</li>
+                                        <li>Anime tracking and watchlists</li>
+                                        <li>Task automation</li>
+                                        <li>AI-powered recommendations</li>
+                                        <li>Local database storage</li>
+                                    </ul>
+                                    
+                                    <h6>Technologies Used</h6>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Flutter</span>
+                                        <span class="tech-badge">Dart</span>
+                                        <span class="tech-badge">SQLite</span>
+                                        <span class="tech-badge">AI Integration</span>
+                                        <span class="tech-badge">Express.js</span>
+                                    </div>
+                                    
+                                    <div class="project-stats mt-4">
+                                        <div class="stat">
+                                            <strong>Duration:</strong> Mar 2025 - May 2025
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Team Size:</strong> Solo Project
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Role:</strong> Lead Developer
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TheMentRent Modal -->
+    <div class="modal fade" id="thementrentModal" tabindex="-1" aria-labelledby="thementrentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="thementrentModalLabel">TheMentRent - Mentorship Platform</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-modal-content">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="screenshot-gallery">
+                                    <div class="main-screenshot">
+                                        <img src="screenshots/thementrent-1.png" alt="TheMentRent Login" class="img-fluid rounded" id="thementrentMainImg">
+                                    </div>
+                                    <div class="screenshot-thumbnails mt-3">
+                                        <img src="screenshots/thementrent-1.png" alt="Login Screen" class="thumbnail active" onclick="changeScreenshot('thementrentMainImg', this.src)">
+                                        <img src="screenshots/thementrent-2.png" alt="Profile Setup" class="thumbnail" onclick="changeScreenshot('thementrentMainImg', this.src)">
+                                        <img src="screenshots/thementrent-3.png" alt="Mentor Matching" class="thumbnail" onclick="changeScreenshot('thementrentMainImg', this.src)">
+                                        <img src="screenshots/thementrent-4.png" alt="Chat Interface" class="thumbnail" onclick="changeScreenshot('thementrentMainImg', this.src)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="project-info">
+                                    <h6>Project Overview</h6>
+                                    <p>A mentorship matching platform that connects users with professionals based on industry expertise and career goals.</p>
+                                    
+                                    <h6>Key Features</h6>
+                                    <ul>
+                                        <li>User authentication system</li>
+                                        <li>Profile creation and matching</li>
+                                        <li>Industry-based filtering</li>
+                                        <li>Chat messaging system</li>
+                                        <li>Mentor-mentee pairing algorithm</li>
+                                    </ul>
+                                    
+                                    <h6>Technologies Used</h6>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Flutter</span>
+                                        <span class="tech-badge">Dart</span>
+                                        <span class="tech-badge">Node.js</span>
+                                        <span class="tech-badge">Express.js</span>
+                                        <span class="tech-badge">PostgreSQL</span>
+                                    </div>
+                                    
+                                    <div class="project-stats mt-4">
+                                        <div class="stat">
+                                            <strong>Duration:</strong> Mar 2025 - Apr 2025
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Team Size:</strong> 3 developers
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Role:</strong> Frontend Developer
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thriller Modal -->
+    <div class="modal fade" id="thrillerModal" tabindex="-1" aria-labelledby="thrillerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="thrillerModalLabel">Thriller - Movie Streaming App</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-modal-content">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="screenshot-gallery">
+                                    <div class="main-screenshot">
+                                        <img src="screenshots/thriller-1.png" alt="Thriller Home Screen" class="img-fluid rounded" id="thrillerMainImg">
+                                    </div>
+                                    <div class="screenshot-thumbnails mt-3">
+                                        <img src="screenshots/thriller-1.png" alt="Home Screen" class="thumbnail active" onclick="changeScreenshot('thrillerMainImg', this.src)">
+                                        <img src="screenshots/thriller-2.png" alt="Movie Categories" class="thumbnail" onclick="changeScreenshot('thrillerMainImg', this.src)">
+                                        <img src="screenshots/thriller-3.png" alt="Movie Details" class="thumbnail" onclick="changeScreenshot('thrillerMainImg', this.src)">
+                                        <img src="screenshots/thriller-4.png" alt="User Profile" class="thumbnail" onclick="changeScreenshot('thrillerMainImg', this.src)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="project-info">
+                                    <h6>Project Overview</h6>
+                                    <p>A movie streaming app frontend inspired by Netflix and ShowMax, featuring modern UI design and smooth navigation.</p>
+                                    
+                                    <h6>Key Features</h6>
+                                    <ul>
+                                        <li>Multi-screen navigation</li>
+                                        <li>Category-based browsing</li>
+                                        <li>Movie preview and details</li>
+                                        <li>User interface prototyping</li>
+                                        <li>Responsive design patterns</li>
+                                    </ul>
+                                    
+                                    <h6>Technologies Used</h6>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Flutter</span>
+                                        <span class="tech-badge">Dart</span>
+                                        <span class="tech-badge">UI/UX Design</span>
+                                        <span class="tech-badge">Prototyping</span>
+                                    </div>
+                                    
+                                    <div class="project-stats mt-4">
+                                        <div class="stat">
+                                            <strong>Duration:</strong> Dec 2023 - Feb 2024
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Team Size:</strong> Solo Project
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Role:</strong> UI/UX Designer & Developer
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
