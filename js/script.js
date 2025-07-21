@@ -27,7 +27,7 @@ function initializeLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
     const progressFill = document.querySelector('.progress-fill');
     const typingTextElement = document.getElementById('typing-text');
-    const loadingText = "initializing portfolio...";
+    const loadingText = "loading portfolio.....";
     
     // Start typing animation
     let charIndex = 0;
