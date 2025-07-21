@@ -460,20 +460,20 @@ body.light-theme .social-links a:hover {
 
 .chess-board {
     display: grid;
-    grid-template-columns: repeat(8, 25px);
-    grid-template-rows: repeat(8, 25px);
-    border: 2px solid var(--primary-color);
-    border-radius: 8px;
-    padding: 8px;
+    grid-template-columns: repeat(8, 35px);
+    grid-template-rows: repeat(8, 35px);
+    border: 3px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 12px;
     background: var(--surface-color);
-    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 255, 136, 0.25);
     position: relative;
     transform: rotate(15deg);
 }
 
 .chess-square {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     transition: all 0.3s ease;
 }
 
@@ -493,23 +493,23 @@ body.light-theme .social-links a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 24px;
     color: var(--text-primary);
-    text-shadow: 0 0 8px var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
     animation: pieceGlow 3s ease-in-out infinite alternate;
     pointer-events: none;
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     z-index: 2;
 }
 
 @keyframes pieceGlow {
     0% { 
-        text-shadow: 0 0 8px var(--primary-color);
+        text-shadow: 0 0 10px var(--primary-color);
         transform: scale(1);
     }
     100% { 
-        text-shadow: 0 0 15px var(--primary-color), 0 0 20px var(--primary-color);
+        text-shadow: 0 0 18px var(--primary-color), 0 0 25px var(--primary-color);
         transform: scale(1.1);
     }
 }
@@ -528,22 +528,24 @@ body.light-theme .social-links a:hover {
     animation-duration: 1.5s;
 }
 
-/* Larger screens get a bigger board */
+/* Larger screens get an even bigger board */
 @media (min-width: 1400px) {
     .chess-board {
-        grid-template-columns: repeat(8, 30px);
-        grid-template-rows: repeat(8, 30px);
+        grid-template-columns: repeat(8, 42px);
+        grid-template-rows: repeat(8, 42px);
+        border: 4px solid var(--primary-color);
+        padding: 15px;
     }
     
     .chess-square {
-        width: 30px;
-        height: 30px;
+        width: 42px;
+        height: 42px;
     }
     
     .chess-piece {
-        width: 30px;
-        height: 30px;
-        font-size: 22px;
+        width: 42px;
+        height: 42px;
+        font-size: 28px;
     }
 }
 
