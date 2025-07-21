@@ -851,13 +851,16 @@ section {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        align-items: center;
     }
     
     .hero-cta .btn {
         text-align: center;
         width: 100%;
         max-width: 280px;
-        margin: 0 auto;
+        margin: 0 !important; /* Override Bootstrap margin classes */
+        padding: 1rem 2rem;
+        font-size: 1rem;
     }
     
     .social-links {
