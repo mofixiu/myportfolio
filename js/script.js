@@ -512,3 +512,83 @@ function initializeAccessibility() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeAccessibility);
+
+// Screenshot Gallery Functionality
+function changeScreenshot(mainImageId, newSrc) {
+    const mainImg = document.getElementById(mainImageId);
+    if (mainImg) {
+        mainImg.src = newSrc;
+    }
+    
+    // Update active thumbnail
+    const modalBody = mainImg.closest('.modal-body');
+    if (modalBody) {
+        const thumbnails = modalBody.querySelectorAll('.thumbnail');
+        thumbnails.forEach(thumb => {
+            thumb.classList.remove('active');
+            if (thumb.src === newSrc) {
+                thumb.classList.add('active');
+            }
+        });
+    }
+}
+
+// Initialize screenshot galleries for all modals
+function initializeScreenshotGalleries() {
+    // Add click event listeners to all thumbnails
+    const thumbnails = document.querySelectorAll('.screenshot-thumbnails .thumbnail');
+    
+    thumbnails.forEach(thumbnail => {
+        thumbnail.style.cursor = 'pointer';
+        
+        thumbnail.addEventListener('click', function() {
+            const modalBody = this.closest('.modal-body');
+            const mainImg = modalBody.querySelector('.main-screenshot img');
+            
+            if (mainImg) {
+                // Update main image
+                mainImg.src = this.src;
+                
+                // Update active state
+                const allThumbnails = modalBody.querySelectorAll('.thumbnail');
+                allThumbnails.forEach(thumb => thumb.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
+        
+        // Add keyboard accessibility
+        thumbnail.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+        
+        // Add tabindex for keyboard navigation
+        thumbnail.setAttribute('tabindex', '0');
+    });
+}
+
+// Error handling for missing images
+function handleImageErrors() {
+    const images = document.querySelectorAll('img');
+    
+    images.forEach(img => {
+        img.addEventListener('error', function() {
+            console.warn(`Failed to load image: ${this.src}`);
+            // You could add a placeholder image here
+            // this.src = 'path/to/placeholder.jpg';
+        });
+    });
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeScreenshotGalleries();
+    handleImageErrors();
+});
+
+// Re-initialize when modals are shown (for dynamic content)
+document.addEventListener('shown.bs.modal', function() {
+    initializeScreenshotGalleries();
+});
