@@ -1254,11 +1254,24 @@ body,
     font-size: 1.25rem;
     color: var(--text-secondary);
     opacity: 0.7;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
 }
 
 .btn-close:hover {
     opacity: 1;
     color: var(--text-primary);
+    background-color: var(--border-color);
+}
+
+.btn-close:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
 .modal-body {
@@ -1386,6 +1399,92 @@ body,
     .thumbnail {
         width: 60px;
         height: 45px;
+    }
+    
+    /* Enhanced mobile close button */
+    .btn-close {
+        font-size: 1.5rem;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--surface-color);
+        border: 2px solid var(--border-color);
+        border-radius: 50%;
+        color: var(--text-primary);
+        opacity: 1;
+        position: relative;
+        z-index: 1050;
+    }
+    
+    .btn-close:hover,
+    .btn-close:focus {
+        background-color: var(--primary-color);
+        color: var(--background-color);
+        border-color: var(--primary-color);
+        transform: scale(1.1);
+        transition: all 0.2s ease;
+    }
+    
+    /* Add floating close button for mobile */
+    .floating-close-btn {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        width: 44px;
+        height: 44px;
+        background-color: var(--surface-color);
+        border: 2px solid var(--primary-color);
+        border-radius: 50%;
+        color: var(--primary-color);
+        font-size: 18px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1060;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: all 0.2s ease;
+    }
+    
+    .floating-close-btn:hover,
+    .floating-close-btn:focus {
+        background-color: var(--primary-color);
+        color: var(--surface-color);
+        transform: scale(1.1);
+        outline: none;
+    }
+    
+    /* Mobile modal swipe indicator */
+    .mobile-modal-indicator {
+        position: sticky;
+        top: 0;
+        z-index: 1050;
+        padding: 8px 0;
+        display: flex;
+        justify-content: center;
+        background-color: var(--surface-color);
+    }
+    
+    .swipe-bar {
+        width: 40px;
+        height: 4px;
+        background-color: var(--border-color);
+        border-radius: 2px;
+        opacity: 0.7;
+    }
+    
+    /* Adjust modal header padding for mobile */
+    .modal-header {
+        padding: 1rem 1.5rem 1rem 1rem;
+        position: relative;
+    }
+    
+    .modal-title {
+        padding-right: 50px; /* Space for close button */
+        font-size: 1.1rem;
     }
 }
 

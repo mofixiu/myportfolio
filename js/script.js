@@ -657,15 +657,14 @@ function initializeMobileModalClose() {
             }, { passive: true });
         }
         
-        // Add visible close button for mobile
+        // Enhance existing close button for mobile
         const modalHeader = modal.querySelector('.modal-header');
         if (modalHeader && window.innerWidth <= 768) {
             const existingCloseBtn = modalHeader.querySelector('.btn-close');
             if (existingCloseBtn) {
+                existingCloseBtn.innerHTML = '✕'; // Use X symbol
                 existingCloseBtn.style.fontSize = '1.2rem';
-                existingCloseBtn.style.padding = '0.8rem';
-                existingCloseBtn.style.minWidth = '44px';
-                existingCloseBtn.style.minHeight = '44px';
+                existingCloseBtn.style.fontWeight = 'bold';
             }
         }
     });
@@ -686,19 +685,41 @@ function initializeEscapeKey() {
     });
 }
 
-// Add mobile touch indicator for modals
+// Add mobile touch indicator for modals and floating close button
 function addMobileModalIndicator() {
     const modals = document.querySelectorAll('.modal');
     
     modals.forEach(modal => {
         const modalContent = modal.querySelector('.modal-content');
         if (modalContent && window.innerWidth <= 768) {
-            // Add swipe indicator at the top of modal
-            const indicator = document.createElement('div');
-            indicator.className = 'mobile-modal-indicator';
-            indicator.innerHTML = '<div class="swipe-bar"></div>';
+            // Add floating close button for mobile
+            const existingFloatingClose = modalContent.querySelector('.floating-close-btn');
+            if (!existingFloatingClose) {
+                const floatingCloseBtn = document.createElement('button');
+                floatingCloseBtn.className = 'floating-close-btn';
+                floatingCloseBtn.innerHTML = '✕';
+                floatingCloseBtn.setAttribute('aria-label', 'Close modal');
+                
+                // Add click handler
+                floatingCloseBtn.addEventListener('click', function() {
+                    const bsModal = bootstrap.Modal.getInstance(modal);
+                    if (bsModal) {
+                        bsModal.hide();
+                    }
+                });
+                
+                modalContent.appendChild(floatingCloseBtn);
+            }
             
-            modalContent.insertBefore(indicator, modalContent.firstChild);
+            // Add swipe indicator at the top of modal
+            const existingIndicator = modalContent.querySelector('.mobile-modal-indicator');
+            if (!existingIndicator) {
+                const indicator = document.createElement('div');
+                indicator.className = 'mobile-modal-indicator';
+                indicator.innerHTML = '<div class="swipe-bar"></div>';
+                
+                modalContent.insertBefore(indicator, modalContent.firstChild);
+            }
         }
     });
 }
