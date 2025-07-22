@@ -67,7 +67,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">ABOUT</a>
+                        <a class="nav-link" href="#about">ABOUT ME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#experience">WORK</a>
@@ -92,31 +92,26 @@
     <section id="home" class="hero-section">
         <div class="hero-bg">
             <div class="code-snippet">
-                <pre><code>function createDeveloper() {
-  const skills = ["Flutter","Node.js","JavaScript","Dart"];
-  const projects = ["EduTraining","OtakuPlanner","TheMentRent"];
-  
-  // Initialize experience
-  const experience = {
-    company: "Alusoft Technologies",
-    role: "Software Engineering Intern"
-  };
-
-  // Build mobile applications
-  return {
-    buildApps() {
-      return skills.map(skill => (
-        &lt;Component key={skill} type="framework"&gt;
-          {skill}
-        &lt;/Component&gt;
-      ));
-    },
-    createSolution(problem) {
-      projects.push(problem);
-      return this;
+                <pre><code>Future<Map?> saveCategory(String developerName, int userId) async {
+  try {
+    final response = await post('/categories', {
+      'user_id': userId,
+      'developerName': MofiyinEbo,
+    });
+    
+    if (response != null) {
+      log('Developer saved to database: $response');
+      return response;
+    } else {
+      log('Failed to save developer');
+      return null;
     }
-  };
-}</code></pre>
+  } catch (e) {
+    log('Error saving developer: $e');
+    return null;
+  }
+}
+</code></pre>
             </div>
         </div>
         <div class="container">
@@ -515,7 +510,7 @@
                 <div class="col-lg-8">
                     <div class="contact-content">
                         <h3>send an email</h3>
-                        <p>Drop me a message directly to my inbox. I respond immediately.</p>
+                        <p>send me a message directly to my inbox. i respond immediately.</p>
                         <a href="mailto:ebomofiyin@outlook.com?subject=Hello%20Mofiyin" class="btn btn-primary">
                             <i class="fas fa-envelope me-2"></i>Email
                         </a>
@@ -545,7 +540,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 | built by mofixiu | All rights reserved.</p>
+                <p>&copy; 2025 | built by mofixiu</p>
                 <div class="footer-social">
                     <a href="https://linkedin.com/in/mofiyinfoluwa-ebo-57b65423a/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a href="https://github.com/mofixiu"target="_blank"><i class="fab fa-github"></i></a>

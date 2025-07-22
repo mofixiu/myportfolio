@@ -1,24 +1,16 @@
-// Loading Screen and Initialization
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize theme
     initializeTheme();
     
-    // Initialize loading screen
     initializeLoadingScreen();
     
-    // Initialize navigation
     initializeNavigation();
     
-    // Initialize smooth scrolling
     initializeSmoothScrolling();
     
-    // Initialize animations
     initializeAnimations();
     
-    // Initialize typing effect
     initializeTypingEffect();
     
-    // Initialize theme toggle
     initializeThemeToggle();
 });
 
@@ -35,7 +27,7 @@ function initializeLoadingScreen() {
         if (charIndex < loadingText.length) {
             typingTextElement.textContent += loadingText.charAt(charIndex);
             charIndex++;
-            setTimeout(typeText, 80); // Typing speed
+            setTimeout(typeText, 80); 
         }
     };
     
@@ -519,5 +511,4 @@ function initializeAccessibility() {
     });
 }
 
-// Initialize accessibility features
 document.addEventListener('DOMContentLoaded', initializeAccessibility);
