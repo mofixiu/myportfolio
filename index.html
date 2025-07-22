@@ -497,10 +497,59 @@
                         <a href="#" class="project-link" data-bs-toggle="modal" data-bs-target="#thrillerModal">View Project</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
+                 <!-- Spotify Clone -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>My Spotify Clone</h3>
+                        <span class="project-duration">Mar 2022 – Sept 2022</span>
+                    </div>
+                    <p class="project-description">
+                        I built a music streaming app that mimics the Spotify experience, allowing users to listen to their favorite tracks.
+                    </p>
+                    <div class="project-details">
+                        <ul>
+                            <li>Implemented audio playback, playlist management, and a responsive UI inspired by Spotify</li>
+                            <li>Developed user mixes</li>
+                            <li>NO backend implementation</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Dart</span>                        
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-bs-toggle="modal" data-bs-target="#spotifycloneModal">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card d-none d-md-block" style="opacity: 0.6; border: 2px dashed var(--border-color);">
+                    <div class="project-header">
+                        <h3>Coming Soon</h3>
+                        <span class="project-duration">TBD</span>
+                    </div>
+                    <p class="project-description">
+                        New exciting project in development. Stay tuned for updates!
+                    </p>
+                    <div class="project-details">
+                        <ul>
+                            <li>Feature planning in progress</li>
+                            <li>Technology stack selection</li>
+                            <li>Development timeline creation</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">TBD</span>
+                        <span class="tech-badge">TBD</span>
+                        <span class="tech-badge">TBD</span>
+                    </div>
+                    <div class="project-links">
+                        <span class="project-link" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>
+                    </div>
+                </div>
+</div>
+</section>
+    
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
@@ -827,6 +876,69 @@
             </div>
         </div>
     </div>
+    <!-- SpotifyClone Modal -->
+    <div class="modal fade" id="spotifycloneModal" tabindex="-1" aria-labelledby="spotifycloneModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="spotifycloneModalLabel">Spotify Clone- Listen to music</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-modal-content">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="screenshot-gallery">
+                                    <div class="main-screenshot">
+                                        <img src="screenshots/spotifyclone-1.png" alt="Spotify Clone Main" class="img-fluid rounded" id="spotifycloneMainImg">
+                                    </div>
+                                    <div class="screenshot-thumbnails mt-3">
+                                        <img src="screenshots/spotifyclone-1.png" alt="Login Screen" class="thumbnail active" onclick="changeScreenshot('spotifycloneMainImg', this.src)">
+                                        <img src="screenshots/spotifyclone-2.png" alt="Profile Setup" class="thumbnail" onclick="changeScreenshot('spotifycloneMainImg', this.src)">
+                                        <img src="screenshots/spotifyclone-3.png" alt="Mentor Matching" class="thumbnail" onclick="changeScreenshot('spotifycloneMainImg', this.src)">
+                                        <img src="screenshots/spotifyclone-4.png" alt="Chat Interface" class="thumbnail" onclick="changeScreenshot('spotifycloneMainImg', this.src)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="project-info">
+                                    <h6>Project Overview</h6>
+                                    <p>A music streaming app inspired by Spotify, allowing users to play tracks, manage playlists, and enjoy a responsive, modern UI. Built with Flutter and Dart for seamless mobile experience.</p>
+                                    
+                                    <h6>Key Features</h6>
+                                    <ul>
+                                        <li>Audio playback for music tracks</li>
+                                        <li>Playlist creation and management</li>
+                                        <li>Responsive and modern user interface</li>
+                                        <li>Inspired by Spotify design</li>
+                                    </ul>
+                                    
+                                    <h6>Technologies Used</h6>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Flutter</span>
+                                        <span class="tech-badge">Dart</span>
+                                    </div>
+                                    
+                                    <div class="project-stats mt-4">
+                                        <div class="stat">
+                                            <strong>Duration:</strong> Mar 2022 - Sep 2022
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Team Size:</strong> 1 developer
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Role:</strong> Mobile Developer
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
