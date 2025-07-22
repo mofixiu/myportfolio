@@ -685,32 +685,13 @@ function initializeEscapeKey() {
     });
 }
 
-// Add mobile touch indicator for modals and floating close button
+// Add mobile touch indicator for modals
 function addMobileModalIndicator() {
     const modals = document.querySelectorAll('.modal');
     
     modals.forEach(modal => {
         const modalContent = modal.querySelector('.modal-content');
         if (modalContent && window.innerWidth <= 768) {
-            // Add floating close button for mobile
-            const existingFloatingClose = modalContent.querySelector('.floating-close-btn');
-            if (!existingFloatingClose) {
-                const floatingCloseBtn = document.createElement('button');
-                floatingCloseBtn.className = 'floating-close-btn';
-                floatingCloseBtn.innerHTML = '✕';
-                floatingCloseBtn.setAttribute('aria-label', 'Close modal');
-                
-                // Add click handler
-                floatingCloseBtn.addEventListener('click', function() {
-                    const bsModal = bootstrap.Modal.getInstance(modal);
-                    if (bsModal) {
-                        bsModal.hide();
-                    }
-                });
-                
-                modalContent.appendChild(floatingCloseBtn);
-            }
-            
             // Add swipe indicator at the top of modal
             const existingIndicator = modalContent.querySelector('.mobile-modal-indicator');
             if (!existingIndicator) {
