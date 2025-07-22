@@ -592,3 +592,131 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('shown.bs.modal', function() {
     initializeScreenshotGalleries();
 });
+
+// Mobile-friendly modal close functionality
+function initializeMobileModalClose() {
+    const modals = document.querySelectorAll('.modal');
+    
+    modals.forEach(modal => {
+        // Add tap-to-close functionality for mobile
+        modal.addEventListener('click', function(e) {
+            // Only close if clicking on the modal backdrop (not the modal content)
+            if (e.target === this) {
+                const bsModal = bootstrap.Modal.getInstance(this);
+                if (bsModal) {
+                    bsModal.hide();
+                }
+            }
+        });
+        
+        // Add swipe-down gesture to close modal on mobile
+        let startY = 0;
+        let currentY = 0;
+        
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent) {
+            // Touch start
+            modalContent.addEventListener('touchstart', function(e) {
+                startY = e.touches[0].clientY;
+            }, { passive: true });
+            
+            // Touch move
+            modalContent.addEventListener('touchmove', function(e) {
+                currentY = e.touches[0].clientY;
+                const deltaY = currentY - startY;
+                
+                // If swiping down and at the top of the content, add visual feedback
+                if (deltaY > 0 && modalContent.scrollTop === 0) {
+                    const opacity = Math.max(0.7, 1 - (deltaY / 200));
+                    modalContent.style.transform = `translateY(${Math.min(deltaY / 4, 50)}px)`;
+                    modalContent.style.opacity = opacity;
+                }
+            }, { passive: true });
+            
+            // Touch end
+            modalContent.addEventListener('touchend', function(e) {
+                const deltaY = currentY - startY;
+                
+                // If swiped down far enough, close the modal
+                if (deltaY > 100 && modalContent.scrollTop === 0) {
+                    const bsModal = bootstrap.Modal.getInstance(modal);
+                    if (bsModal) {
+                        bsModal.hide();
+                    }
+                }
+                
+                // Reset transform and opacity
+                modalContent.style.transform = '';
+                modalContent.style.opacity = '';
+                modalContent.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+                
+                // Remove transition after animation
+                setTimeout(() => {
+                    modalContent.style.transition = '';
+                }, 300);
+            }, { passive: true });
+        }
+        
+        // Add visible close button for mobile
+        const modalHeader = modal.querySelector('.modal-header');
+        if (modalHeader && window.innerWidth <= 768) {
+            const existingCloseBtn = modalHeader.querySelector('.btn-close');
+            if (existingCloseBtn) {
+                existingCloseBtn.style.fontSize = '1.2rem';
+                existingCloseBtn.style.padding = '0.8rem';
+                existingCloseBtn.style.minWidth = '44px';
+                existingCloseBtn.style.minHeight = '44px';
+            }
+        }
+    });
+}
+
+// Add escape key functionality
+function initializeEscapeKey() {
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const openModal = document.querySelector('.modal.show');
+            if (openModal) {
+                const bsModal = bootstrap.Modal.getInstance(openModal);
+                if (bsModal) {
+                    bsModal.hide();
+                }
+            }
+        }
+    });
+}
+
+// Add mobile touch indicator for modals
+function addMobileModalIndicator() {
+    const modals = document.querySelectorAll('.modal');
+    
+    modals.forEach(modal => {
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent && window.innerWidth <= 768) {
+            // Add swipe indicator at the top of modal
+            const indicator = document.createElement('div');
+            indicator.className = 'mobile-modal-indicator';
+            indicator.innerHTML = '<div class="swipe-bar"></div>';
+            
+            modalContent.insertBefore(indicator, modalContent.firstChild);
+        }
+    });
+}
+
+// Initialize all mobile modal features
+document.addEventListener('DOMContentLoaded', function() {
+    initializeMobileModalClose();
+    initializeEscapeKey();
+    
+    // Check if on mobile and add indicators
+    if (window.innerWidth <= 768) {
+        addMobileModalIndicator();
+    }
+    
+    // Re-initialize on window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+            addMobileModalIndicator();
+        }
+    });
+});
