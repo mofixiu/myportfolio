@@ -262,6 +262,7 @@ body.light-theme .code-snippet {
     padding: 1rem;
     border-radius: 8px;
     border: 1px solid var(--border-color);
+    color: black;
 }
 
 body.light-theme .navbar {
@@ -307,10 +308,11 @@ body.light-theme .social-links a:hover {
     position: absolute;
     top: 20%;
     right: -20%;
-    font-size: 0.8rem;
+    font-size: 1.0rem;
     color: var(--text-secondary);
     transform: rotate(15deg);
     animation: float 6s ease-in-out infinite;
+    
 }
 
 @keyframes float {
