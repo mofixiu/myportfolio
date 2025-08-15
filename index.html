@@ -440,6 +440,38 @@
                         <a href="#" class="project-link" data-bs-toggle="modal" data-bs-target="#edutrainingModal">View Project</a>
                     </div>
                 </div>
+                <!--Lodgix Project-->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Lodgix</h3>
+                        <span class="project-duration">Aug 2025 - Sep 2025</span>
+                    </div>
+                    <p class="project-description">
+                        Lodgix is a comprehensive hotel management system that enables users to seamlessly book accommodations while providing hotel owners and administrators with powerful tools to monitor and manage their properties.
+                    </p>
+                    <div class="project-details">
+                        <ul>
+                            <li>Implemented user authentication and authorization with JWT</li>
+                            <li>Allowed users to book hotels and manage reservations</li>
+                            <li>Verified user identities and secured sensitive data</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Dart</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">Git</span>
+                        <span class="tech-badge">Express.js</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-bs-toggle="modal" data-bs-target="#lodgixModal">View Project</a>
+                    </div>
+                </div>
+
+
                 <!-- TheMentRent Project -->
                 <div class="project-card">
                     <div class="project-header">
@@ -522,31 +554,31 @@
                         <a href="#" class="project-link" data-bs-toggle="modal" data-bs-target="#spotifycloneModal">View Project</a>
                     </div>
                 </div>
-
-                <div class="project-card d-none d-md-block" style="opacity: 0.6; border: 2px dashed var(--border-color);">
-                    <div class="project-header">
-                        <h3>Coming Soon</h3>
-                        <span class="project-duration">TBD</span>
-                    </div>
-                    <p class="project-description">
-                        New exciting project in development.
-                    </p>
-                    <div class="project-details">
-                        <ul>
-                            <li>Feature planning in progress</li>
-                            <li>Technology stack selection</li>
-                            <li>Development timeline creation</li>
-                        </ul>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-badge">TBD</span>
-                        <span class="tech-badge">TBD</span>
-                        <span class="tech-badge">TBD</span>
-                    </div>
-                    <div class="project-links">
-                        <span class="project-link" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>
-                    </div>
-                </div>
+            <!-- 
+                            <div class="project-card d-none d-md-block" style="opacity: 0.6; border: 2px dashed var(--border-color);">
+                                <div class="project-header">
+                                    <h3>Coming Soon</h3>
+                                    <span class="project-duration">TBD</span>
+                                </div>
+                                <p class="project-description">
+                                    New exciting project in development.
+                                </p>
+                                <div class="project-details">
+                                    <ul>
+                                        <li>Feature planning in progress</li>
+                                        <li>Technology stack selection</li>
+                                        <li>Development timeline creation</li>
+                                    </ul>
+                                </div>
+                                <div class="tech-stack">
+                                    <span class="tech-badge">TBD</span>
+                                    <span class="tech-badge">TBD</span>
+                                    <span class="tech-badge">TBD</span>
+                                </div>
+                                <div class="project-links">
+                                    <span class="project-link" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>
+                                </div>
+                            </div> -->
 </div>
 </section>
     
@@ -743,6 +775,80 @@
         </div>
     </div>
 
+    <!-- Lodgix Modal -->
+    <div class="modal fade" id="lodgixModal" tabindex="-1" aria-labelledby="lodgixModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="lodgixModalLabel">Lodgix - Hotel Management App & System</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-modal-content">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="screenshot-gallery">
+                                    <div class="main-screenshot">
+                                        <img src="screenshots/lodgix-1.png" alt="Lodgix Dashboard" class="img-fluid rounded" id="lodgixMainImg">
+                                    </div>
+                                    <div class="screenshot-thumbnails mt-3">
+                                        <img src="screenshots/lodgix-1.png" alt="Dashboard" class="thumbnail active" onclick="changeScreenshot('lodgixMainImg', this.src)">
+                                        <img src="screenshots/lodgix-2.png" alt="Bookings Screen" class="thumbnail" onclick="changeScreenshot('lodgixMainImg', this.src)">
+                                        <img src="screenshots/lodgix-3.png" alt="Saved Hotels" class="thumbnail" onclick="changeScreenshot('lodgixMainImg', this.src)">
+                                        <img src="screenshots/lodgix-4.png" alt="Profile" class="thumbnail" onclick="changeScreenshot('lodgixMainImg', this.src)">
+                                        <img src="screenshots/lodgix-5.png" alt="Search" class="thumbnail" onclick="changeScreenshot('lodgixMainImg', this.src)">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="project-info">
+                                    <h6>Project Overview</h6>
+                                    <p>A hotel management application that streamlines booking processes, manages guest information, and enhances the overall hospitality experience.</p>
+
+                                    <h6>Key Features</h6>
+                                    <ul>
+
+                                        <li>Booking management</li>
+                                        <li>Guest profiles</li>
+                                        <li>Recommended Hotels</li>
+                                        <li>Booking history</li>
+                                        <li>Payment processing</li>
+
+                                    </ul>
+                                    
+                                    <h6>Technologies Used</h6>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Flutter</span>
+                                        <span class="tech-badge">Dart</span>
+                                        <span class="tech-badge">SQL</span>
+                                        <span class="tech-badge">AI Integration</span>
+                                        <span class="tech-badge">Express.js</span>
+                                         <span class="tech-badge">Node.js</span>
+
+                                    </div>
+                                    
+                                    <div class="project-stats mt-4">
+                                        <div class="stat">
+                                            <strong>Duration:</strong> Aug 2025 - Sep 2025
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Team Size:</strong> Duo Project
+                                        </div>
+                                        <div class="stat">
+                                            <strong>Role:</strong> Lead Mobile Developer
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
    
     <!-- TheMentRent Modal -->
     <div class="modal fade" id="thementrentModal" tabindex="-1" aria-labelledby="thementrentModalLabel" aria-hidden="true">
