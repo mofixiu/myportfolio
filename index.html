@@ -378,6 +378,39 @@
                 <h2>projects</h2>
             </div>
             <div class="projects-grid">
+
+                 <!--SIWES360 Project-->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>SIWES360</h3>
+                        <span class="project-duration">Nov 2025 - Dec 2025</span>
+                    </div>
+                    <p class="project-description">
+SIWES360 is a full-stack digital platform designed to modernize and automate the Students Industrial Work Experience Scheme (SIWES) process.  
+                </p>
+                    <div class="project-details">
+                        <ul>
+                         <li>Designed and implemented a role-based SIWES management system for students, supervisors, schools, and ITF officials</li>
+
+<li>Developed supervisor dashboards to review, comment on, approve, or reject student log entries</li>
+<li>Implemented role-based API access control to protect sensitive academic and industrial training data</li>
+
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Dart</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">Git</span>
+                        <span class="tech-badge">Express.js</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-bs-toggle="modal" data-bs-target="#siwes360Modal">View Project</a>
+                    </div>
+                </div>
+
                  <!--Lodgix Project-->
                 <div class="project-card">
                     <div class="project-header">
@@ -443,37 +476,7 @@
                 </div>
 
 
-                <!-- EduTraining Project -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>EduTraining</h3>
-                        <span class="project-duration">May 2025 – Sep 2025</span>
-                    </div>
-                    <p class="project-description">
-                        Developed an interactive platform for students to view courses, programs, and available instructors.
-                    </p>
-                    <div class="project-details">
-                        <ul>
-                            <li>Built full UI with Flutter, implemented REST API endpoints with Node.js and Express</li>
-                            <li>Connected data storage with PostgreSQL</li>
-                            <li>Used Git for version control and collaborated with teammates via code reviews and task boards (Agile setup)</li>
-                        </ul>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Flutter</span>
-                        <span class="tech-badge">Dart</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">SQL</span>
-                        <span class="tech-badge">Git</span>
-                        <span class="tech-badge">Express.js</span>
-                        <span class="tech-badge">JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" data-bs-toggle="modal" data-bs-target="#edutrainingModal">View Project</a>
-                    </div>
-                </div>
-               
-                <!-- TheMentRent Project -->
+               <!-- TheMentRent Project -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3>TheMentRent</h3>
@@ -503,6 +506,7 @@
                     </div>
                 </div>
 
+                
                 <div class="project-card">
                     <div class="project-header">
                         <h3>Thriller</h3>
@@ -709,12 +713,12 @@
         </div>
     </div>
 
-    <!-- EduTraining Modal -->
-    <div class="modal fade" id="edutrainingModal" tabindex="-1" aria-labelledby="edutrainingModalLabel" aria-hidden="true">
+     <!-- TheMentRent Modal -->
+    <div class="modal fade" id="thementrentModal" tabindex="-1" aria-labelledby="thementrentModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="edutrainingModalLabel">EduTraining - Learning Platform</h5>
+                    <h5 class="modal-title" id="thementrentModalLabel">TheMentRent - Mentorship Platform - A clone of TheMentr</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -723,27 +727,30 @@
                             <div class="col-md-8">
                                 <div class="screenshot-gallery">
                                     <div class="main-screenshot">
-                                        <img src="screenshots/edutraining-1.png" alt="EduTraining Main Screen" class="img-fluid rounded" id="edutrainingMainImg">
+                                        <img src="screenshots/thementrent-1.png" alt="TheMentRent Login" class="img-fluid rounded" id="thementrentMainImg">
                                     </div>
                                     <div class="screenshot-thumbnails mt-3">
-                                        <img src="screenshots/edutraining-1.png" alt="Login" class="thumbnail active" onclick="changeScreenshot('edutrainingMainImg', this.src)">
-                                        <img src="screenshots/edutraining-2.png" alt="Course Screen" class="thumbnail" onclick="changeScreenshot('edutrainingMainImg', this.src)">
-                                        <img src="screenshots/edutraining-4.png" alt="Drawer Screen" class="thumbnail" onclick="changeScreenshot('edutrainingMainImg', this.src)">
+                                        <img src="screenshots/thementrent-1.png" alt="Login Screen" class="thumbnail active" onclick="changeScreenshot('thementrentMainImg', this.src)">
+                                        <img src="screenshots/thementrent-3.png" alt="Chat Screen" class="thumbnail" onclick="changeScreenshot('thementrentMainImg', this.src)">
+                                        <img src="screenshots/thementrent-2.png" alt="Mentor Matching" class="thumbnail" onclick="changeScreenshot('thementrentMainImg', this.src)">
+                                        <img src="screenshots/thementrent-4.png" alt="Individual Chat Interface" class="thumbnail" onclick="changeScreenshot('thementrentMainImg', this.src)">
+                                        <img src="screenshots/thementrent5.png" alt="Meet Mentors " class="thumbnail" onclick="changeScreenshot('thementrentMainImg', this.src)">
+
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
-                                    <p>An interactive learning platform built with Flutter that allows students to explore courses, programs, and connect with instructors.</p>
+                                    <p>A mentorship matching platform that connects users with professionals based on industry expertise and career goals.It's a clone of The Mentr mentor matching app</p>
                                     
                                     <h6>Key Features</h6>
                                     <ul>
-                                        <li>Course browsing and search</li>
-                                        <li>Instructor profiles and ratings</li>
-                                        <li>Program enrollment system</li>
-                                        <li>User authentication</li>
-                                        <li>Responsive mobile design</li>
+                                        <li>User authentication system</li>
+                                        <li>Profile creation and matching</li>
+                                        <li>Industry-based filtering</li>
+                                        <li>Chat messaging system</li>
+                                        <li>Mentor-mentee pairing algorithm</li>
                                     </ul>
                                     
                                     <h6>Technologies Used</h6>
@@ -757,13 +764,13 @@
                                     
                                     <div class="project-stats mt-4">
                                         <div class="stat">
-                                            <strong>Duration:</strong> May 2025 - Sep 2025
+                                            <strong>Duration:</strong> Mar 2025 - Apr 2025
                                         </div>
                                         <div class="stat">
-                                            <strong>Team Size:</strong> 3 developers
+                                            <strong>Team Size:</strong> 1 developer
                                         </div>
                                         <div class="stat">
-                                            <strong>Role:</strong> Mobile Developer
+                                            <strong>Role:</strong> Frontend Developer
                                         </div>
                                     </div>
                                 </div>
@@ -850,14 +857,12 @@
         </div>
     </div>
 
- 
-   
-    <!-- TheMentRent Modal -->
-    <div class="modal fade" id="thementrentModal" tabindex="-1" aria-labelledby="thementrentModalLabel" aria-hidden="true">
+ <!-- SIWES360 Modal -->
+    <div class="modal fade" id="siwes360Modal" tabindex="-1" aria-labelledby="siwes360ModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="thementrentModalLabel">TheMentRent - Mentorship Platform - A clone of TheMentr</h5>
+                    <h5 class="modal-title" id="siwes360ModalLabel">SIWES360 - Online Logbook Management App & System</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -866,14 +871,22 @@
                             <div class="col-md-8">
                                 <div class="screenshot-gallery">
                                     <div class="main-screenshot">
-                                        <img src="screenshots/thementrent-1.png" alt="TheMentRent Login" class="img-fluid rounded" id="thementrentMainImg">
+                                        <img src="screenshots/siwes360-1.png" alt="SIWES360 Student Dashboard" class="img-fluid rounded" id="siwes360MainImg">
                                     </div>
                                     <div class="screenshot-thumbnails mt-3">
-                                        <img src="screenshots/thementrent-1.png" alt="Login Screen" class="thumbnail active" onclick="changeScreenshot('thementrentMainImg', this.src)">
-                                        <img src="screenshots/thementrent-3.png" alt="Chat Screen" class="thumbnail" onclick="changeScreenshot('thementrentMainImg', this.src)">
-                                        <img src="screenshots/thementrent-2.png" alt="Mentor Matching" class="thumbnail" onclick="changeScreenshot('thementrentMainImg', this.src)">
-                                        <img src="screenshots/thementrent-4.png" alt="Individual Chat Interface" class="thumbnail" onclick="changeScreenshot('thementrentMainImg', this.src)">
-                                        <img src="screenshots/thementrent5.png" alt="Meet Mentors " class="thumbnail" onclick="changeScreenshot('thementrentMainImg', this.src)">
+                                        <img src="screenshots/siwes360-1.png" alt="SIWES360 Student Dashboard" class="thumbnail active" onclick="changeScreenshot('siwes360MainImg', this.src)">
+                                        <img src="screenshots/siwes360-2.png" alt="SIWES360 Student Dashboard Continued" class="thumbnail" onclick="changeScreenshot('siwes360MainImg', this.src)">
+                                        <img src="screenshots/siwes360-3.png" alt="SIWES360 Logbook Page" class="thumbnail" onclick="changeScreenshot('siwes360MainImg', this.src)">
+                                        <img src="screenshots/siwes360-4.png" alt="SIWES360 Add new Logbook Entry" class="thumbnail" onclick="changeScreenshot('siwes360MainImg', this.src)">
+                                        <img src="screenshots/siwes360-5.png" alt="SIWES360 Logbook entry detail sheet" class="thumbnail" onclick="changeScreenshot('siwes360MainImg', this.src)">
+                                        <img src="screenshots/siwes360-6.png" alt="SIWES360 Student Profile" class="thumbnail" onclick="changeScreenshot('siwes360MainImg', this.src)">
+                                        <img src="screenshots/siwes360-7.png" alt="SIWES360 Edit Student Profile" class="thumbnail" onclick="changeScreenshot('siwes360MainImg', this.src)">
+                                        <img src="screenshots/siwes360-8.png" alt="SIWES360 Settings" class="thumbnail" onclick="changeScreenshot('siwes360MainImg', this.src)">
+                                        <img src="screenshots/siwes360-9.png" alt="SIWES360 Supervisor Dashboard" class="thumbnail" onclick="changeScreenshot('siwes360MainImg', this.src)">
+                                        <img src="screenshots/siwes360-10.png" alt="SIWES360 Students Page" class="thumbnail" onclick="changeScreenshot('siwes360MainImg', this.src)">
+
+
+
 
                                     </div>
                                 </div>
@@ -881,35 +894,39 @@
                             <div class="col-md-4">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
-                                    <p>A mentorship matching platform that connects users with professionals based on industry expertise and career goals.It's a clone of The Mentr mentor matching app</p>
-                                    
+                                    <p>SIWES360 replaces manual SIWES logbooks with a centralized, role-based platform for real-time monitoring, management, and evaluation by students, supervisors, institutions, and ITF officials.
+</p>
+
                                     <h6>Key Features</h6>
                                     <ul>
-                                        <li>User authentication system</li>
-                                        <li>Profile creation and matching</li>
-                                        <li>Industry-based filtering</li>
-                                        <li>Chat messaging system</li>
-                                        <li>Mentor-mentee pairing algorithm</li>
+
+                                        <li>Role-based authentication</li>
+                                        <li>Digital daily SIWES Logbook entries</li>
+                                        <li>Supervisor review system</li>
+                                        <li>Secure Data Handling </li>
+                                        <li>Admin dashboard management</li>
+
                                     </ul>
                                     
                                     <h6>Technologies Used</h6>
                                     <div class="tech-stack">
                                         <span class="tech-badge">Flutter</span>
                                         <span class="tech-badge">Dart</span>
-                                        <span class="tech-badge">Node.js</span>
+                                        <span class="tech-badge">SQL</span>
                                         <span class="tech-badge">Express.js</span>
-                                        <span class="tech-badge">PostgreSQL</span>
+                                         <span class="tech-badge">Node.js</span>
+
                                     </div>
                                     
                                     <div class="project-stats mt-4">
                                         <div class="stat">
-                                            <strong>Duration:</strong> Mar 2025 - Apr 2025
+                                            <strong>Duration:</strong> Nov 2025 - Dec 2025
                                         </div>
                                         <div class="stat">
-                                            <strong>Team Size:</strong> 1 developer
+                                            <strong>Team Size:</strong> Single Project
                                         </div>
                                         <div class="stat">
-                                            <strong>Role:</strong> Frontend Developer
+                                            <strong>Role:</strong> Lead Mobile Developer
                                         </div>
                                     </div>
                                 </div>
@@ -921,6 +938,8 @@
         </div>
     </div>
 
+   
+   
     <!-- Thriller Modal -->
     <div class="modal fade" id="thrillerModal" tabindex="-1" aria-labelledby="thrillerModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
