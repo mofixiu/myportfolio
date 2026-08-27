@@ -356,10 +356,8 @@ document.addEventListener('DOMContentLoaded', initializeParallax);
 function initializeTheme() {
     // Load saved theme preference
     const savedTheme = localStorage.getItem('portfolio-theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    // Apply saved theme or default to user's system preference
-    if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+    // Use the cream light theme by default; retain a visitor's explicit choice.
+    if (savedTheme !== 'dark') {
         document.body.classList.add('light-theme');
     } else {
         document.body.classList.remove('light-theme');
