@@ -65,13 +65,11 @@ function initializeNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     
     // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-        } else {
-            navbar.style.background = 'rgba(0, 0, 0, 0.9)';
-        }
-    });
+    const updateNavbarState = () => {
+        navbar.classList.toggle('navbar-scrolled', window.scrollY > 20);
+    };
+    updateNavbarState();
+    window.addEventListener('scroll', updateNavbarState);
     
     // Active nav link highlighting
     window.addEventListener('scroll', () => {
