@@ -97,7 +97,9 @@ function initializeNavigation() {
 
 // Smooth Scrolling
 function initializeSmoothScrolling() {
-    const links = document.querySelectorAll('a[href^="#"]');
+    // Project links use href="#" as a Bootstrap modal trigger; exclude them
+    // so this smooth-scroll handler does not interfere with opening the modal.
+    const links = document.querySelectorAll('a[href^="#"]:not([data-bs-toggle])');
     
     links.forEach(link => {
         link.addEventListener('click', (e) => {
