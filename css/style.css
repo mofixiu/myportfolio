@@ -986,10 +986,16 @@ section {
 }
 
 .project-link {
+    background: transparent;
+    border: 0;
     color: var(--primary-color);
+    cursor: pointer;
+    font-family: inherit;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9rem;
+    line-height: inherit;
+    padding: 0;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
@@ -997,6 +1003,11 @@ section {
 
 .project-link:hover {
     color: var(--text-primary);
+}
+
+.project-link:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
 }
 
 /* Contact Section */
