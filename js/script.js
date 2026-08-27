@@ -502,7 +502,7 @@ function initializeAccessibility() {
     }
     
     // Keyboard navigation for custom elements
-    const interactiveElements = document.querySelectorAll('.skill-badge, .project-card');
+    const interactiveElements = document.querySelectorAll('.skill-badge');
     interactiveElements.forEach(element => {
         element.setAttribute('tabindex', '0');
         element.addEventListener('keypress', (e) => {
@@ -514,6 +514,30 @@ function initializeAccessibility() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeAccessibility);
+
+// Keep keyboard focus in a predictable place when project dialogs open and close.
+function initializeModalFocus() {
+    const modalTriggers = new WeakMap();
+
+    document.addEventListener('show.bs.modal', function(event) {
+        if (event.relatedTarget instanceof HTMLElement) {
+            modalTriggers.set(event.target, event.relatedTarget);
+        }
+    });
+
+    document.addEventListener('shown.bs.modal', function(event) {
+        event.target.querySelector('.btn-close')?.focus();
+    });
+
+    document.addEventListener('hidden.bs.modal', function(event) {
+        const trigger = modalTriggers.get(event.target);
+        if (trigger && document.contains(trigger)) {
+            trigger.focus();
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initializeModalFocus);
 
 // Screenshot Gallery Functionality
 function changeScreenshot(mainImageId, newSrc) {
@@ -590,10 +614,6 @@ document.addEventListener('DOMContentLoaded', function() {
     handleImageErrors();
 });
 
-// Re-initialize when modals are shown (for dynamic content)
-document.addEventListener('shown.bs.modal', function() {
-    initializeScreenshotGalleries();
-});
 
 // Mobile-friendly modal close functionality
 function initializeMobileModalClose() {
