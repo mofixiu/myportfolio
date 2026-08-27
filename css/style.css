@@ -189,6 +189,11 @@ body {
     transform: scale(1.05);
 }
 
+body:not(.light-theme) .navbar-brand img,
+body:not(.light-theme) .loading-logo {
+    filter: invert(1) brightness(1.2);
+}
+
 .brand-text {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
