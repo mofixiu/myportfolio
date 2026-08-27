@@ -178,9 +178,9 @@ body {
 }
 
 .navbar-brand img {
-    height: 40px;
+    height: 48px;
     width: auto;
-    max-width: 150px;
+    max-width: 220px;
     object-fit: contain;
     transition: all 0.3s ease;
 }
@@ -1164,8 +1164,8 @@ section {
     }
     
     .navbar-brand img {
-        height: 35px;
-        max-width: 120px;
+        height: 42px;
+        max-width: 190px;
     }
     
     .profile-image {
@@ -1209,8 +1209,8 @@ section {
     }
     
     .navbar-brand img {
-        height: 30px;
-        max-width: 100px;
+        height: 40px;
+        max-width: 165px;
     }
     
     .about-content {
