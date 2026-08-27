@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
     projectCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-8px)';
-            this.style.boxShadow = '0 15px 40px rgba(0, 255, 136, 0.15)';
+            this.style.boxShadow = '0 15px 40px var(--card-hover-shadow)';
         });
         
         card.addEventListener('mouseleave', function() {
@@ -312,7 +312,7 @@ function showNotification(message, type = 'info') {
             notification.style.color = '#fff';
             break;
         case 'error':
-            notification.style.backgroundColor = '#ff6b35';
+            notification.style.backgroundColor = 'var(--accent-color)';
             break;
         default:
             notification.style.backgroundColor = '#333';
