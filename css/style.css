@@ -163,6 +163,11 @@ body {
     transition: all 0.3s ease;
 }
 
+.navbar.navbar-scrolled {
+    background: rgba(23, 21, 18, 0.98);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: 700;
@@ -268,9 +273,24 @@ body.light-theme .code-snippet {
 }
 
 body.light-theme .navbar {
-    background: rgba(244, 236, 222, 0.95);
+    background: rgba(232, 220, 199, 0.98);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #d1c3ac;
+    box-shadow: 0 4px 16px rgba(50, 45, 38, 0.06);
+}
+
+body.light-theme .navbar.navbar-scrolled {
+    background: rgba(225, 211, 187, 0.98);
+    box-shadow: 0 6px 20px rgba(50, 45, 38, 0.12);
+}
+
+body.light-theme .nav-link {
+    color: #51483c !important;
+}
+
+body.light-theme .nav-link:hover,
+body.light-theme .nav-link.active {
+    color: var(--primary-color) !important;
 }
 
 body.light-theme .skill-badge:hover {
@@ -1327,7 +1347,8 @@ body,
 .thumbnail {
     width: 80px;
     height: 60px;
-    object-fit: cover;
+    object-fit: contain;
+    background: #ffffff;
     border-radius: 4px;
     cursor: pointer;
     border: 2px solid transparent;
@@ -1343,6 +1364,12 @@ body,
 .thumbnail.active {
     border-color: var(--primary-color);
     opacity: 1;
+}
+
+.thumbnail:focus-visible {
+    opacity: 1;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
 }
 
 .project-info {
