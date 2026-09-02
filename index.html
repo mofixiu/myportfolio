@@ -33,7 +33,7 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="light-theme">
@@ -91,8 +91,22 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section">
         <div class="hero-bg">
+            <div class="code-snippet code-snippet-left">
+                <pre><code>Widget build(BuildContext context) {
+  return SafeArea(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const [
+        Text('Build. Learn. Ship.'),
+        SizedBox(height: 16),
+        ProjectGrid(),
+      ],
+    ),
+  );
+}</code></pre>
+            </div>
             <div class="code-snippet">
-                <pre><code>Future<Map?> saveCategory(String developerName, int userId) async {
+                <pre><code>Future&lt;Map?&gt; saveCategory(String developerName, int userId) async {
   try {
     final response = await post('/categories', {
       'user_id': userId,
@@ -133,7 +147,7 @@
                 
             </div>
             
-            <!-- Chess Board - Only on larger screens -->
+            <!-- Legacy chess board retained in markup but hidden by the updated hero styling. -->
             <div class="chess-board-container d-none d-lg-block">
                 <div class="chess-board">
                     <div class="chess-square light"></div>
@@ -270,34 +284,41 @@
             </div>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Programming Languages</h3>
+                    <h3>Mobile</h3>
                     <div class="skill-badges">
+                        <span class="skill-badge">Flutter</span>
                         <span class="skill-badge">Dart</span>
+                        <span class="skill-badge">Android</span>
+                        <span class="skill-badge">iOS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-badges">
                         <span class="skill-badge">JavaScript</span>
                         <span class="skill-badge">Node.js</span>
+                        <span class="skill-badge">Express.js</span>
                         <span class="skill-badge">Python</span>
-                        <span class="skill-badge">Java</span>
-                        <span class="skill-badge">C++</span>
-                        <span class="skill-badge">C#</span>
+                        <span class="skill-badge">Flask</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">PostgreSQL</span>
+                        <span class="skill-badge">MySQL</span>
                         <span class="skill-badge">SQL</span>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Frameworks & Tools</h3>
+                    <h3>Tools &amp; foundations</h3>
                     <div class="skill-badges">
-                        <span class="skill-badge">Flutter</span>
-                        <span class="skill-badge">Express.js</span>
-                        <span class="skill-badge">PostgreSQL</span>
                         <span class="skill-badge">Git</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Soft Skills</h3>
-                    <div class="skill-badges">
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">C++</span>
+                        <span class="skill-badge">C#</span>
                         <span class="skill-badge">Problem Solving</span>
                         <span class="skill-badge">Team Collaboration</span>
-                        <span class="skill-badge">Fast Learning</span>
-                        <span class="skill-badge">Attention to Detail</span>
                     </div>
                 </div>
             </div>
@@ -327,6 +348,7 @@
                 </div>
               
             </div>
+        </div>
     </section>
 
     <!-- Work Experience Section -->
@@ -390,247 +412,62 @@
     <section id="projects" class="projects-section">
         <div class="container">
             <div class="section-header">
-                <h2>projects</h2>
+                <p class="section-kicker">Selected work</p>
+                <h2>projects I’m proud of</h2>
             </div>
-            <div class="projects-grid">
- <!--HYBSTOCKADVISOR Project-->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>HYBSTOCKADVISOR</h3>
-                        <span class="project-duration">Nov 2025 - Dec 2025</span>
+            <p class="projects-intro">Three end-to-end products that show how I think through mobile experiences, data, and real user workflows.</p>
+            <div class="featured-projects">
+                <article class="featured-project-card">
+                    <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#hybstockadvisorModal" aria-label="Open HYBSTOCKADVISOR project gallery">
+                        <img src="screenshots/hybstockadvisor-1.png" alt="HYBSTOCKADVISOR mobile dashboard" loading="lazy" decoding="async">
+                        <span class="preview-label"><i class="fas fa-images" aria-hidden="true"></i> Open gallery</span>
+                    </button>
+                    <div class="featured-project-content">
+                        <div class="project-header"><h3>HYBSTOCKADVISOR</h3><span class="project-duration">2025</span></div>
+                        <p class="project-description">A role-aware investment assistant that brings technical and sentiment analysis into one clear mobile experience.</p>
+                        <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Flask</span><span class="tech-badge">MySQL</span><span class="tech-badge">AI</span></div>
+                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#hybstockadvisorModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
                     </div>
-                    <p class="project-description">
-HYBSTOCKADVISOR is a stock investment advisor app which utilizes both technical and sentiment analysis to provide users with comprehensive stock insights and personalized investment recommendations.
-                    </p>
+                </article>
 
-                    <div class="project-details">
-                        <ul>
-                        <li>Designed and built HYBSTOCKADVISOR, a role-aware investment assistant that combines technical and sentiment analysis for smarter decisions</li>
-                        <li>Developed interactive dashboards for trend tracking, watchlists, and personalized buy, hold, or sell recommendations</li>
-                        <li>Implemented secure API integrations and data pipelines to deliver real-time market insights and protect portfolio data</li>
+                <article class="featured-project-card">
+                    <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#siwes360Modal" aria-label="Open SIWES360 project gallery">
+                        <img src="screenshots/siwes360-1.png" alt="SIWES360 student dashboard" loading="lazy" decoding="async">
+                        <span class="preview-label"><i class="fas fa-images" aria-hidden="true"></i> Open gallery</span>
+                    </button>
+                    <div class="featured-project-content">
+                        <div class="project-header"><h3>SIWES360</h3><span class="project-duration">2025</span></div>
+                        <p class="project-description">A role-based platform that replaces manual industrial-training logbooks with a connected workflow for students and supervisors.</p>
+                        <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Node.js</span><span class="tech-badge">Express.js</span><span class="tech-badge">SQL</span></div>
+                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#siwes360Modal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
+                    </div>
+                </article>
 
-                        </ul>
+                <article class="featured-project-card">
+                    <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#otakuplannerModal" aria-label="Open OtakuPlanner project gallery">
+                        <img src="screenshots/otakuplanner-1.png" alt="OtakuPlanner productivity dashboard" loading="lazy" decoding="async">
+                        <span class="preview-label"><i class="fas fa-images" aria-hidden="true"></i> Open gallery</span>
+                    </button>
+                    <div class="featured-project-content">
+                        <div class="project-header"><h3>OtakuPlanner</h3><span class="project-duration">2025</span></div>
+                        <p class="project-description">A focused productivity app for tracking anime, organizing tasks, and planning routines in one place.</p>
+                        <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Flask</span><span class="tech-badge">MySQL</span><span class="tech-badge">AI</span></div>
+                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#otakuplannerModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
                     </div>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Flutter</span>
-                        <span class="tech-badge">Dart</span>
-                        <span class="tech-badge">Flask</span>
-                        <span class="tech-badge">MySQL</span>
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">AI</span>
-                    </div>
-                    <div class="project-links">
-                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#hybstockadvisorModal" aria-controls="hybstockadvisorModal" aria-haspopup="dialog">View Project <span class="visually-hidden">HYBSTOCKADVISOR details</span></button>
-                    </div>
+                </article>
+            </div>
+
+            <details class="more-work">
+                <summary><span>More selected work</span><span class="more-work-count">04 projects <i class="fas fa-plus" aria-hidden="true"></i></span></summary>
+                <div class="more-work-grid">
+                    <article class="compact-project"><div><h3>Lodgix</h3><p>A hotel-management system for booking, reservations, and secure account workflows.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#lodgixModal">View details</button></article>
+                    <article class="compact-project"><div><h3>TheMentRent</h3><p>A mentorship matching platform with profiles and chat flows.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#thementrentModal">View details</button></article>
+                    <article class="compact-project"><div><h3>Thriller</h3><p>A mobile streaming experience inspired by Netflix and ShowMax.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#thrillerModal">View details</button></article>
+                    <article class="compact-project"><div><h3>Spotify Clone</h3><p>A Flutter music experience with playback and playlists.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#spotifycloneModal">View details</button></article>
                 </div>
-
-                 <!--SIWES360 Project-->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>SIWES360</h3>
-                        <span class="project-duration">Nov 2025 - Dec 2025</span>
-                    </div>
-                    <p class="project-description">
-SIWES360 is a full-stack digital platform designed to modernize and automate the Students Industrial Work Experience Scheme (SIWES) process.  
-                </p>
-                    <div class="project-details">
-                        <ul>
-                         <li>Designed and implemented a role-based SIWES management system for students, supervisors, schools, and ITF officials</li>
-
-<li>Developed supervisor dashboards to review, comment on, approve, or reject student log entries</li>
-<li>Implemented role-based API access control to protect sensitive academic and industrial training data</li>
-
-                        </ul>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Flutter</span>
-                        <span class="tech-badge">Dart</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">SQL</span>
-                        <span class="tech-badge">Git</span>
-                        <span class="tech-badge">Express.js</span>
-                        <span class="tech-badge">JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#siwes360Modal" aria-controls="siwes360Modal" aria-haspopup="dialog">View Project <span class="visually-hidden">SIWES360 details</span></button>
-                    </div>
-                </div>
-
-                 <!--Lodgix Project-->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Lodgix</h3>
-                        <span class="project-duration">Aug 2025 - Sep 2025</span>
-                    </div>
-                    <p class="project-description">
-                        Lodgix is a comprehensive hotel management system that enables users to seamlessly book accommodations while providing hotel owners and administrators with powerful tools to monitor and manage their properties.
-                    </p>
-                    <div class="project-details">
-                        <ul>
-                            <li>Implemented user authentication and authorization with JWT</li>
-                            <li>Allowed users to book hotels and manage reservations</li>
-                            <li>Verified user identities and secured sensitive data</li>
-                        </ul>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Flutter</span>
-                        <span class="tech-badge">Dart</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">SQL</span>
-                        <span class="tech-badge">Git</span>
-                        <span class="tech-badge">Express.js</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">AI</span>
-                    </div>
-                    <div class="project-links">
-                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#lodgixModal" aria-controls="lodgixModal" aria-haspopup="dialog">View Project <span class="visually-hidden">Lodgix details</span></button>
-                    </div>
-                </div>
-
-
-                
-                <!-- OtakuPlanner Project -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>OtakuPlanner</h3>
-                        <span class="project-duration">Mar 2025 - May 2025</span>
-                    </div>
-                    <p class="project-description">
-                        Created a productivity app for users to track anime shows, document daily tasks, and plan routines.
-                    </p>
-                    <div class="project-details">
-                        <ul>
-                            <li>Implemented custom calendar UI, CRUD operations using Flutter and local database integration</li>
-                            <li>Managed development timeline, integrated backend features with Express.js</li>
-                            <li>Added task automation and AI integration, prepared the app for release</li>
-                        </ul>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Flutter</span>
-                        <span class="tech-badge">Dart</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">SQL</span>
-                        <span class="tech-badge">Git</span>
-                        <span class="tech-badge">Express.js</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">AI</span>
-                    </div>
-                    <div class="project-links">
-                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#otakuplannerModal" aria-controls="otakuplannerModal" aria-haspopup="dialog">View Project <span class="visually-hidden">OtakuPlanner details</span></button>
-                    </div>
-                </div>
-
-
-               <!-- TheMentRent Project -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>TheMentRent</h3>
-                        <span class="project-duration">Mar 2025 – April 2025</span>
-                    </div>
-                    <p class="project-description">
-                        Built a mentorship matching app to connect users with professionals based on industry and field.
-                    </p>
-                    <div class="project-details">
-                        <ul>
-                            <li>Designed signup/login flows, profile creation screens, and chat mockups using Flutter</li>
-                            <li>Contributed to backend user logic, including matching algorithm design</li>
-                            <li>Developed early-stage database schema</li>
-                        </ul>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Flutter</span>
-                        <span class="tech-badge">Dart</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">SQL</span>
-                        <span class="tech-badge">Git</span>
-                        <span class="tech-badge">Express.js</span>
-                        <span class="tech-badge">JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#thementrentModal" aria-controls="thementrentModal" aria-haspopup="dialog">View Project <span class="visually-hidden">TheMentRent details</span></button>
-                    </div>
-                </div>
-
-                
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Thriller</h3>
-                        <span class="project-duration">Dec 2023 - Feb 2024</span>
-                    </div>
-                    <p class="project-description">
-                        Designed a frontend movie streaming app inspired by Netflix and ShowMax.
-                    </p>
-                    <div class="project-details">
-                        <ul>
-                            <li>Created multi-screen navigation, category browsing, and movie previews with Flutter</li>
-                            <li>Used iterative prototyping to test UI components and gradually enhance user interaction</li>
-                        </ul>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Flutter</span>
-                        <span class="tech-badge">Dart</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">SQL</span>
-                        <span class="tech-badge">Git</span>
-                        <span class="tech-badge">Express.js</span>
-                        <span class="tech-badge">JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#thrillerModal" aria-controls="thrillerModal" aria-haspopup="dialog">View Project <span class="visually-hidden">Thriller details</span></button>
-                    </div>
-                </div>
-
-                 <!-- Spotify Clone -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>My Spotify Clone</h3>
-                        <span class="project-duration">Mar 2022 – Sept 2022</span>
-                    </div>
-                    <p class="project-description">
-                        I built a music streaming app that mimics the Spotify experience, allowing users to listen to their favorite tracks.
-                    </p>
-                    <div class="project-details">
-                        <ul>
-                            <li>Implemented audio playback, playlist management, and a responsive UI inspired by Spotify</li>
-                            <li>Developed user mixes</li>
-                            <li>NO backend implementation</li>
-                        </ul>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Flutter</span>
-                        <span class="tech-badge">Dart</span>                        
-                    </div>
-                    <div class="project-links">
-                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#spotifycloneModal" aria-controls="spotifycloneModal" aria-haspopup="dialog">View Project <span class="visually-hidden">My Spotify Clone details</span></button>
-                    </div>
-                </div>
-            <!-- 
-                            <div class="project-card d-none d-md-block" style="opacity: 0.6; border: 2px dashed var(--border-color);">
-                                <div class="project-header">
-                                    <h3>Coming Soon</h3>
-                                    <span class="project-duration">TBD</span>
-                                </div>
-                                <p class="project-description">
-                                    New exciting project in development.
-                                </p>
-                                <div class="project-details">
-                                    <ul>
-                                        <li>Feature planning in progress</li>
-                                        <li>Technology stack selection</li>
-                                        <li>Development timeline creation</li>
-                                    </ul>
-                                </div>
-                                <div class="tech-stack">
-                                    <span class="tech-badge">TBD</span>
-                                    <span class="tech-badge">TBD</span>
-                                    <span class="tech-badge">TBD</span>
-                                </div>
-                                <div class="project-links">
-                                    <span class="project-link" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>
-                                </div>
-                            </div> -->
-</div>
-</section>
+            </details>
+        </div>
+    </section>
     
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
@@ -684,7 +521,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
 
  <!-- OtakuPlanner Modal -->
     <div class="modal fade" id="otakuplannerModal" tabindex="-1" aria-labelledby="otakuplannerModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="otakuplannerModalLabel">OtakuPlanner - Productivity App</h5>
@@ -693,7 +530,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                 <div class="modal-body">
                     <div class="project-modal-content">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-5">
                                 <div class="screenshot-gallery">
                                     <div class="main-screenshot">
                                         <img src="screenshots/otakuplanner-1.png" alt="OtakuPlanner Dashboard" class="img-fluid rounded" id="otakuplannerMainImg" loading="lazy" decoding="async">
@@ -708,7 +545,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-7">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
                                     <p>A productivity app designed for anime enthusiasts to track shows, manage daily tasks, and plan routines with AI-powered features and natural language processing.</p>
@@ -759,7 +596,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
     </div>
  <!-- HybStockAdvisor Modal -->
     <div class="modal fade" id="hybstockadvisorModal" tabindex="-1" aria-labelledby="hybstockadvisorModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="hybstockadvisorModalLabel">HybStockAdvisor - Stock Market Analysis App</h5>
@@ -768,7 +605,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                 <div class="modal-body">
                     <div class="project-modal-content">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-5">
                                 <div class="screenshot-gallery">
                                     <div class="main-screenshot">
                                         <img src="screenshots/hybstockadvisor-1.png" alt="HybStockAdvisor Dashboard" class="img-fluid rounded" id="hybstockadvisorMainImg" loading="lazy" decoding="async">
@@ -784,7 +621,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-7">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
                                     <p>HYBSTOCKADVISOR is a stock market analysis app that combines technical indicators and sentiment intelligence to deliver personalized investment guidance for users.</p>
@@ -835,7 +672,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
 
      <!-- TheMentRent Modal -->
     <div class="modal fade" id="thementrentModal" tabindex="-1" aria-labelledby="thementrentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="thementrentModalLabel">TheMentRent - Mentorship Platform - A clone of TheMentr</h5>
@@ -844,7 +681,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                 <div class="modal-body">
                     <div class="project-modal-content">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-5">
                                 <div class="screenshot-gallery">
                                     <div class="main-screenshot">
                                         <img src="screenshots/thementrent-1.png" alt="TheMentRent Login" class="img-fluid rounded" id="thementrentMainImg" loading="lazy" decoding="async">
@@ -859,7 +696,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-7">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
                                     <p>A mentorship matching platform that connects users with professionals based on industry expertise and career goals.It's a clone of The Mentr mentor matching app</p>
@@ -904,7 +741,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
 
     <!-- Lodgix Modal -->
     <div class="modal fade" id="lodgixModal" tabindex="-1" aria-labelledby="lodgixModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="lodgixModalLabel">Lodgix - Hotel Management App & System</h5>
@@ -913,7 +750,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                 <div class="modal-body">
                     <div class="project-modal-content">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-5">
                                 <div class="screenshot-gallery">
                                     <div class="main-screenshot">
                                         <img src="screenshots/lodgix-1.png" alt="Lodgix Dashboard" class="img-fluid rounded" id="lodgixMainImg" loading="lazy" decoding="async">
@@ -930,7 +767,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-7">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
                                     <p>A hotel management application that streamlines booking processes, manages guest information, and enhances the overall hospitality experience.</p>
@@ -979,7 +816,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
 
  <!-- SIWES360 Modal -->
     <div class="modal fade" id="siwes360Modal" tabindex="-1" aria-labelledby="siwes360ModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="siwes360ModalLabel">SIWES360 - Online Logbook Management App & System</h5>
@@ -988,7 +825,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                 <div class="modal-body">
                     <div class="project-modal-content">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-5">
                                 <div class="screenshot-gallery">
                                     <div class="main-screenshot">
                                         <img src="screenshots/siwes360-1.png" alt="SIWES360 Student Dashboard" class="img-fluid rounded" id="siwes360MainImg" loading="lazy" decoding="async">
@@ -1011,7 +848,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-7">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
                                     <p>SIWES360 replaces manual SIWES logbooks with a centralized, role-based platform for real-time monitoring, management, and evaluation by students, supervisors, institutions, and ITF officials.
@@ -1062,7 +899,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
    
     <!-- Thriller Modal -->
     <div class="modal fade" id="thrillerModal" tabindex="-1" aria-labelledby="thrillerModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="thrillerModalLabel">Thriller - Movie Streaming App</h5>
@@ -1071,7 +908,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                 <div class="modal-body">
                     <div class="project-modal-content">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-5">
                                 <div class="screenshot-gallery">
                                     <div class="main-screenshot">
                                         <img src="screenshots/thriller-1.png" alt="Thriller Home Screen" class="img-fluid rounded" id="thrillerMainImg" loading="lazy" decoding="async">
@@ -1084,7 +921,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-7">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
                                     <p>A movie streaming app frontend inspired by Netflix and ShowMax, featuring modern UI design and smooth navigation.</p>
@@ -1127,7 +964,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
     </div>
     <!-- SpotifyClone Modal -->
     <div class="modal fade" id="spotifycloneModal" tabindex="-1" aria-labelledby="spotifycloneModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="spotifycloneModalLabel">Spotify Clone- Listen to music</h5>
@@ -1136,7 +973,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                 <div class="modal-body">
                     <div class="project-modal-content">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-5">
                                 <div class="screenshot-gallery">
                                     <div class="main-screenshot">
                                         <img src="screenshots/spotifyclone-1.png" alt="Spotify Home Page" class="img-fluid rounded" id="spotifycloneMainImg" loading="lazy" decoding="async">
@@ -1148,7 +985,7 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-7">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
                                     <p>A music streaming app inspired by Spotify, allowing users to play tracks, manage playlists, and enjoy a responsive, modern UI. Built with Flutter and Dart for seamless mobile experience.</p>
@@ -1188,8 +1025,32 @@ SIWES360 is a full-stack digital platform designed to modernize and automate the
     </div>
 
 
+    <span class="ladybug ladybug-one" aria-hidden="true">🐞</span>
+    <span class="ladybug ladybug-two" aria-hidden="true">🐞</span>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <script src="js/script.js"></script>
+    <script src="js/vendor/bug-min.js"></script>
+    <script>
+        // A tiny, non-interactive desktop-only detail for the hero and page edges.
+        if (window.matchMedia('(min-width: 992px)').matches &&
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            window.portfolioBugs = new BugController({
+                minBugs: 2,
+                maxBugs: 3,
+                minDelay: 700,
+                maxDelay: 2600,
+                minSpeed: 1,
+                maxSpeed: 2,
+                imageSprite: 'assets/bugs/fly-sprite.png',
+                mouseOver: 'nothing',
+                monitorMouseMovement: false,
+                canDie: false,
+                zoom: 7
+            });
+
+        }
+    </script>
 </body>
 </html>
