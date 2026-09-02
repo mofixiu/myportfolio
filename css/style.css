@@ -1488,6 +1488,7 @@ section {
 
     .hero-section > .container {
         min-height: 100svh;
+        padding-top: 4.75rem;
     }
     
     .code-snippet {
