@@ -121,77 +121,9 @@ function initializeSmoothScrolling() {
 
 // Animations
 function initializeAnimations() {
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements for animation
-    const animateElements = document.querySelectorAll(
-        '.section-header, .about-content, .skill-category, .education-item, .experience-item, .project-card, .contact-content'
-    );
-    
-    animateElements.forEach(el => {
-        el.classList.add('animate-on-scroll');
-        observer.observe(el);
-    });
-    
-    // Add CSS for animations
-    addAnimationStyles();
-}
-
-function addAnimationStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .animate-on-scroll.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .skill-category.animate-in {
-            transition-delay: 0.1s;
-        }
-        
-        .skill-category:nth-child(2).animate-in {
-            transition-delay: 0.2s;
-        }
-        
-        .skill-category:nth-child(3).animate-in {
-            transition-delay: 0.3s;
-        }
-        
-        .project-card.animate-in {
-            transition-delay: 0.1s;
-        }
-        
-        .project-card:nth-child(2).animate-in {
-            transition-delay: 0.2s;
-        }
-        
-        .project-card:nth-child(3).animate-in {
-            transition-delay: 0.3s;
-        }
-        
-        .project-card:nth-child(4).animate-in {
-            transition-delay: 0.4s;
-        }
-    `;
-    document.head.appendChild(style);
+    // Content stays visible even when a browser delays or disables
+    // IntersectionObserver callbacks (especially common on mobile).
+    // Decorative motion belongs to the hero; reading content must never depend on it.
 }
 
 function triggerEntranceAnimations() {
