@@ -645,8 +645,32 @@ body:not(.light-theme) .bug {
     75% { transform: translate(5vw, -17vh) rotate(-6deg); }
 }
 
-@media (max-width: 991px), (prefers-reduced-motion: reduce) {
+@media (max-width: 991px) {
     .ladybug {
+        font-size: 0.8rem;
+        opacity: 0.78;
+    }
+
+    .ladybug-one {
+        animation-duration: 19s;
+        right: 8vw;
+        top: 16vh;
+    }
+
+    .ladybug-two {
+        animation-duration: 22s;
+        bottom: 12vh;
+        left: 9vw;
+    }
+
+    .bug {
+        opacity: 0.38;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ladybug,
+    .bug {
         display: none;
     }
 }
