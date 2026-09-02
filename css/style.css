@@ -1918,3 +1918,18 @@ body.light-theme .modal-content {
 body:not(.light-theme) .modal-content {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
+
+/* Keep the About section on one uninterrupted sheet of paper on phones. */
+@media (max-width: 768px) {
+    body.light-theme .about-section {
+        background-color: #f4ecde;
+        background-image: url('../assets/handmade-paper.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .contact-content {
+        margin-bottom: 2.25rem;
+    }
+}
