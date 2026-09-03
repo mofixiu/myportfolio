@@ -1337,6 +1337,9 @@ section {
 .compact-project h3 { color: var(--text-primary); font-size: 1rem; margin: 0 0 0.25rem; }
 .compact-project p { color: var(--text-secondary); font-size: 0.86rem; margin: 0; }
 
+.mobile-only-project { display: none; }
+.mobile-more-count { display: none; }
+
 .project-link:focus-visible {
     outline: 2px solid var(--primary-color);
     outline-offset: 4px;
@@ -1427,6 +1430,11 @@ section {
     .featured-projects {
         grid-template-columns: 1fr;
     }
+
+    .desktop-featured { display: none; }
+    .mobile-only-project { display: flex; }
+    .desktop-more-count { display: none; }
+    .mobile-more-count { display: inline; }
     
     .skills-grid {
         grid-template-columns: 1fr;
