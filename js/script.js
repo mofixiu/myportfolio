@@ -359,8 +359,18 @@ function updateThemeIcon() {
 function initializeMobileNav() {
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
-    
+
     if (navbarToggler && navbarCollapse) {
+        // Bootstrap manages aria-expanded on its collapse trigger. Keep the
+        // accessible name in sync so screen-reader users know the next action.
+        navbarCollapse.addEventListener('show.bs.collapse', () => {
+            navbarToggler.setAttribute('aria-label', 'Close navigation menu');
+        });
+
+        navbarCollapse.addEventListener('hide.bs.collapse', () => {
+            navbarToggler.setAttribute('aria-label', 'Open navigation menu');
+        });
+
         // Close mobile nav when clicking on a link
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
@@ -559,64 +569,6 @@ function initializeMobileModalClose() {
             }
         });
         
-        // Add swipe-down gesture to close modal on mobile
-        let startY = 0;
-        let currentY = 0;
-        
-        const modalContent = modal.querySelector('.modal-content');
-        if (modalContent) {
-            // Touch start
-            modalContent.addEventListener('touchstart', function(e) {
-                startY = e.touches[0].clientY;
-            }, { passive: true });
-            
-            // Touch move
-            modalContent.addEventListener('touchmove', function(e) {
-                currentY = e.touches[0].clientY;
-                const deltaY = currentY - startY;
-                
-                // If swiping down and at the top of the content, add visual feedback
-                if (deltaY > 0 && modalContent.scrollTop === 0) {
-                    const opacity = Math.max(0.7, 1 - (deltaY / 200));
-                    modalContent.style.transform = `translateY(${Math.min(deltaY / 4, 50)}px)`;
-                    modalContent.style.opacity = opacity;
-                }
-            }, { passive: true });
-            
-            // Touch end
-            modalContent.addEventListener('touchend', function(e) {
-                const deltaY = currentY - startY;
-                
-                // If swiped down far enough, close the modal
-                if (deltaY > 100 && modalContent.scrollTop === 0) {
-                    const bsModal = bootstrap.Modal.getInstance(modal);
-                    if (bsModal) {
-                        bsModal.hide();
-                    }
-                }
-                
-                // Reset transform and opacity
-                modalContent.style.transform = '';
-                modalContent.style.opacity = '';
-                modalContent.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-                
-                // Remove transition after animation
-                setTimeout(() => {
-                    modalContent.style.transition = '';
-                }, 300);
-            }, { passive: true });
-        }
-        
-        // Enhance existing close button for mobile
-        const modalHeader = modal.querySelector('.modal-header');
-        if (modalHeader && window.innerWidth <= 768) {
-            const existingCloseBtn = modalHeader.querySelector('.btn-close');
-            if (existingCloseBtn) {
-                existingCloseBtn.innerHTML = '✕'; // Use X symbol
-                existingCloseBtn.style.fontSize = '1.2rem';
-                existingCloseBtn.style.fontWeight = 'bold';
-            }
-        }
     });
 }
 

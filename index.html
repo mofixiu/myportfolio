@@ -60,7 +60,7 @@
                              alt="MOFIXIU Logo">
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Open navigation menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
@@ -409,7 +409,7 @@
                 <p class="section-kicker">Selected work</p>
                 <h2>projects I’m proud of</h2>
             </div>
-            <p class="projects-intro">Three end-to-end products that show how I think through mobile experiences, data, and real user workflows.</p>
+            <p class="projects-intro">End-to-end products that show how I think through mobile experiences, data, and real user workflows.</p>
             <div class="featured-projects">
                 <article class="featured-project-card">
                     <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#hybstockadvisorModal" aria-label="Open HYBSTOCKADVISOR project gallery">
@@ -420,7 +420,7 @@
                         <div class="project-header"><h3>HYBSTOCKADVISOR</h3><span class="project-duration">2026</span></div>
                         <p class="project-description">A role-based investment advisor that combines financial technical indicators with NLP sentiment analysis.</p>
                         <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Flask</span><span class="tech-badge">PostgreSQL</span><span class="tech-badge">Python</span></div>
-                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#hybstockadvisorModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
+                        <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#hybstockadvisorModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button><a class="project-link" href="https://github.com/mofixiu/hybridstockinvestmentadvisor" target="_blank" rel="noopener noreferrer">Mobile <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://github.com/mofixiu/hybstockadvisor" target="_blank" rel="noopener noreferrer">Backend <i class="fab fa-github" aria-hidden="true"></i></a></div>
                     </div>
                 </article>
 
@@ -433,7 +433,7 @@
                         <div class="project-header"><h3>SIWES360</h3><span class="project-duration">2025</span></div>
                         <p class="project-description">A role-based platform that replaces manual industrial-training logbooks with a connected workflow for students and supervisors.</p>
                         <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Node.js</span><span class="tech-badge">Express.js</span><span class="tech-badge">MySQL</span></div>
-                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#siwes360Modal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
+                        <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#siwes360Modal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button><a class="project-link" href="https://github.com/mofixiu/siwes360" target="_blank" rel="noopener noreferrer">Mobile <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://github.com/mofixiu/siwes360Backend" target="_blank" rel="noopener noreferrer">Backend <i class="fab fa-github" aria-hidden="true"></i></a></div>
                     </div>
                 </article>
 
@@ -446,18 +446,32 @@
                         <div class="project-header"><h3>OtakuPlanner</h3><span class="project-duration">2025</span></div>
                         <p class="project-description">A focused productivity app for tracking anime, organizing tasks, and planning routines in one place.</p>
                         <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Node.js</span><span class="tech-badge">Express.js</span><span class="tech-badge">AI</span></div>
-                        <button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#otakuplannerModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
+                        <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#otakuplannerModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button><a class="project-link" href="https://github.com/mofixiu/OtakuPlanner" target="_blank" rel="noopener noreferrer">Mobile <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://github.com/mofixiu/OtakuPlannerBackend" target="_blank" rel="noopener noreferrer">Backend <i class="fab fa-github" aria-hidden="true"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="featured-project-card">
+                    <a class="project-preview" href="https://youtube.com/shorts/EGoR1_HW-zM?feature=share" target="_blank" rel="noopener noreferrer" aria-label="Watch the Escra demo on YouTube">
+                        <img src="screenshots/escra-login.png" alt="Escra mobile identity authentication screen" loading="lazy" decoding="async">
+                        <span class="preview-label"><i class="fas fa-play" aria-hidden="true"></i> Watch demo</span>
+                    </a>
+                    <div class="featured-project-content">
+                        <div class="project-header"><h3>Escra</h3><span class="project-duration">Kora Hackathon</span></div>
+                        <p class="project-description">A mobile experience for trustworthy escrow financial transactions, built for the Kora Hackathon.</p>
+                        <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span><span class="tech-badge">Fintech</span></div>
+                        <div class="project-actions"><a class="project-link" href="https://github.com/mofixiu/escra-mobile" target="_blank" rel="noopener noreferrer">View GitHub <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://youtube.com/shorts/EGoR1_HW-zM?feature=share" target="_blank" rel="noopener noreferrer">Watch demo <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
                     </div>
                 </article>
             </div>
 
             <details class="more-work">
-                <summary><span>More selected work</span><span class="more-work-count">04 projects <i class="fas fa-plus" aria-hidden="true"></i></span></summary>
+                <summary><span>More selected work</span><span class="more-work-count">05 projects <i class="fas fa-plus" aria-hidden="true"></i></span></summary>
                 <div class="more-work-grid">
-                    <article class="compact-project"><div><h3>Lodgix</h3><p>A hotel-management system for booking, reservations, and secure account workflows.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#lodgixModal">View details</button></article>
+                    <article class="compact-project"><div><h3>Lodgix</h3><p>A hotel-management system for booking, reservations, and secure account workflows.</p></div><div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#lodgixModal">View details</button><a class="project-link" href="https://github.com/mofixiu/lodgix" target="_blank" rel="noopener noreferrer">GitHub <i class="fab fa-github" aria-hidden="true"></i></a></div></article>
                     <article class="compact-project"><div><h3>TheMentRent</h3><p>A mentorship matching platform with profiles and chat flows.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#thementrentModal">View details</button></article>
                     <article class="compact-project"><div><h3>Thriller</h3><p>A mobile streaming experience inspired by Netflix and ShowMax.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#thrillerModal">View details</button></article>
                     <article class="compact-project"><div><h3>Spotify Clone</h3><p>A Flutter music experience with playback and playlists.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#spotifycloneModal">View details</button></article>
+                    <article class="compact-project"><div><h3>Snapchat Clone</h3><p>A mobile social experience inspired by Snapchat.</p></div><a class="project-link" href="https://github.com/mofixiu/snapchatclone" target="_blank" rel="noopener noreferrer">GitHub <i class="fab fa-github" aria-hidden="true"></i></a></article>
                 </div>
             </details>
         </div>
