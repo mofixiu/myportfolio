@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mofiyinebo.vercel.app/sitemap.xml
