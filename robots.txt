@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mofiyinebo.vercel.app/sitemap.xml
+Sitemap: https://mofiyinebo.com/sitemap.xml
