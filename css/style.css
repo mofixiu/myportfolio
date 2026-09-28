@@ -49,6 +49,25 @@ body.light-theme .footer {
     background-size: 520px auto;
 }
 
+body:not(.light-theme) {
+    background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('../assets/dark-handmade-paper.jpg');
+    background-repeat: no-repeat, repeat;
+    background-size: 100% 100%, 520px 520px;
+}
+
+body:not(.light-theme) .hero-section,
+body:not(.light-theme) .about-section,
+body:not(.light-theme) .skills-section,
+body:not(.light-theme) .education-section,
+body:not(.light-theme) .experience-section,
+body:not(.light-theme) .projects-section,
+body:not(.light-theme) .contact-section,
+body:not(.light-theme) .footer {
+    background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('../assets/dark-handmade-paper.jpg');
+    background-repeat: no-repeat, repeat;
+    background-size: 100% 100%, 520px 520px;
+}
+
 /* Base Styles */
 * {
     margin: 0;
@@ -94,6 +113,12 @@ body.light-theme #loading-screen {
     background-size: 520px auto;
 }
 
+body:not(.light-theme) #loading-screen {
+    background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('../assets/dark-handmade-paper.jpg');
+    background-repeat: no-repeat, repeat;
+    background-size: 100% 100%, 520px 520px;
+}
+
 .loader {
     text-align: center;
 }
@@ -107,13 +132,69 @@ body.light-theme #loading-screen {
     align-items: center;
 }
 
-.loading-logo {
-    height: 60px;
-    width: auto;
-    max-width: 200px;
-    object-fit: contain;
+.loading-brand {
+    align-items: center;
     animation: logoFloat 2s ease-in-out infinite;
-    filter: brightness(1.2);
+    color: var(--primary-color);
+    display: flex;
+    font-size: 2rem;
+    font-weight: 600;
+    gap: 0.45rem;
+    justify-content: center;
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.loading-brand .brand-mark {
+    --brand-mark-size: 60px;
+}
+
+.loading-brand .brand-wordmark {
+    font-size: 2rem;
+}
+
+.brand-mark {
+    --brand-mark-size: 48px;
+    display: block;
+    flex: 0 0 var(--brand-mark-size);
+    height: var(--brand-mark-size);
+    overflow: hidden;
+    width: var(--brand-mark-size);
+}
+
+.brand-mark img {
+    display: block;
+    height: 100%;
+    max-width: none;
+    object-fit: fill;
+    transition: none;
+    width: auto;
+}
+
+.brand-wordmark {
+    color: var(--primary-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-transform: lowercase;
+}
+
+.navbar-brand {
+    gap: 0.45rem;
+}
+
+.navbar-brand:hover .brand-wordmark {
+    color: var(--accent-color);
+}
+
+.loading-brand .brand-wordmark {
+    font-weight: 600;
+}
+
+body:not(.light-theme) .brand-mark img {
+    filter: invert(1) brightness(1.2);
 }
 
 @keyframes logoFloat {
@@ -200,23 +281,6 @@ body.light-theme #loading-screen {
     text-decoration: none;
     display: flex;
     align-items: center;
-}
-
-.navbar-brand img {
-    height: 48px;
-    width: auto;
-    max-width: 220px;
-    object-fit: contain;
-    transition: all 0.3s ease;
-}
-
-.navbar-brand img:hover {
-    transform: scale(1.05);
-}
-
-body:not(.light-theme) .navbar-brand img,
-body:not(.light-theme) .loading-logo {
-    filter: invert(1) brightness(1.2);
 }
 
 .brand-text {
@@ -1476,9 +1540,12 @@ section {
         font-size: 0.9rem;
     }
     
-    .navbar-brand img {
-        height: 42px;
-        max-width: 190px;
+    .navbar-brand .brand-mark {
+        --brand-mark-size: 42px;
+    }
+
+    .navbar-brand .brand-wordmark {
+        font-size: 1.3rem;
     }
     
     .profile-image {
@@ -1535,9 +1602,12 @@ section {
         height: 280px;
     }
     
-    .navbar-brand img {
-        height: 40px;
-        max-width: 165px;
+    .navbar-brand .brand-mark {
+        --brand-mark-size: 40px;
+    }
+
+    .navbar-brand .brand-wordmark {
+        font-size: 1.2rem;
     }
     
     .about-content {
