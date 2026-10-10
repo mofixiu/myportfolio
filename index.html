@@ -473,6 +473,19 @@
             <p class="projects-intro">End-to-end products that show how I think through mobile experiences, data, and real user workflows.</p>
             <div class="featured-projects">
                 <article class="featured-project-card">
+                    <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#alastudieModal" aria-label="Open aLaStudie project gallery">
+                        <img src="screenshots/alastudie_screenshots/01-home-nia.png" alt="aLaStudie home screen" loading="lazy" decoding="async">
+                        <span class="preview-label"><i class="fas fa-images" aria-hidden="true"></i> Open gallery</span>
+                    </button>
+                    <div class="featured-project-content">
+                        <div class="project-header"><h3>aLaStudie</h3><span class="project-duration">Oct 2026</span></div>
+                        <p class="project-description">A collaborative study app where students discover study rooms, organize recurring sessions, and stay focused together—even when they’re offline.</p>
+                        <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span><span class="tech-badge">Node.js</span><span class="tech-badge">Express</span><span class="tech-badge">PostgreSQL</span><span class="tech-badge">Socket.IO</span><span class="tech-badge">Bluetooth LE</span></div>
+                        <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#alastudieModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button><a class="project-link" href="https://github.com/mofixiu/alastudiemobile" target="_blank" rel="noopener noreferrer">Mobile <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://github.com/mofixiu/alastudiebackend" target="_blank" rel="noopener noreferrer">Backend <i class="fab fa-github" aria-hidden="true"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="featured-project-card">
                     <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#hybstockadvisorModal" aria-label="Open HYBSTOCKADVISOR project gallery">
                         <img src="screenshots/hybstockadvisor-1.png" alt="HYBSTOCKADVISOR mobile dashboard" loading="lazy" decoding="async">
                         <span class="preview-label"><i class="fas fa-images" aria-hidden="true"></i> Open gallery</span>
@@ -614,6 +627,84 @@
             </div>
         </div>
     </footer>
+
+    <!-- aLaStudie Modal -->
+    <div class="modal fade" id="alastudieModal" tabindex="-1" aria-labelledby="alastudieModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alastudieModalLabel">aLaStudie - Collaborative Study App</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-modal-content">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="screenshot-gallery">
+                                    <div class="main-screenshot">
+                                        <img src="screenshots/alastudie_screenshots/00-splash.png" alt="aLaStudie splash screen" class="img-fluid rounded" id="alastudieMainImg" loading="lazy" decoding="async">
+                                    </div>
+                                    <div class="screenshot-thumbnails mt-3">
+                                        <img src="screenshots/alastudie_screenshots/00-splash.png" alt="aLaStudie splash screen" class="thumbnail active" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/01-home-nia.png" alt="Home" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/02-discover.png" alt="Discover study rooms" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/03-discover-filters.png" alt="Study room filters" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/04-profile-nia.png" alt="Nia's profile" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/05-notifications-sheet.png" alt="Notifications" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/07-my-rooms-nia.png" alt="Nia's study rooms" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/08-create-room-sheet.png" alt="Create a study room" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/09-room-detail-chemistry.png" alt="Chemistry room details" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/10-settings.png" alt="Settings" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/11-profile-tobi.png" alt="Tobi's profile" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/12-home-tobi.png" alt="Tobi's home screen" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/13-my-rooms-tobi.png" alt="Tobi's study rooms" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                        <img src="screenshots/alastudie_screenshots/14-hosted-room-tobi.png" alt="Tobi's hosted room" class="thumbnail" onclick="changeScreenshot('alastudieMainImg', this.src)" loading="lazy" decoding="async">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="project-info">
+                                    <h6>Project Overview</h6>
+                                    <p>aLaStudie helps students turn study goals into focused sessions with other people. Students can discover and filter rooms, join scheduled or recurring meetings, and coordinate with RSVPs, reminders, chat, shared tasks, and focus timers. For in-person groups without internet, Bluetooth LE supports nearby discovery and an offline study table with chat, tasks, and a shared timer.</p>
+
+                                    <h6>Key Features</h6>
+                                    <ul>
+                                        <li>Discover rooms by subject, course, start time, and open seats.</li>
+                                        <li>Schedule recurring study rooms, manage RSVPs, and track attendance by meeting.</li>
+                                        <li>Coordinate with room chat, shared tasks, and focus sessions.</li>
+                                        <li>Use Bluetooth LE for nearby study groups that work offline.</li>
+                                        <li>Review private study progress and export study history.</li>
+                                    </ul>
+
+                                    <h6>Technologies</h6>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Flutter</span>
+                                        <span class="tech-badge">Dart</span>
+                                        <span class="tech-badge">Node.js</span>
+                                        <span class="tech-badge">Express</span>
+                                        <span class="tech-badge">PostgreSQL</span>
+                                        <span class="tech-badge">Socket.IO</span>
+                                        <span class="tech-badge">Bluetooth LE</span>
+                                    </div>
+
+                                    <div class="project-stats mt-4">
+                                        <div class="stat"><strong>Year:</strong> 2026</div>
+                                        <div class="stat"><strong>Team Size:</strong> Solo project</div>
+                                        <div class="stat"><strong>Role:</strong> Product design and app development</div>
+                                    </div>
+
+                                    <div class="project-actions">
+                                        <a class="project-link" href="https://github.com/mofixiu/alastudiemobile" target="_blank" rel="noopener noreferrer">Mobile repository <i class="fab fa-github" aria-hidden="true"></i></a>
+                                        <a class="project-link" href="https://github.com/mofixiu/alastudiebackend" target="_blank" rel="noopener noreferrer">Backend repository <i class="fab fa-github" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
  <!-- OtakuPlanner Modal -->
     <div class="modal fade" id="otakuplannerModal" tabindex="-1" aria-labelledby="otakuplannerModalLabel" aria-hidden="true">
