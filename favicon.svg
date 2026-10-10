@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <style>
-    #mark { filter: url(#charcoal); }
+    #mark { filter: url(#warm-gray); }
     @media (prefers-color-scheme: dark) {
       #mark { filter: url(#cream); }
     }
   </style>
   <defs>
-    <filter id="charcoal" x="0" y="0" width="100%" height="100%">
-      <feFlood flood-color="#343330" result="tone" />
+    <filter id="warm-gray" x="0" y="0" width="100%" height="100%">
+      <feFlood flood-color="#77736b" result="tone" />
       <feComposite in="tone" in2="SourceAlpha" operator="in" />
     </filter>
     <filter id="cream" x="0" y="0" width="100%" height="100%">
