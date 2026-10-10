@@ -1190,6 +1190,26 @@ section {
     overflow: hidden;
 }
 
+@media (min-width: 769px) {
+    /* Three equal cards per row, with any incomplete final row sharing the full width. */
+    .featured-projects {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .featured-project-card {
+        grid-column: span 2;
+    }
+
+    .featured-project-card:last-child:nth-child(3n + 1) {
+        grid-column: 1 / -1;
+    }
+
+    .featured-project-card:nth-last-child(2):nth-child(3n + 1),
+    .featured-project-card:last-child:nth-child(3n + 2) {
+        grid-column: span 3;
+    }
+}
+
 .featured-project-card::before {
     content: '';
     position: absolute;
