@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Page not found · Mofiyinfoluwa Ebo</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#171512">
+    <link rel="icon" type="image/svg+xml" href="https://mofiyinebo.com/favicon.svg?v=20261010-dark-icon">
+    <link rel="icon" type="image/png" href="https://mofiyinebo.com/favicon-96x96.png?v=20261010-dark-icon" sizes="96x96">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mofiyinebo.com/apple-touch-icon.png?v=20261010-dark-icon">
+    <script>
+        // Match the portfolio: cream paper unless the visitor chose dark.
+        try {
+            if (localStorage.getItem('portfolio-theme') === 'dark') {
+                document.documentElement.dataset.theme = 'dark';
+            }
+        } catch (error) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&amp;family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&amp;family=Montserrat:wght@500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&amp;text=04&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #f4ecde;
+            --page: #fbf6ec;
+            --page-edge: #e3d8c4;
+            --ink: #211e19;
+            --ink-soft: #6b6256;
+            --graphite: #57524b;
+            --heart: #b8432f;
+            --shadow: rgba(58, 40, 24, 0.3);
+        }
+
+        [data-theme="dark"] {
+            --paper: #171512;
+            --page: #24211c;
+            --page-edge: #2f2b25;
+            --ink: #f3eadb;
+            --ink-soft: #b9b0a2;
+            --graphite: #d2c8b9;
+            --heart: #e0715c;
+            --shadow: rgba(0, 0, 0, 0.55);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--paper) url('https://mofiyinebo.com/assets/handmade-paper.jpg') repeat;
+            background-size: 520px auto;
+            color: var(--ink);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+        }
+
+        [data-theme="dark"] body {
+            background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('https://mofiyinebo.com/assets/dark-handmade-paper-1040.jpg');
+            background-repeat: no-repeat, repeat;
+            background-size: 100% 100%, 520px 520px;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .sr-only {
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+        }
+
+        :focus-visible {
+            border-radius: 4px;
+            outline: 2px solid var(--ink);
+            outline-offset: 4px;
+        }
+
+        /* Header: the same brand and theme switch as the portfolio. */
+        .top {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            padding: max(1rem, env(safe-area-inset-top)) clamp(1rem, 4vw, 3rem) 0.5rem;
+        }
+
+        .brand {
+            align-items: center;
+            color: var(--ink);
+            display: inline-flex;
+            gap: 0.45rem;
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            display: block;
+            flex: 0 0 44px;
+            height: 44px;
+            overflow: hidden;
+            width: 44px;
+        }
+
+        .brand-mark img {
+            display: block;
+            height: 100%;
+            max-width: none;
+            width: auto;
+        }
+
+        [data-theme="dark"] .brand-mark img {
+            filter: invert(1) brightness(1.2);
+        }
+
+        .brand-wordmark {
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            line-height: 1;
+        }
+
+        .theme-toggle {
+            align-items: center;
+            background: transparent;
+            border: 0;
+            color: var(--ink-soft);
+            cursor: pointer;
+            display: inline-flex;
+            font: 600 0.85rem/1 'Montserrat', sans-serif;
+            gap: 0.5rem;
+            letter-spacing: 0.5px;
+            padding: 0.6rem 0;
+        }
+
+        .theme-toggle:hover {
+            color: var(--ink);
+        }
+
+        .theme-toggle-dot {
+            background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            display: inline-block;
+            height: 0.8rem;
+            width: 0.8rem;
+        }
+
+        main {
+            align-items: center;
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            padding: clamp(0.5rem, 2vh, 1.5rem) 1rem clamp(1.5rem, 5vh, 3rem);
+        }
+
+        /* One page of a gamebook, with a blank page waiting underneath. */
+        .scene {
+            perspective: 2000px;
+            position: relative;
+            width: min(37rem, 100%);
+        }
+
+        .page,
+        .page-under {
+            background-color: var(--page);
+            background-image: url('https://mofiyinebo.com/assets/handmade-paper.jpg');
+            background-size: 520px auto;
+            border-radius: 3px 7px 7px 3px;
+        }
+
+        [data-theme="dark"] .page,
+        [data-theme="dark"] .page-under {
+            background-image: linear-gradient(rgba(36, 33, 28, 0.55), rgba(36, 33, 28, 0.55)), url('https://mofiyinebo.com/assets/dark-handmade-paper-1040.jpg');
+        }
+
+        .page-under {
+            box-shadow: 1px 1px 0 var(--page-edge), 2px 2px 0 var(--page), 3px 3px 0 var(--page-edge), 4px 4px 0 var(--page), 5px 5px 0 var(--page-edge), 0 34px 60px -30px var(--shadow);
+            inset: 0;
+            position: absolute;
+        }
+
+        .page {
+            animation: arrive 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+            min-height: min(37rem, 76vh);
+            padding: clamp(2rem, 5vw, 2.7rem) clamp(1.5rem, 6vw, 3.6rem) clamp(3.2rem, 7vw, 3.8rem);
+            position: relative;
+            transform-origin: left center;
+        }
+
+        /* The gutter shadow, and the shade that sweeps across a turning page. */
+        .page::before,
+        .page::after {
+            border-radius: inherit;
+            content: '';
+            inset: 0;
+            pointer-events: none;
+            position: absolute;
+        }
+
+        .page::before {
+            background: linear-gradient(to right, rgba(60, 40, 20, 0.16), rgba(60, 40, 20, 0.04) 5%, transparent 12%);
+        }
+
+        .page::after {
+            background: linear-gradient(to left, rgba(30, 20, 10, 0.35), rgba(30, 20, 10, 0.08) 55%, transparent);
+            opacity: 0;
+        }
+
+        .page.is-turning {
+            animation: turn 640ms cubic-bezier(0.45, 0.05, 0.6, 0.95) forwards;
+        }
+
+        .page.is-turning::after {
+            animation: shade 640ms ease-in forwards;
+        }
+
+        @keyframes arrive {
+            from {
+                opacity: 0;
+                transform: rotateY(14deg) translateX(14px);
+            }
+        }
+
+        @keyframes turn {
+            to {
+                opacity: 0;
+                transform: rotateY(-105deg);
+            }
+        }
+
+        @keyframes shade {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(3rem, 10vw, 4.2rem);
+            font-weight: 900;
+            letter-spacing: 0.01em;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .section-rule {
+            background: var(--ink);
+            height: 1px;
+            margin: 0.9rem auto 1.4rem;
+            opacity: 0.35;
+            width: 4.5rem;
+        }
+
+        .story {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(1rem, 2.4vw, 1.08rem);
+            hyphens: auto;
+            line-height: 1.58;
+            text-align: justify;
+        }
+
+        .story p + p {
+            margin-top: 0.9em;
+            text-indent: 1.4em;
+        }
+
+        .story p:first-child::first-letter {
+            color: var(--heart);
+            float: left;
+            font-size: 3.55em;
+            font-weight: 700;
+            line-height: 0.82;
+            margin: 0.08em 0.1em 0 0;
+        }
+
+        .ornament {
+            color: var(--ink-soft);
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.5em;
+            margin: 1.2rem 0 0.9rem;
+            padding-left: 0.5em;
+            text-align: center;
+        }
+
+        .choices {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            list-style: none;
+        }
+
+        .choices li + li {
+            margin-top: 0.25rem;
+        }
+
+        .choice {
+            background: none;
+            border: 0;
+            border-radius: 4px;
+            color: var(--ink);
+            cursor: pointer;
+            display: block;
+            font: inherit;
+            font-style: italic;
+            line-height: 1.5;
+            padding: 0.35rem 0.5rem 0.35rem 0;
+            text-align: left;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .choice b {
+            border-bottom: 1.5px solid currentColor;
+            font-style: normal;
+            font-weight: 700;
+            padding: 0 0.08em;
+        }
+
+        .choice:hover,
+        .choice:hover b {
+            color: var(--heart);
+        }
+
+        .folio {
+            -webkit-tap-highlight-color: transparent;
+            bottom: 1.1rem;
+            color: var(--ink-soft);
+            cursor: default;
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            left: 50%;
+            letter-spacing: 0.08em;
+            padding: 0.4rem 0.8rem;
+            position: absolute;
+            touch-action: manipulation;
+            transform: translateX(-50%);
+            -webkit-user-select: none;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        /* The margin note sits at the foot of the page. */
+        .margin,
+        .margin-note {
+            bottom: 0.9rem;
+            position: absolute;
+            right: 1.2rem;
+            width: min(12rem, 40%);
+            z-index: 4;
+        }
+
+        .margin input {
+            background: transparent;
+            border: 0;
+            caret-color: var(--graphite);
+            color: var(--graphite);
+            font: 500 1.45rem/1.2 'Caveat', cursive;
+            letter-spacing: 0.08em;
+            outline: none;
+            padding: 0 0.2rem 0.15rem;
+            transition: filter 500ms ease, opacity 500ms ease;
+            width: 100%;
+        }
+
+        .margin-line {
+            display: block;
+            height: 10px;
+            overflow: visible;
+            width: 100%;
+        }
+
+        .margin-line path {
+            fill: none;
+            stroke: var(--graphite);
+            stroke-dasharray: 260;
+            stroke-dashoffset: 260;
+            stroke-linecap: round;
+            stroke-width: 1.6;
+            transition: stroke-dashoffset 520ms cubic-bezier(0.6, 0.05, 0.3, 1), opacity 500ms ease;
+        }
+
+        .margin.is-open .margin-line path {
+            stroke-dashoffset: 0;
+        }
+
+        .margin.is-smudged input {
+            filter: blur(4px);
+            opacity: 0.2;
+        }
+
+        .margin.is-smudged .margin-line path {
+            opacity: 0.25;
+        }
+
+        .margin::before {
+            background: radial-gradient(closest-side, var(--graphite), transparent);
+            content: '';
+            height: 2.6rem;
+            left: 8%;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            top: -0.2rem;
+            transform: rotate(-4deg) scaleX(0.4);
+            transform-origin: left center;
+            transition: opacity 500ms ease, transform 600ms cubic-bezier(0.3, 0.7, 0.2, 1);
+            width: 84%;
+        }
+
+        .margin.is-smudged::before {
+            opacity: 0.13;
+            transform: rotate(-4deg) scaleX(1);
+        }
+
+        .margin-note {
+            bottom: 2.3rem;
+            color: var(--graphite);
+            font: 500 1.2rem/1.15 'Caveat', cursive;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 400ms ease;
+        }
+
+        .margin-note.is-visible {
+            opacity: 1;
+        }
+
+        @media (max-width: 560px) {
+            .story {
+                text-align: left;
+            }
+
+            .margin,
+            .margin-note {
+                bottom: 3rem;
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+                width: min(13rem, 80%);
+            }
+
+            .margin-note {
+                bottom: 3.5rem;
+                text-align: center;
+            }
+        }
+
+        .ladybug {
+            font-size: 1.15rem;
+            line-height: 1;
+            opacity: 0.92;
+            pointer-events: none;
+            position: fixed;
+            z-index: 6;
+        }
+
+        .ladybug.is-new {
+            animation-name: arrive-bug, var(--wander);
+            animation-delay: 0s, 600ms;
+            animation-duration: 600ms, var(--wander-time);
+            animation-iteration-count: 1, infinite;
+            animation-timing-function: ease-out, ease-in-out;
+        }
+
+        .ladybug-one {
+            animation: ladybug-wander-one 13s ease-in-out infinite;
+            right: 8vw;
+            top: 18vh;
+        }
+
+        .ladybug-two {
+            animation: ladybug-wander-two 16s ease-in-out infinite;
+            bottom: 14vh;
+            left: 7vw;
+        }
+
+        @keyframes arrive-bug {
+            from {
+                opacity: 0;
+                transform: scale(0.4);
+            }
+        }
+
+        @keyframes ladybug-wander-one {
+            0%, 100% { transform: translate(0, 0) rotate(8deg); }
+            35% { transform: translate(-4vw, 7vh) rotate(-14deg); }
+            70% { transform: translate(-1vw, 15vh) rotate(18deg); }
+        }
+
+        @keyframes ladybug-wander-two {
+            0%, 100% { transform: translate(0, 0) rotate(-12deg); }
+            40% { transform: translate(3vw, -8vh) rotate(16deg); }
+            75% { transform: translate(2vw, -17vh) rotate(-6deg); }
+        }
+
+        @media (max-width: 991px) {
+            .ladybug {
+                font-size: 0.8rem;
+                opacity: 0.78;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ladybug {
+                display: none;
+            }
+
+            .page,
+            .page.is-turning,
+            .page.is-turning::after {
+                animation: none;
+            }
+
+            .margin-line path {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="top">
+        <a class="brand" href="https://mofiyinebo.com/" aria-label="Mofixiu home">
+            <span class="brand-mark" aria-hidden="true"><img src="https://mofiyinebo.com/mofixiu-transparent.png" alt=""></span>
+            <span class="brand-wordmark">mofixiu</span>
+        </a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode">
+            <span class="theme-toggle-dot" aria-hidden="true"></span><span class="theme-toggle-label">dark</span>
+        </button>
+    </header>
+
+    <main>
+        <div class="scene">
+            <div class="page-under" aria-hidden="true"></div>
+            <article class="page" id="page">
+                <h1 class="section-number"><span aria-hidden="true">404</span><span class="sr-only">Page 404: this page doesn’t exist</span></h1>
+                <div class="section-rule" aria-hidden="true"></div>
+                <div class="story" id="story" aria-live="polite">
+                    <p>You turn the page and find… nothing. Not a word. The ink has packed up and left, and all that remains is a faint coffee ring and a ladybug who looks far too pleased with itself.</p>
+                    <p>Somewhere in this book there is a portfolio, a handful of apps and an author who would like to hear from you. Just not here.</p>
+                </div>
+                <p class="ornament" aria-hidden="true">⁂</p>
+                <ul class="choices">
+                    <li><a class="choice" href="https://mofiyinebo.com/">If you would like to go back to the beginning, turn to <b>1</b>.</a></li>
+                    <li><a class="choice" href="https://mofiyinebo.com/#projects">If you’d rather see what the author has built, turn to <b>7</b>.</a></li>
+                    <li><a class="choice" href="https://mofiyinebo.com/#contact">If you want to write to the author, turn to <b>44</b>.</a></li>
+                    <li><button class="choice" id="search-again" type="button">If you insist on searching this page yourself, turn to <b>404</b>.</button></li>
+                </ul>
+                <span class="folio" id="folio">— 404 —</span>
+                <form class="margin" id="margin" hidden>
+                    <input type="password" name="note" aria-label="Margin note" autocomplete="current-password" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done">
+                    <svg class="margin-line" viewBox="0 0 240 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6.5 Q 62 3.5 121 6 T 238 5"/></svg>
+                </form>
+                <p class="margin-note" id="margin-note" hidden>this margin is too narrow to contain it.</p>
+            </article>
+        </div>
+    </main>
+
+    <span class="ladybug ladybug-one" aria-hidden="true">🐞</span>
+    <span class="ladybug ladybug-two" aria-hidden="true">🐞</span>
+
+    <script>
+        // Turning to a section flips the page before following the link.
+        (function () {
+            const page = document.getElementById('page');
+            const story = document.getElementById('story');
+            const searchAgain = document.getElementById('search-again');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const TURN_TIME = 600;
+            const SEARCHES = [
+                'You search the page from top to bottom. You find a pencil shaving, half a fingerprint and the coffee ring again. No portfolio. The ladybug watches you, unblinking.',
+                'You search again, more carefully this time. You hold the page up to the light. You check behind the folio. The ladybug is now openly laughing.',
+                'Third time. The ladybug has called a friend. They are sharing a crumb and watching you as if you were the evening’s entertainment.',
+                'The ladybugs have brought chairs. One of them is taking notes. You get the distinct feeling that this page is not going to change its mind.',
+                'The ladybugs have formed a committee. Their ruling is unanimous: you should go home.'
+            ];
+            let searches = 0;
+
+            function turnPage(then) {
+                if (reduceMotion) {
+                    then();
+                    return;
+                }
+                page.classList.remove('is-turning');
+                void page.offsetWidth;
+                page.classList.add('is-turning');
+                window.setTimeout(then, TURN_TIME);
+            }
+
+            function bringNewPage() {
+                page.classList.remove('is-turning');
+                page.style.animation = 'none';
+                void page.offsetWidth;
+                page.style.animation = '';
+            }
+
+            // More ladybugs gather every time you look again.
+            function addLadybug() {
+                const bug = document.createElement('span');
+                const wanderOne = Math.random() < 0.5;
+                bug.className = 'ladybug is-new';
+                bug.setAttribute('aria-hidden', 'true');
+                bug.textContent = '🐞';
+                bug.style.left = `${6 + Math.random() * 84}vw`;
+                bug.style.top = `${10 + Math.random() * 76}vh`;
+                bug.style.setProperty('--wander', wanderOne ? 'ladybug-wander-one' : 'ladybug-wander-two');
+                bug.style.setProperty('--wander-time', `${12 + Math.random() * 8}s`);
+                document.body.appendChild(bug);
+            }
+
+            document.querySelectorAll('a.choice').forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+                        return;
+                    }
+                    event.preventDefault();
+                    turnPage(() => {
+                        location.href = link.href;
+                    });
+                });
+            });
+
+            searchAgain.addEventListener('click', () => {
+                // Once the committee has ruled, this choice leads home too.
+                if (searches >= SEARCHES.length) {
+                    turnPage(() => {
+                        location.href = 'https://mofiyinebo.com/';
+                    });
+                    return;
+                }
+                turnPage(() => {
+                    story.innerHTML = `<p>${SEARCHES[searches]}</p>`;
+                    searches += 1;
+                    if (searches === SEARCHES.length) {
+                        searchAgain.innerHTML = 'If you accept the committee’s ruling, turn to <b>1</b>.';
+                    }
+                    addLadybug();
+                    bringNewPage();
+                });
+            });
+
+            // Browsers restore this page from cache on Back: undo the turn.
+            window.addEventListener('pageshow', (event) => {
+                if (event.persisted) {
+                    bringNewPage();
+                }
+            });
+        }());
+
+        // Theme switch, shared with the portfolio's saved preference.
+        (function () {
+            const toggle = document.getElementById('theme-toggle');
+            const label = toggle.querySelector('.theme-toggle-label');
+
+            function sync() {
+                const dark = document.documentElement.dataset.theme === 'dark';
+                label.textContent = dark ? 'light' : 'dark';
+                toggle.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
+            }
+
+            toggle.addEventListener('click', () => {
+                const dark = document.documentElement.dataset.theme !== 'dark';
+                if (dark) {
+                    document.documentElement.dataset.theme = 'dark';
+                } else {
+                    delete document.documentElement.dataset.theme;
+                }
+                try {
+                    localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light');
+                } catch (error) {}
+                sync();
+            });
+
+            sync();
+        }());
+
+        // A note in the margin. Most margins are too narrow to contain one.
+        (function () {
+            const folio = document.getElementById('folio');
+            const margin = document.getElementById('margin');
+            const field = margin.querySelector('input');
+            const note = document.getElementById('margin-note');
+            let taps = [];
+            let idleTimer;
+
+            function close() {
+                window.clearTimeout(idleTimer);
+                margin.classList.remove('is-open', 'is-smudged');
+                window.setTimeout(() => {
+                    margin.hidden = true;
+                    field.disabled = false;
+                    field.value = '';
+                }, 320);
+            }
+
+            function wait() {
+                window.clearTimeout(idleTimer);
+                idleTimer = window.setTimeout(close, 10000);
+            }
+
+            function open() {
+                if (!margin.hidden) {
+                    return;
+                }
+                note.hidden = true;
+                note.classList.remove('is-visible');
+                margin.hidden = false;
+                margin.getBoundingClientRect();
+                margin.classList.add('is-open');
+                field.focus({ preventScroll: true });
+                wait();
+            }
+
+            function smudge() {
+                margin.classList.add('is-smudged');
+                window.setTimeout(() => {
+                    note.hidden = false;
+                    note.getBoundingClientRect();
+                    note.classList.add('is-visible');
+                }, 350);
+                window.setTimeout(() => {
+                    note.classList.remove('is-visible');
+                    close();
+                    window.setTimeout(() => {
+                        note.hidden = true;
+                    }, 400);
+                }, 3800);
+            }
+
+            folio.addEventListener('pointerdown', () => {
+                const now = performance.now();
+                taps = taps.filter((time) => now - time < 1200);
+                taps.push(now);
+                if (taps.length >= 3) {
+                    taps = [];
+                    open();
+                }
+            });
+
+            field.addEventListener('input', wait);
+            field.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    close();
+                }
+            });
+
+            margin.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const text = field.value;
+                if (!text || field.disabled) {
+                    return;
+                }
+                field.disabled = true;
+                window.clearTimeout(idleTimer);
+                let accepted = false;
+                try {
+                    const response = await fetch(location.pathname, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ note: text }),
+                        credentials: 'same-origin',
+                        cache: 'no-store'
+                    });
+                    accepted = response.status === 204;
+                } catch (error) {}
+                if (accepted) {
+                    location.replace('/');
+                    return;
+                }
+                smudge();
+            });
+        }());
+    </script>
+</body>
+</html>

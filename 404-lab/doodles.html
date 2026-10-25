@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Page not found · Mofiyinfoluwa Ebo</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#171512">
+    <link rel="icon" type="image/svg+xml" href="https://mofiyinebo.com/favicon.svg?v=20261010-dark-icon">
+    <link rel="icon" type="image/png" href="https://mofiyinebo.com/favicon-96x96.png?v=20261010-dark-icon" sizes="96x96">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mofiyinebo.com/apple-touch-icon.png?v=20261010-dark-icon">
+    <script>
+        // Match the portfolio: cream paper unless the visitor chose dark.
+        try {
+            if (localStorage.getItem('portfolio-theme') === 'dark') {
+                document.documentElement.dataset.theme = 'dark';
+            }
+        } catch (error) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&amp;family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,400..600&amp;family=Montserrat:wght@500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&amp;text=4&amp;display=block" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #f4ecde;
+            --ink: #211e19;
+            --ink-soft: #6b6256;
+            --rule: #d8cebc;
+            --graphite: #57524b;
+            --heart: #b8432f;
+            --ink-blend: multiply;
+        }
+
+        [data-theme="dark"] {
+            --paper: #171512;
+            --ink: #f3eadb;
+            --ink-soft: #b9b0a2;
+            --rule: #4b463e;
+            --graphite: #d2c8b9;
+            --heart: #e0715c;
+            --ink-blend: normal;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--paper) url('https://mofiyinebo.com/assets/handmade-paper.jpg') repeat;
+            background-size: 520px auto;
+            color: var(--ink);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+        }
+
+        [data-theme="dark"] body {
+            background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('https://mofiyinebo.com/assets/dark-handmade-paper-1040.jpg');
+            background-repeat: no-repeat, repeat;
+            background-size: 100% 100%, 520px 520px;
+        }
+
+        .sr-only {
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+        }
+
+        /* Header: the same brand and theme switch as the portfolio. */
+        .top {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            padding: max(1rem, env(safe-area-inset-top)) clamp(1rem, 4vw, 3rem) 0.5rem;
+        }
+
+        .brand {
+            align-items: center;
+            color: var(--ink);
+            display: inline-flex;
+            gap: 0.45rem;
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            display: block;
+            flex: 0 0 44px;
+            height: 44px;
+            overflow: hidden;
+            width: 44px;
+        }
+
+        .brand-mark img {
+            display: block;
+            height: 100%;
+            max-width: none;
+            width: auto;
+        }
+
+        [data-theme="dark"] .brand-mark img {
+            filter: invert(1) brightness(1.2);
+        }
+
+        .brand-wordmark {
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            line-height: 1;
+        }
+
+        .theme-toggle {
+            align-items: center;
+            background: transparent;
+            border: 0;
+            color: var(--ink-soft);
+            cursor: pointer;
+            display: inline-flex;
+            font: 600 0.85rem/1 'Montserrat', sans-serif;
+            gap: 0.5rem;
+            letter-spacing: 0.5px;
+            padding: 0.6rem 0;
+        }
+
+        .theme-toggle:hover {
+            color: var(--ink);
+        }
+
+        .theme-toggle-dot {
+            background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            display: inline-block;
+            height: 0.8rem;
+            width: 0.8rem;
+        }
+
+        :focus-visible {
+            border-radius: 4px;
+            outline: 2px solid var(--ink);
+            outline-offset: 4px;
+        }
+
+        /* The spread: headline, the two big 4s and the doodled board between them. */
+        main {
+            align-items: center;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(1.45rem, 3.1vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.012em;
+            line-height: 1.08;
+        }
+
+        .score {
+            align-items: center;
+            color: var(--ink-soft);
+            display: inline-flex;
+            font-size: 0.66rem;
+            font-weight: 600;
+            gap: 0.45rem;
+            letter-spacing: 0.18em;
+            margin-top: 0.75rem;
+            min-height: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .tally {
+            align-items: center;
+            display: inline-flex;
+            gap: 0.3rem;
+        }
+
+        .tally svg {
+            fill: none;
+            height: 0.95rem;
+            stroke: var(--graphite);
+            stroke-linecap: round;
+            stroke-width: 1.7;
+            width: auto;
+        }
+
+        .stage {
+            --board: clamp(200px, min(47vh, calc((100vw - 6rem) / 2.4)), 450px);
+            align-items: center;
+            display: flex;
+            gap: clamp(0.5rem, 3vw, 2.75rem);
+            justify-content: center;
+            margin: clamp(0.9rem, 3vh, 2rem) 0 clamp(0.6rem, 2vh, 1.2rem);
+        }
+
+        .four {
+            height: calc(var(--board) * 1.02);
+            mix-blend-mode: var(--ink-blend);
+            overflow: visible;
+            pointer-events: none;
+            width: auto;
+        }
+
+        .four text {
+            fill: var(--ink);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 900;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            height: var(--board);
+            position: relative;
+            width: var(--board);
+        }
+
+        .board-lines,
+        .win-line {
+            height: 100%;
+            left: 0;
+            overflow: visible;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .board-lines path {
+            fill: none;
+            stroke: var(--graphite);
+            stroke-linecap: round;
+        }
+
+        .board-lines .ghost {
+            opacity: 0.32;
+        }
+
+        .board-lines.is-erasing {
+            opacity: 0;
+            transition: opacity 220ms ease;
+        }
+
+        .win-line path {
+            fill: none;
+            stroke: var(--heart);
+            stroke-linecap: round;
+            stroke-width: 5;
+        }
+
+        .cell {
+            background: none;
+            border: 0;
+            border-radius: 6px;
+            color: inherit;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cell:disabled {
+            cursor: default;
+        }
+
+        .cell svg {
+            height: 72%;
+            left: 14%;
+            overflow: visible;
+            position: absolute;
+            top: 14%;
+            width: 72%;
+        }
+
+        .cell .pencil path {
+            fill: none;
+            stroke: var(--graphite);
+            stroke-linecap: round;
+        }
+
+        .cell .heart {
+            animation: stamp 260ms cubic-bezier(0.2, 0.9, 0.25, 1.25) both;
+            height: 80%;
+            left: 10%;
+            overflow: hidden;
+            top: 10%;
+            width: 80%;
+        }
+
+        .stamp-ink {
+            flood-color: var(--heart);
+        }
+
+        /* A faint pencil X where you're about to play. */
+        .cell::after {
+            background: var(--graphite);
+            content: '';
+            inset: 26%;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M12 12 88 88M88 12 12 88' stroke='%23000' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M12 12 88 88M88 12 12 88' stroke='%23000' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            transition: opacity 150ms ease;
+        }
+
+        @media (hover: hover) {
+            .board.is-your-turn .cell:not(:disabled):hover::after {
+                opacity: 0.14;
+            }
+        }
+
+        @keyframes stamp {
+            from {
+                opacity: 0;
+                transform: scale(1.4) rotate(calc(var(--tilt) - 9deg));
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(var(--tilt));
+            }
+        }
+
+        .status {
+            color: var(--ink-soft);
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(0.98rem, 1.5vw, 1.12rem);
+            font-style: italic;
+            min-height: 1.6em;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.6rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .bracket {
+            background: none;
+            border: 0;
+            color: var(--ink);
+            cursor: pointer;
+            font: 600 0.68rem/1 'Montserrat', sans-serif;
+            letter-spacing: 0.16em;
+            padding: 0.7rem 0.2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .bracket::before {
+            content: '[\00a0\00a0';
+        }
+
+        .bracket::after {
+            content: '\00a0\00a0]';
+        }
+
+        .bracket:hover {
+            color: var(--heart);
+        }
+
+        .bracket.is-nudging {
+            animation: nudge 1.6s ease-in-out 2;
+        }
+
+        @keyframes nudge {
+            0%, 100% { transform: translateY(0); }
+            12% { transform: translateY(-3px); }
+            24% { transform: translateY(0); }
+        }
+
+        /* The folio, and whatever gets written beside it. */
+        .foot {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            padding: 0.9rem 1rem max(1.1rem, env(safe-area-inset-bottom));
+            position: relative;
+        }
+
+        .folio {
+            -webkit-tap-highlight-color: transparent;
+            color: var(--ink-soft);
+            cursor: default;
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            letter-spacing: 0.08em;
+            padding: 0.4rem 0.8rem;
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .margin,
+        .margin-note {
+            bottom: 1rem;
+            position: absolute;
+            right: clamp(1rem, 6vw, 5rem);
+            width: min(15rem, 70vw);
+        }
+
+        .margin input {
+            background: transparent;
+            border: 0;
+            caret-color: var(--graphite);
+            color: var(--graphite);
+            font: 500 1.55rem/1.2 'Caveat', cursive;
+            letter-spacing: 0.08em;
+            outline: none;
+            padding: 0 0.2rem 0.15rem;
+            transition: filter 500ms ease, opacity 500ms ease;
+            width: 100%;
+        }
+
+        .margin-line {
+            display: block;
+            height: 10px;
+            overflow: visible;
+            width: 100%;
+        }
+
+        .margin-line path {
+            fill: none;
+            stroke: var(--graphite);
+            stroke-dasharray: 260;
+            stroke-dashoffset: 260;
+            stroke-linecap: round;
+            stroke-width: 1.6;
+            transition: stroke-dashoffset 520ms cubic-bezier(0.6, 0.05, 0.3, 1), opacity 500ms ease;
+        }
+
+        .margin.is-open .margin-line path {
+            stroke-dashoffset: 0;
+        }
+
+        .margin.is-smudged input {
+            filter: blur(4px);
+            opacity: 0.2;
+        }
+
+        .margin.is-smudged .margin-line path {
+            opacity: 0.25;
+        }
+
+        .margin::before {
+            background: radial-gradient(closest-side, var(--graphite), transparent);
+            content: '';
+            height: 2.6rem;
+            left: 8%;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            top: -0.2rem;
+            transform: rotate(-4deg) scaleX(0.4);
+            transform-origin: left center;
+            transition: opacity 500ms ease, transform 600ms cubic-bezier(0.3, 0.7, 0.2, 1);
+            width: 84%;
+        }
+
+        .margin.is-smudged::before {
+            opacity: 0.13;
+            transform: rotate(-4deg) scaleX(1);
+        }
+
+        .margin-note {
+            bottom: 1.5rem;
+            color: var(--graphite);
+            font: 500 1.3rem/1.2 'Caveat', cursive;
+            opacity: 0;
+            padding-left: 0.2rem;
+            pointer-events: none;
+            text-align: left;
+            transition: opacity 400ms ease;
+        }
+
+        .margin-note.is-visible {
+            opacity: 1;
+        }
+
+        /* Narrow pages have no side margin, so the note goes above the folio. */
+        @media (max-width: 760px) {
+            .margin,
+            .margin-note {
+                bottom: 3.2rem;
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+            }
+
+            .margin-note {
+                bottom: 3.7rem;
+                text-align: center;
+            }
+        }
+
+        /* Phones: the 4s step back so the board stays big enough to tap. */
+        @media (max-width: 640px) {
+            main {
+                padding: 0 0.75rem;
+            }
+
+            .stage {
+                --board: min(46vw, 40vh);
+                gap: 0.3rem;
+            }
+
+            .four {
+                height: calc(var(--board) * 0.66);
+            }
+
+            .brand-mark {
+                flex-basis: 40px;
+                height: 40px;
+                width: 40px;
+            }
+
+            .brand-wordmark {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-height: 560px) and (orientation: landscape) {
+            .stage {
+                --board: 58vh;
+                margin: 0.5rem 0;
+            }
+
+            h1 br {
+                display: none;
+            }
+        }
+
+        .ladybug {
+            font-size: 1.15rem;
+            line-height: 1;
+            opacity: 0.92;
+            pointer-events: none;
+            position: fixed;
+            z-index: 6;
+        }
+
+        .ladybug-one {
+            animation: ladybug-wander-one 13s ease-in-out infinite;
+            right: 12vw;
+            top: 18vh;
+        }
+
+        .ladybug-two {
+            animation: ladybug-wander-two 16s ease-in-out infinite;
+            bottom: 16vh;
+            left: 14vw;
+        }
+
+        @keyframes ladybug-wander-one {
+            0%, 100% { transform: translate(0, 0) rotate(8deg); }
+            35% { transform: translate(-8vw, 7vh) rotate(-14deg); }
+            70% { transform: translate(-3vw, 15vh) rotate(18deg); }
+        }
+
+        @keyframes ladybug-wander-two {
+            0%, 100% { transform: translate(0, 0) rotate(-12deg); }
+            40% { transform: translate(9vw, -8vh) rotate(16deg); }
+            75% { transform: translate(5vw, -17vh) rotate(-6deg); }
+        }
+
+        @media (max-width: 991px) {
+            .ladybug {
+                font-size: 0.8rem;
+                opacity: 0.78;
+            }
+
+            .ladybug-one {
+                animation-duration: 19s;
+                right: 8vw;
+                top: 16vh;
+            }
+
+            .ladybug-two {
+                animation-duration: 22s;
+                bottom: 12vh;
+                left: 9vw;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ladybug {
+                display: none;
+            }
+
+            .cell .heart,
+            .bracket.is-nudging {
+                animation: none;
+            }
+
+            .margin-line path {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="top">
+        <a class="brand" href="https://mofiyinebo.com/" aria-label="Mofixiu home">
+            <span class="brand-mark" aria-hidden="true"><img src="https://mofiyinebo.com/mofixiu-transparent.png" alt=""></span>
+            <span class="brand-wordmark">mofixiu</span>
+        </a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode">
+            <span class="theme-toggle-dot" aria-hidden="true"></span><span class="theme-toggle-label">dark</span>
+        </button>
+    </header>
+
+    <main>
+        <h1><span class="sr-only">404. </span>This page is blank.<br>Might as well doodle on it.</h1>
+        <p class="score" id="score" aria-live="polite"></p>
+
+        <div class="stage">
+            <svg class="four" viewBox="-10 -520 400 540" aria-hidden="true"><text x="0" y="0" font-size="700" filter="url(#letterpress)">4</text></svg>
+            <div class="board" id="board" role="group" aria-label="Tic-tac-toe board">
+                <svg class="board-lines" id="board-lines" viewBox="0 0 300 300" aria-hidden="true"></svg>
+                <svg class="win-line" id="win-line" viewBox="0 0 300 300" aria-hidden="true"></svg>
+            </div>
+            <svg class="four" viewBox="-10 -520 400 540" aria-hidden="true"><text x="0" y="0" font-size="700" filter="url(#letterpress)">4</text></svg>
+        </div>
+
+        <p class="status" id="status" aria-live="polite"></p>
+
+        <nav class="actions" aria-label="What next">
+            <button class="bracket" id="again" type="button">another round</button>
+            <a class="bracket" href="https://mofiyinebo.com/">back to the cover</a>
+        </nav>
+    </main>
+
+    <footer class="foot">
+        <span class="folio" id="folio">— 404 —</span>
+        <form class="margin" id="margin" hidden>
+            <input type="password" name="note" aria-label="Margin note" autocomplete="current-password" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done">
+            <svg class="margin-line" viewBox="0 0 240 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6.5 Q 62 3.5 121 6 T 238 5"/></svg>
+        </form>
+        <p class="margin-note" id="margin-note" hidden>this margin is too narrow to contain it.</p>
+    </footer>
+
+    <span class="ladybug ladybug-one" aria-hidden="true">🐞</span>
+    <span class="ladybug ladybug-two" aria-hidden="true">🐞</span>
+
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <!-- Big numerals pressed into paper: slightly ragged edges and uneven ink. -->
+            <filter id="letterpress" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="9" result="warp"/>
+                <feDisplacementMap in="SourceGraphic" in2="warp" scale="4" xChannelSelector="R" yChannelSelector="G" result="edge"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="21" result="grain"/>
+                <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -0.55 0 0 0 1.24" result="speckle"/>
+                <feComposite in="edge" in2="speckle" operator="in"/>
+            </filter>
+            <!-- Graphite: strokes with the grain of a soft pencil. -->
+            <filter id="graphite" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="grain"/>
+                <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.6 0 0 0 1.45" result="mask"/>
+                <feComposite in="SourceGraphic" in2="mask" operator="in"/>
+            </filter>
+            <!-- The heart mark as a rubber stamp in red ink. -->
+            <filter id="stamp" x="-2%" y="-2%" width="104%" height="104%" color-interpolation-filters="sRGB">
+                <feFlood class="stamp-ink" result="ink"/>
+                <feComposite in="ink" in2="SourceAlpha" operator="in" result="shape"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="13" result="grain"/>
+                <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.1 0 0 0 1.32" result="speckle"/>
+                <feComposite in="shape" in2="speckle" operator="in"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <script>
+        (function () {
+            const SVG = 'http://www.w3.org/2000/svg';
+            const LINES = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+            const PLACES = ['top left', 'top middle', 'top right', 'middle left', 'centre', 'middle right', 'bottom left', 'bottom middle', 'bottom right'];
+            const LINES_FOR_INK = [
+                'You can’t erase ink.',
+                'Pencil versus ink. You knew how this ends.',
+                'That one’s going in the book.',
+                'Another one for the margins.',
+                'Ink 1, pencil 0. Again.'
+            ];
+            const LINES_FOR_DRAW = [
+                'A draw. I’ll allow it.',
+                'Stalemate. Neither of us found the page.',
+                'Even. The ladybug is unimpressed.',
+                'A tie, as tidy as a well-bound book.'
+            ];
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const boardEl = document.getElementById('board');
+            const linesEl = document.getElementById('board-lines');
+            const winEl = document.getElementById('win-line');
+            const statusEl = document.getElementById('status');
+            const scoreEl = document.getElementById('score');
+            const againButton = document.getElementById('again');
+
+            let board;
+            let over;
+            let inkTimer;
+            let tally = loadTally();
+
+            function loadTally() {
+                try {
+                    const saved = JSON.parse(sessionStorage.getItem('mofixiu-404-doodles'));
+                    if (saved && typeof saved.ink === 'number') {
+                        return saved;
+                    }
+                } catch (error) {}
+                return { ink: 0, you: 0, rounds: 0 };
+            }
+
+            function saveTally() {
+                try {
+                    sessionStorage.setItem('mofixiu-404-doodles', JSON.stringify(tally));
+                } catch (error) {}
+            }
+
+            function pick(list) {
+                return list[Math.floor(Math.random() * list.length)];
+            }
+
+            function jitter(amount) {
+                return (Math.random() - 0.5) * amount;
+            }
+
+            // A freehand stroke: slightly bowed, never quite where you aimed.
+            function strokePath(x1, y1, x2, y2, bow) {
+                const dx = x2 - x1;
+                const dy = y2 - y1;
+                const length = Math.hypot(dx, dy);
+                const along = 0.4 + Math.random() * 0.2;
+                const offset = jitter(bow);
+                const cx = x1 + dx * along - (dy / length) * offset;
+                const cy = y1 + dy * along + (dx / length) * offset;
+                return `M${x1.toFixed(1)} ${y1.toFixed(1)} Q${cx.toFixed(1)} ${cy.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+            }
+
+            function addPath(parent, d, width, className) {
+                const path = document.createElementNS(SVG, 'path');
+                path.setAttribute('d', d);
+                path.setAttribute('stroke-width', width);
+                if (className) {
+                    path.setAttribute('class', className);
+                }
+                parent.appendChild(path);
+                return path;
+            }
+
+            // Draw strokes in one after another, like a hand moving across the page.
+            function drawIn(paths, duration, gap) {
+                if (reduceMotion) {
+                    return;
+                }
+                paths.forEach((path, index) => {
+                    const length = path.getTotalLength();
+                    path.style.strokeDasharray = length;
+                    path.style.strokeDashoffset = length;
+                    path.getBoundingClientRect();
+                    path.style.transition = `stroke-dashoffset ${duration}ms cubic-bezier(0.6, 0.05, 0.3, 1) ${index * gap}ms`;
+                    path.style.strokeDashoffset = 0;
+                });
+            }
+
+            function drawGrid() {
+                linesEl.replaceChildren();
+                linesEl.classList.remove('is-erasing');
+                const group = document.createElementNS(SVG, 'g');
+                group.setAttribute('filter', 'url(#graphite)');
+                linesEl.appendChild(group);
+
+                const strokes = [];
+                [100, 200].forEach((at) => {
+                    strokes.push(addPath(group, strokePath(at + jitter(4), 6 + jitter(6), at + jitter(4), 294 + jitter(6), 7), 2.6));
+                    strokes.push(addPath(group, strokePath(6 + jitter(6), at + jitter(4), 294 + jitter(6), at + jitter(4), 7), 2.6));
+                });
+                // A second, lighter pass over each line, the way pencil lines get gone over.
+                strokes.slice().forEach((stroke) => {
+                    const ghost = addPath(group, stroke.getAttribute('d'), 1.3, 'ghost');
+                    ghost.setAttribute('transform', `translate(${jitter(3).toFixed(1)} ${jitter(3).toFixed(1)})`);
+                    strokes.push(ghost);
+                });
+                drawIn(strokes, 380, 90);
+            }
+
+            function buildCells() {
+                boardEl.querySelectorAll('.cell').forEach((cell) => cell.remove());
+                for (let index = 0; index < 9; index += 1) {
+                    const cell = document.createElement('button');
+                    cell.type = 'button';
+                    cell.className = 'cell';
+                    cell.dataset.index = index;
+                    cell.setAttribute('aria-label', `${PLACES[index]}, empty`);
+                    boardEl.insertBefore(cell, linesEl);
+                }
+            }
+
+            function cellAt(index) {
+                return boardEl.querySelector(`.cell[data-index="${index}"]`);
+            }
+
+            function drawPencilX(cell) {
+                const svg = document.createElementNS(SVG, 'svg');
+                svg.setAttribute('viewBox', '0 0 100 100');
+                svg.setAttribute('class', 'pencil');
+                svg.setAttribute('aria-hidden', 'true');
+                const group = document.createElementNS(SVG, 'g');
+                group.setAttribute('filter', 'url(#graphite)');
+                svg.appendChild(group);
+                const a = addPath(group, strokePath(14 + jitter(8), 14 + jitter(8), 86 + jitter(8), 86 + jitter(8), 10), 7.5);
+                const b = addPath(group, strokePath(86 + jitter(8), 14 + jitter(8), 14 + jitter(8), 86 + jitter(8), 10), 7.5);
+                cell.appendChild(svg);
+                drawIn([a, b], 170, 150);
+            }
+
+            function stampHeart(cell) {
+                const svg = document.createElementNS(SVG, 'svg');
+                svg.setAttribute('viewBox', '6 -4 326 332');
+                svg.setAttribute('class', 'heart');
+                svg.setAttribute('aria-hidden', 'true');
+                svg.style.setProperty('--tilt', `${jitter(10).toFixed(1)}deg`);
+                const image = document.createElementNS(SVG, 'image');
+                image.setAttribute('href', 'https://mofiyinebo.com/mofixiu-transparent.png');
+                image.setAttribute('width', '1304');
+                image.setAttribute('height', '324');
+                image.setAttribute('filter', 'url(#stamp)');
+                svg.appendChild(image);
+                cell.appendChild(svg);
+            }
+
+            function play(index, mark) {
+                board[index] = mark;
+                const cell = cellAt(index);
+                cell.disabled = true;
+                cell.setAttribute('aria-label', `${PLACES[index]}, ${mark === 'x' ? 'your pencil cross' : 'ink heart'}`);
+                if (mark === 'x') {
+                    drawPencilX(cell);
+                } else {
+                    stampHeart(cell);
+                }
+            }
+
+            function findWinner(state) {
+                for (const line of LINES) {
+                    const [a, b, c] = line;
+                    if (state[a] && state[a] === state[b] && state[a] === state[c]) {
+                        return { mark: state[a], line };
+                    }
+                }
+                return null;
+            }
+
+            // Ink plays perfectly: score every reply, prefer faster wins and slower losses.
+            function minimax(state, turn, depth) {
+                const won = findWinner(state);
+                if (won) {
+                    return won.mark === 'o' ? 10 - depth : depth - 10;
+                }
+                if (state.every(Boolean)) {
+                    return 0;
+                }
+                let best = turn === 'o' ? -Infinity : Infinity;
+                state.forEach((value, index) => {
+                    if (value) {
+                        return;
+                    }
+                    state[index] = turn;
+                    const score = minimax(state, turn === 'o' ? 'x' : 'o', depth + 1);
+                    state[index] = null;
+                    best = turn === 'o' ? Math.max(best, score) : Math.min(best, score);
+                });
+                return best;
+            }
+
+            function inkMove() {
+                let best = -Infinity;
+                let choices = [];
+                board.forEach((value, index) => {
+                    if (value) {
+                        return;
+                    }
+                    board[index] = 'o';
+                    const score = minimax(board, 'x', 1);
+                    board[index] = null;
+                    if (score > best) {
+                        best = score;
+                        choices = [index];
+                    } else if (score === best) {
+                        choices.push(index);
+                    }
+                });
+                return pick(choices);
+            }
+
+            function setTurn(yours) {
+                boardEl.classList.toggle('is-your-turn', yours);
+                boardEl.querySelectorAll('.cell').forEach((cell, index) => {
+                    cell.disabled = !yours || Boolean(board[index]);
+                });
+            }
+
+            function drawWinLine(line) {
+                const centre = (index) => [50 + (index % 3) * 100, 50 + Math.floor(index / 3) * 100];
+                const [x1, y1] = centre(line[0]);
+                const [x2, y2] = centre(line[2]);
+                const dx = x2 - x1;
+                const dy = y2 - y1;
+                const length = Math.hypot(dx, dy);
+                const reach = 34;
+                const path = addPath(winEl, strokePath(
+                    x1 - (dx / length) * reach + jitter(4), y1 - (dy / length) * reach + jitter(4),
+                    x2 + (dx / length) * reach + jitter(4), y2 + (dy / length) * reach + jitter(4), 8
+                ), 5);
+                path.setAttribute('filter', 'url(#graphite)');
+                drawIn([path], 420, 0);
+            }
+
+            function finish() {
+                const won = findWinner(board);
+                const full = board.every(Boolean);
+                if (!won && !full) {
+                    return false;
+                }
+                over = true;
+                setTurn(false);
+                if (won) {
+                    drawWinLine(won.line);
+                    if (won.mark === 'o') {
+                        tally.ink += 1;
+                        statusEl.textContent = pick(LINES_FOR_INK);
+                    } else {
+                        tally.you += 1;
+                        statusEl.textContent = 'Wait. That isn’t supposed to happen.';
+                    }
+                } else {
+                    statusEl.textContent = pick(LINES_FOR_DRAW);
+                }
+                saveTally();
+                renderTally();
+                againButton.classList.remove('is-nudging');
+                void againButton.offsetWidth;
+                againButton.classList.add('is-nudging');
+                return true;
+            }
+
+            function inkTurn() {
+                setTurn(false);
+                statusEl.textContent = 'Ink is thinking…';
+                inkTimer = window.setTimeout(() => {
+                    play(inkMove(), 'o');
+                    if (!finish()) {
+                        statusEl.textContent = 'Your move.';
+                        setTurn(true);
+                    }
+                }, 450 + Math.random() * 350);
+            }
+
+            function tallyMarks(count) {
+                if (!count) {
+                    return '<span>0</span>';
+                }
+                if (count > 20) {
+                    return `<span>${count}</span>`;
+                }
+                let groups = '';
+                for (let start = 0; start < count; start += 5) {
+                    const marks = Math.min(5, count - start);
+                    let strokes = '';
+                    for (let mark = 0; mark < Math.min(marks, 4); mark += 1) {
+                        const x = 3 + mark * 5;
+                        strokes += `<path d="M${x} 2 L${(x + jitter(1.2)).toFixed(1)} 16"/>`;
+                    }
+                    if (marks === 5) {
+                        strokes += '<path d="M0 13 L22 4"/>';
+                    }
+                    const width = marks === 5 ? 24 : marks * 5 + 2;
+                    groups += `<svg viewBox="-1 0 ${width} 18" aria-hidden="true">${strokes}</svg>`;
+                }
+                return groups;
+            }
+
+            function renderTally() {
+                scoreEl.innerHTML = `<span>mofixiu</span><span class="tally">${tallyMarks(tally.ink)}</span><span aria-hidden="true">·</span><span>you</span><span class="tally">${tallyMarks(tally.you)}</span>`;
+                scoreEl.setAttribute('aria-label', `Score: mofixiu ${tally.ink}, you ${tally.you}`);
+            }
+
+            function newRound() {
+                window.clearTimeout(inkTimer);
+                board = Array(9).fill(null);
+                over = false;
+                winEl.replaceChildren();
+                buildCells();
+                drawGrid();
+                const inkStarts = tally.rounds % 2 === 1;
+                tally.rounds += 1;
+                saveTally();
+                if (inkStarts) {
+                    statusEl.textContent = 'Ink goes first this round.';
+                    setTurn(false);
+                    inkTimer = window.setTimeout(inkTurn, 700);
+                } else {
+                    statusEl.textContent = tally.rounds === 1 ? 'Your move. You’re the pencil; I’m the ink.' : 'Your move.';
+                    setTurn(true);
+                }
+            }
+
+            boardEl.addEventListener('click', (event) => {
+                const cell = event.target.closest('.cell');
+                if (!cell || over || cell.disabled) {
+                    return;
+                }
+                play(Number(cell.dataset.index), 'x');
+                if (!finish()) {
+                    inkTurn();
+                }
+            });
+
+            // Arrow keys move around the board.
+            boardEl.addEventListener('keydown', (event) => {
+                const cell = event.target.closest('.cell');
+                const step = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -3, ArrowDown: 3 }[event.key];
+                if (!cell || !step) {
+                    return;
+                }
+                const next = cellAt((Number(cell.dataset.index) + step + 9) % 9);
+                event.preventDefault();
+                next.focus();
+            });
+
+            againButton.addEventListener('click', () => {
+                againButton.classList.remove('is-nudging');
+                linesEl.classList.add('is-erasing');
+                window.setTimeout(newRound, reduceMotion ? 0 : 220);
+            });
+
+            // Size the big numerals to their actual ink, whatever the font's metrics.
+            function fitNumerals() {
+                const context = document.createElement('canvas').getContext('2d');
+                context.font = '900 700px "Playfair Display", Georgia, serif';
+                const box = context.measureText('4');
+                const pad = 8;
+                const viewBox = [
+                    -box.actualBoundingBoxLeft - pad,
+                    -box.actualBoundingBoxAscent - pad,
+                    box.actualBoundingBoxLeft + box.actualBoundingBoxRight + pad * 2,
+                    box.actualBoundingBoxAscent + box.actualBoundingBoxDescent + pad * 2
+                ].map((value) => value.toFixed(1)).join(' ');
+                document.querySelectorAll('.four').forEach((four) => four.setAttribute('viewBox', viewBox));
+            }
+
+            if (document.fonts && document.fonts.load) {
+                document.fonts.load('900 700px "Playfair Display"', '4').then(fitNumerals, fitNumerals);
+            }
+
+            renderTally();
+            newRound();
+        }());
+
+        // Theme switch, shared with the portfolio's saved preference.
+        (function () {
+            const toggle = document.getElementById('theme-toggle');
+            const label = toggle.querySelector('.theme-toggle-label');
+
+            function sync() {
+                const dark = document.documentElement.dataset.theme === 'dark';
+                label.textContent = dark ? 'light' : 'dark';
+                toggle.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
+            }
+
+            toggle.addEventListener('click', () => {
+                const dark = document.documentElement.dataset.theme !== 'dark';
+                if (dark) {
+                    document.documentElement.dataset.theme = 'dark';
+                } else {
+                    delete document.documentElement.dataset.theme;
+                }
+                try {
+                    localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light');
+                } catch (error) {}
+                sync();
+            });
+
+            sync();
+        }());
+
+        // A note in the margin. Most margins are too narrow to contain one.
+        (function () {
+            const folio = document.getElementById('folio');
+            const margin = document.getElementById('margin');
+            const field = margin.querySelector('input');
+            const note = document.getElementById('margin-note');
+            let taps = [];
+            let idleTimer;
+
+            function close() {
+                window.clearTimeout(idleTimer);
+                margin.classList.remove('is-open', 'is-smudged');
+                window.setTimeout(() => {
+                    margin.hidden = true;
+                    field.disabled = false;
+                    field.value = '';
+                }, 320);
+            }
+
+            function wait() {
+                window.clearTimeout(idleTimer);
+                idleTimer = window.setTimeout(close, 10000);
+            }
+
+            function open() {
+                if (!margin.hidden) {
+                    return;
+                }
+                note.hidden = true;
+                note.classList.remove('is-visible');
+                margin.hidden = false;
+                margin.getBoundingClientRect();
+                margin.classList.add('is-open');
+                field.focus({ preventScroll: true });
+                wait();
+            }
+
+            function smudge() {
+                margin.classList.add('is-smudged');
+                window.setTimeout(() => {
+                    note.hidden = false;
+                    note.getBoundingClientRect();
+                    note.classList.add('is-visible');
+                }, 350);
+                window.setTimeout(() => {
+                    note.classList.remove('is-visible');
+                    close();
+                    window.setTimeout(() => {
+                        note.hidden = true;
+                    }, 400);
+                }, 3800);
+            }
+
+            folio.addEventListener('pointerdown', () => {
+                const now = performance.now();
+                taps = taps.filter((time) => now - time < 1200);
+                taps.push(now);
+                if (taps.length >= 3) {
+                    taps = [];
+                    open();
+                }
+            });
+
+            field.addEventListener('input', wait);
+            field.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    close();
+                }
+            });
+
+            margin.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const text = field.value;
+                if (!text || field.disabled) {
+                    return;
+                }
+                field.disabled = true;
+                window.clearTimeout(idleTimer);
+                let accepted = false;
+                try {
+                    const response = await fetch(location.pathname, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ note: text }),
+                        credentials: 'same-origin',
+                        cache: 'no-store'
+                    });
+                    accepted = response.status === 204;
+                } catch (error) {}
+                if (accepted) {
+                    location.replace('/');
+                    return;
+                }
+                smudge();
+            });
+        }());
+    </script>
+</body>
+</html>

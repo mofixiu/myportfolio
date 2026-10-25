@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 lab</title>
+    <meta name="robots" content="noindex">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&amp;family=Montserrat:wght@500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        body {
+            background: #e9e0cf;
+            color: #211e19;
+            font-family: 'Montserrat', sans-serif;
+            padding: 2rem clamp(1rem, 3vw, 2.5rem) 3rem;
+        }
+
+        header {
+            align-items: baseline;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.8rem;
+        }
+
+        header p {
+            color: #6b6256;
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+        }
+
+        .switch {
+            background: #211e19;
+            border: 0;
+            border-radius: 999px;
+            color: #f4ecde;
+            cursor: pointer;
+            font: 600 0.75rem/1 'Montserrat', sans-serif;
+            letter-spacing: 0.12em;
+            padding: 0.7rem 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .concept {
+            align-items: center;
+            display: grid;
+            gap: 0.5rem 2rem;
+            grid-template-columns: 15rem auto;
+            justify-content: start;
+        }
+
+        @media (max-width: 1100px) {
+            .concept {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .concept h2 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .concept p {
+            color: #6b6256;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .concept a {
+            color: inherit;
+        }
+
+        .frames {
+            align-items: flex-end;
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        /* Each preview renders at real device size, then scales down to fit. */
+        .frame {
+            border-radius: 8px;
+            box-shadow: 0 12px 30px -16px rgba(40, 26, 14, 0.5);
+            flex: none;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .frame iframe {
+            border: 0;
+            left: 0;
+            position: absolute;
+            top: 0;
+            transform-origin: 0 0;
+        }
+
+        .desktop {
+            height: calc(800px * var(--scale));
+            width: calc(1280px * var(--scale));
+        }
+
+        .desktop iframe {
+            height: 800px;
+            transform: scale(var(--scale));
+            width: 1280px;
+        }
+
+        .phone {
+            border-radius: 14px;
+            height: calc(812px * var(--scale));
+            width: calc(375px * var(--scale));
+        }
+
+        .phone iframe {
+            height: 812px;
+            transform: scale(var(--scale));
+            width: 375px;
+        }
+
+        .concept {
+            --scale: 0.42;
+        }
+
+        @media (max-width: 900px) {
+            .concept {
+                --scale: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>404 lab</h1>
+            <p>Three ideas for the lost page. Click into any preview to play with it.</p>
+        </div>
+        <button class="switch" id="switch" type="button">Switch to dark</button>
+    </header>
+
+    <div class="grid">
+        <section class="concept">
+            <div>
+                <h2>Margin doodles</h2>
+                <p>Tic-tac-toe in pencil; your heart stamps back in red ink. <a href="doodles.html">Open full size</a></p>
+            </div>
+            <div class="frames">
+                <div class="frame desktop"><iframe src="doodles.html" title="Margin doodles, desktop"></iframe></div>
+                <div class="frame phone"><iframe src="doodles.html" title="Margin doodles, phone"></iframe></div>
+            </div>
+        </section>
+        <section class="concept">
+            <div>
+                <h2>The torn-out page</h2>
+                <p>An open book with page 404 ripped out and a contents page. <a href="torn.html">Open full size</a></p>
+            </div>
+            <div class="frames">
+                <div class="frame desktop"><iframe src="torn.html" title="Torn-out page, desktop"></iframe></div>
+                <div class="frame phone"><iframe src="torn.html" title="Torn-out page, phone"></iframe></div>
+            </div>
+        </section>
+        <section class="concept">
+            <div>
+                <h2>Choose your own adventure</h2>
+                <p>A gamebook page; "turn to 404" summons more ladybugs. <a href="adventure.html">Open full size</a></p>
+            </div>
+            <div class="frames">
+                <div class="frame desktop"><iframe src="adventure.html" title="Choose your own adventure, desktop"></iframe></div>
+                <div class="frame phone"><iframe src="adventure.html" title="Choose your own adventure, phone"></iframe></div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // The previews read the portfolio's saved theme, so flip it and reload them all.
+        const switchButton = document.getElementById('switch');
+
+        function dark() {
+            try {
+                return localStorage.getItem('portfolio-theme') === 'dark';
+            } catch (error) {
+                return false;
+            }
+        }
+
+        function label() {
+            switchButton.textContent = dark() ? 'Switch to light' : 'Switch to dark';
+        }
+
+        switchButton.addEventListener('click', () => {
+            try {
+                localStorage.setItem('portfolio-theme', dark() ? 'light' : 'dark');
+            } catch (error) {}
+            document.querySelectorAll('iframe').forEach((frame) => frame.contentWindow.location.reload());
+            label();
+        });
+
+        label();
+    </script>
+</body>
+</html>
