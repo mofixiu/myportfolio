@@ -220,6 +220,15 @@
             font-weight: 900;
         }
 
+        /* The right-hand 4 takes taps, without looking like it does. */
+        .four-right {
+            -webkit-tap-highlight-color: transparent;
+            pointer-events: auto;
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
         .board {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -635,7 +644,7 @@
                 <svg class="board-lines" id="board-lines" viewBox="0 0 300 300" aria-hidden="true"></svg>
                 <svg class="win-line" id="win-line" viewBox="0 0 300 300" aria-hidden="true"></svg>
             </div>
-            <svg class="four" viewBox="-10 -520 400 540" aria-hidden="true"><text x="0" y="0" font-size="700" filter="url(#letterpress)">4</text></svg>
+            <svg class="four four-right" id="four-right" viewBox="-10 -520 400 540" aria-hidden="true"><text x="0" y="0" font-size="700" filter="url(#letterpress)">4</text></svg>
         </div>
 
         <p class="status" id="status" aria-live="polite"></p>
@@ -1102,11 +1111,11 @@
 
         // A note in the margin. Most margins are too narrow to contain one.
         (function () {
-            const folio = document.getElementById('folio');
+            const four = document.getElementById('four-right');
             const margin = document.getElementById('margin');
             const field = margin.querySelector('input');
             const note = document.getElementById('margin-note');
-            let taps = [];
+            let lastTap = 0;
             let idleTimer;
 
             function close() {
@@ -1153,13 +1162,14 @@
                 }, 3800);
             }
 
-            folio.addEventListener('pointerdown', () => {
+            // Clicks, not presses: a phone only raises its keyboard for a field focused during a click.
+            four.addEventListener('click', () => {
                 const now = performance.now();
-                taps = taps.filter((time) => now - time < 1200);
-                taps.push(now);
-                if (taps.length >= 3) {
-                    taps = [];
+                if (now - lastTap < 450) {
+                    lastTap = 0;
                     open();
+                } else {
+                    lastTap = now;
                 }
             });
 
