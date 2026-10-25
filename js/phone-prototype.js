@@ -78,7 +78,7 @@
             root.classList.toggle('pp-debug', debugHotspots);
 
             if (app.personas) {
-                this.personaBar = make('div', 'pp-personas', { role: 'group', 'aria-label': 'View the app as' });
+                this.personaBar = make('div', 'pp-personas', { role: 'group', 'aria-label': app.personaLabel || 'View the app as' });
                 app.personas.forEach((persona) => {
                     const button = make('button', 'pp-persona', { type: 'button', 'aria-pressed': 'false' });
                     button.dataset.persona = persona.id;
@@ -93,7 +93,7 @@
             this.screen = screen;
             this.stage = stage;
             screen.setAttribute('role', 'group');
-            screen.setAttribute('aria-label', `${app.name} interactive prototype`);
+            screen.setAttribute('aria-label', app.screenLabel || `${app.name} interactive prototype`);
             this.cursor = make('div', 'pp-cursor', { 'aria-hidden': 'true' });
             screen.append(this.cursor);
 
@@ -212,8 +212,6 @@
             const previous = this.history[this.history.length - 2];
             if (previous && previous.id === id && type !== 'tab' && type !== 'fade') return this.back();
 
-            const screen = this.app.screens[id];
-            if (screen.persona && this.app.personas && screen.persona !== this.persona) this.setPersona(screen.persona);
             if (type === 'tab' || type === 'fade') {
                 this.history = [{ id, t: type }];
             } else {
@@ -276,6 +274,9 @@
         async transition(id, type) {
             const from = this.current && this.current.layer;
             const fromScreen = this.current && this.app.screens[this.current.id];
+            // Keep the persona switch in step with the screen, whichever way it was reached.
+            const persona = this.app.screens[id].persona;
+            if (persona && this.app.personas && persona !== this.persona) this.setPersona(persona);
             const to = this.makeLayer(id);
             this.current = { id, layer: to };
             this.renderChrome();

@@ -18,9 +18,11 @@
     
     <meta property="og:title" content="Mofiyinfoluwa Ebo (Mofiyin Ebo) | Flutter App Developer">
     <meta property="og:description" content="Mofiyinfoluwa Ebo, also known as Mofiyin Ebo, is a Flutter mobile app developer in Nigeria. Explore cross-platform app projects and experience.">
-    <meta property="og:image" content="https://mofiyinebo.com/mofimain.jpeg">
-    <meta property="og:image:alt" content="Portrait of Mofiyinfoluwa Ebo">
+    <meta property="og:image" content="https://mofiyinebo.com/assets/og-image.jpg">
+    <meta property="og:image:alt" content="Portrait of Mofiyinfoluwa Ebo beside the words Flutter &amp; mobile app developer">
     <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://mofiyinebo.com/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Mofiyinfoluwa Ebo Portfolio">
@@ -28,8 +30,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mofiyinfoluwa Ebo (Mofiyin Ebo) | Flutter App Developer">
     <meta name="twitter:description" content="Mofiyinfoluwa Ebo, also known as Mofiyin Ebo, is a Flutter mobile app developer in Nigeria. Explore cross-platform app projects and experience.">
-    <meta name="twitter:image" content="https://mofiyinebo.com/mofimain.jpeg">
-    <meta name="twitter:image:alt" content="Portrait of Mofiyinfoluwa Ebo">
+    <meta name="twitter:image" content="https://mofiyinebo.com/assets/og-image.jpg">
+    <meta name="twitter:image:alt" content="Portrait of Mofiyinfoluwa Ebo beside the words Flutter &amp; mobile app developer">
     
     <meta name="author" content="Mofiyinfoluwa Ebo">
     <meta name="theme-color" content="#171512">
@@ -68,7 +70,7 @@
           ],
           "url": "https://mofiyinebo.com/",
           "mainEntityOfPage": { "@id": "https://mofiyinebo.com/#webpage" },
-          "image": "https://mofiyinebo.com/mofimain.jpeg",
+          "image": "https://mofiyinebo.com/assets/portrait.webp",
           "jobTitle": "Flutter Mobile App Developer",
           "address": {
             "@type": "PostalAddress",
@@ -88,6 +90,14 @@
     }
     </script>
     
+    <script>
+        // The intro plays once per visit and never for reduced-motion visitors.
+        try {
+            if (sessionStorage.getItem('mofixiu-intro-seen') || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.documentElement.classList.add('skip-intro');
+            }
+        } catch (error) {}
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -130,10 +140,10 @@
                         <a class="nav-link" href="#about">ABOUT ME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#experience">WORK</a>
+                        <a class="nav-link" href="#projects">PROJECTS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">PROJECTS</a>
+                        <a class="nav-link" href="#experience">EXPERIENCE</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">CONTACT</a>
@@ -200,9 +210,9 @@
                     <a href="#projects" class="btn btn-outline">View My Work</a>
                 </div>
                 <div class="social-links">
-                    <a href="https://linkedin.com/in/mofiyinfoluwa-ebo-57b65423a/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/mofixiu" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="mailto:ebomofiyin@outlook.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/mofiyinfoluwa-ebo-57b65423a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="https://github.com/mofixiu" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    <a href="mailto:ebomofiyin@outlook.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
                 </div>
                 
             </div>
@@ -328,135 +338,9 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="profile-image">
-                        <img src="mofimain.jpeg" 
+                        <img src="assets/portrait.webp" width="600" height="900" loading="lazy" decoding="async"
                              alt="Portrait of Ebo Mofiyinfoluwa David, also known as Mofiyinfoluwa Ebo">
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>skills</h2>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Mobile</h3>
-                    <div class="skill-badges">
-                        <span class="skill-badge">Flutter</span>
-                        <span class="skill-badge">Dart</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <div class="skill-badges">
-                        <span class="skill-badge">JavaScript</span>
-                        <span class="skill-badge">Node.js</span>
-                        <span class="skill-badge">Express.js</span>
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">Flask</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Databases</h3>
-                    <div class="skill-badges">
-                        <span class="skill-badge">PostgreSQL</span>
-                        <span class="skill-badge">MySQL</span>
-                        <span class="skill-badge">SQL</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools</h3>
-                    <div class="skill-badges">
-                        <span class="skill-badge">Git</span>
-                        <span class="skill-badge">REST APIs</span>
-                        <span class="skill-badge">JWT</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="education-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>education</h2>
-            </div>
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="education-item">
-                        <div class="education-header">
-                            <h3>B.Sc Computer Science</h3>
-                            <span class="duration">Aug 2022 - Aug 2026</span>
-                        </div>
-                        <div class="education-details">
-                            <h4>Covenant University</h4>
-                            <p><strong>Relevant Coursework:</strong> Data Structures & Algorithms, Programming, Object Oriented Programming, 
-                               Problem Solving, Systems Analysis and Design</p>
-                            <p><strong>Member:</strong> Nigeria Association of Computing Students (NACOS), Hebron Startup Lab (HSL)</p>
-                        </div>
-                    </div>
-                </div>
-              
-            </div>
-        </div>
-    </section>
-
-    <!-- Work Experience Section -->
-    <section id="experience" class="experience-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>work experience</h2>
-            </div>
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div class="company-info">
-                        <h3>Haze Couture / Mobile App Development Lead</h3>
-                        <span class="duration">Mar 2026 - Present</span>
-                    </div>
-                    <div class="location">Remote, US-Based</div>
-                </div>
-                <div class="experience-details">
-                    <div class="tech-stack">
-                        <span class="tech-badge">Flutter</span>
-                        <span class="tech-badge">Dart</span>
-                        <span class="tech-badge">3D Visualisation</span>
-                    </div>
-                    <ul class="achievements">
-                        <li>Lead mobile development for a US fashion-tech startup, architecting a cross-platform Flutter app for iOS App Store launch.</li>
-                        <li>Develop modular UI components and responsive layout workflows that reduce screen rendering latency.</li>
-                        <li>Engineer high-fidelity 3D outfit visualisation workflows to improve virtual try-on fit accuracy.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div class="company-info">
-                        <h3>Alusoft Technologies Ltd / Software Engineering Intern</h3>
-                        <span class="duration">Mar 2025 - Sep 2025</span>
-                    </div>
-                    <div class="location">Ibadan, Nigeria</div>
-                </div>
-                <div class="experience-details">
-                    <div class="tech-stack">
-                        <span class="tech-badge">Dart</span>
-                        <span class="tech-badge">Flutter</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">SQL</span>
-                        <span class="tech-badge">PostgreSQL</span>
-                        <span class="tech-badge">Git</span>
-                        <span class="tech-badge">Express.js</span>
-                        <span class="tech-badge">JavaScript</span>
-                    </div>
-                    <ul class="achievements">
-                        <li>Collaborated in a multi-developer team to build EduTraining, a platform for student course discovery and instructor management.</li>
-                        <li>Engineered reusable Flutter UI components and backend RESTful APIs using Node.js, Express, and PostgreSQL.</li>
-                        <li>Spearheaded initial development for OtakuPlanner, driving sprint planning and peer code reviews.</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -470,6 +354,23 @@
                 <h2>projects I’m proud of</h2>
             </div>
             <p class="projects-intro">End-to-end products that show how I think through mobile experiences, data, and real user workflows.</p>
+            <article class="featured-project-card flagship-project">
+                <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#hazeModal" aria-label="Take a tour of the Haze Couture app">
+                    <span class="phone-prototype phone-prototype--mini" data-app="haze" aria-hidden="true"><img class="pp-fallback" src="screenshots/device/haze/sm/03-shop.webp" alt="" loading="lazy" decoding="async"></span>
+                    <span class="preview-label"><i class="fas fa-mobile-screen-button" aria-hidden="true"></i> Explore the app</span>
+                </button>
+                <div class="featured-project-content">
+                    <p class="flagship-kicker">Live on the App Store · Mobile App Development Lead</p>
+                    <div class="project-header"><h3>Haze Couture</h3><span class="project-duration">Mar 2026 – now</span></div>
+                    <p class="project-description">A virtual try-on and shopping app. Shoppers scan their body once, then see clothes on their own 3D mannequin before they buy. I led the Flutter app from handover to its App Store launch.</p>
+                    <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span><span class="tech-badge">3D try-on</span><span class="tech-badge">Apple Pay</span><span class="tech-badge">StoreKit</span><span class="tech-badge">Live Activities</span></div>
+                    <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#hazeModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button><a class="project-link" href="https://apps.apple.com/us/app/haze-couture-try-on-shop/id6759711912" target="_blank" rel="noopener noreferrer">App Store <i class="fab fa-app-store-ios" aria-hidden="true"></i></a></div>
+                    <div class="try-on-phone">
+                        <img class="try-on-phone-qr" src="assets/haze-couture-app-store-qr.svg" alt="QR code that opens Haze Couture on the App Store" width="96" height="96" loading="lazy" decoding="async">
+                        <p><strong>Try it on your phone.</strong> Scan with your iPhone camera to open Haze Couture on the App Store.</p>
+                    </div>
+                </div>
+            </article>
             <div class="featured-projects">
                 <article class="featured-project-card">
                     <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#alastudieModal" aria-label="Open aLaStudie interactive prototype">
@@ -485,12 +386,12 @@
                 </article>
 
                 <article class="featured-project-card">
-                    <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#hybstockadvisorModal" aria-label="Open HYBSTOCKADVISOR interactive prototype">
+                    <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#hybstockadvisorModal" aria-label="Open HybStockAdvisor interactive prototype">
                         <span class="phone-prototype phone-prototype--mini" data-app="hybstock" aria-hidden="true"><img class="pp-fallback" src="screenshots/device/hybstock/sm/1.webp" alt="" loading="lazy" decoding="async"></span>
                         <span class="preview-label"><i class="fas fa-hand-pointer" aria-hidden="true"></i> Try the prototype</span>
                     </button>
                     <div class="featured-project-content">
-                        <div class="project-header"><h3>HYBSTOCKADVISOR</h3><span class="project-duration">2026</span></div>
+                        <div class="project-header"><h3>HybStockAdvisor</h3><span class="project-duration">2026</span></div>
                         <p class="project-description">A role-based investment advisor that combines financial technical indicators with NLP sentiment analysis.</p>
                         <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Flask</span><span class="tech-badge">PostgreSQL</span><span class="tech-badge">Python</span></div>
                         <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#hybstockadvisorModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button><a class="project-link" href="https://github.com/mofixiu/hybridstockinvestmentadvisor" target="_blank" rel="noopener noreferrer">Mobile <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://github.com/mofixiu/hybstockadvisor" target="_blank" rel="noopener noreferrer">Backend <i class="fab fa-github" aria-hidden="true"></i></a></div>
@@ -548,61 +449,147 @@
                         <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#lodgixModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button><a class="project-link" href="https://github.com/mofixiu/lodgix" target="_blank" rel="noopener noreferrer">GitHub <i class="fab fa-github" aria-hidden="true"></i></a></div>
                     </div>
                 </article>
-
-                <article class="featured-project-card desktop-featured">
-                    <a class="project-preview" href="https://www.cudecorationunit.com.ng" target="_blank" rel="noopener noreferrer" aria-label="Open the Covenant University Decoration Unit website">
-                        <img src="screenshots/decoventory-logo.jpeg" alt="Covenant University Decoration Unit logo" loading="lazy" decoding="async">
-                        <span class="preview-label"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> Visit website</span>
-                    </a>
-                    <div class="featured-project-content">
-                        <div class="project-header"><h3>DecoVentory</h3><span class="project-duration">Web platform</span></div>
-                        <p class="project-description">A resource-management website built for Covenant University’s Decoration Unit to organize inventory and support decoration operations.</p>
-                        <div class="tech-stack"><span class="tech-badge">Web Development</span><span class="tech-badge">Inventory</span><span class="tech-badge">Admin Dashboard</span></div>
-                        <div class="project-actions"><a class="project-link" href="https://www.cudecorationunit.com.ng" target="_blank" rel="noopener noreferrer">Visit website <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
-                    </div>
-                </article>
-
-                <article class="featured-project-card desktop-featured">
-                    <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#thementrentModal" aria-label="Open TheMentRent interactive prototype">
-                        <span class="phone-prototype phone-prototype--mini" data-app="thementrent" aria-hidden="true"><img class="pp-fallback" src="screenshots/device/thementrent/sm/2.webp" alt="" loading="lazy" decoding="async"></span>
-                        <span class="preview-label"><i class="fas fa-hand-pointer" aria-hidden="true"></i> Try the prototype</span>
-                    </button>
-                    <div class="featured-project-content">
-                        <div class="project-header"><h3>TheMentRent</h3><span class="project-duration">2025</span></div>
-                        <p class="project-description">A mentorship matching platform that connects people with professionals through profiles, tailored matching, and chat.</p>
-                        <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span><span class="tech-badge">Node.js</span><span class="tech-badge">Express.js</span><span class="tech-badge">PostgreSQL</span></div>
-                        <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#thementrentModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button></div>
-                    </div>
-                </article>
-
-                <article class="featured-project-card desktop-featured">
-                    <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#spotifycloneModal" aria-label="Open Spotify Clone interactive prototype">
-                        <span class="phone-prototype phone-prototype--mini" data-app="spotifyclone" aria-hidden="true"><img class="pp-fallback" src="screenshots/device/spotifyclone/sm/1.webp" alt="" loading="lazy" decoding="async"></span>
-                        <span class="preview-label"><i class="fas fa-hand-pointer" aria-hidden="true"></i> Try the prototype</span>
-                    </button>
-                    <div class="featured-project-content">
-                        <div class="project-header"><h3>Spotify Clone</h3><span class="project-duration">2022</span></div>
-                        <p class="project-description">A Flutter music experience with playback and playlists, built around a clean, responsive interface.</p>
-                        <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span></div>
-                        <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#spotifycloneModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button></div>
-                    </div>
-                </article>
             </div>
 
             <details class="more-work">
-                <summary><span>More selected work</span><span class="more-work-count"><span class="desktop-more-count">02 projects</span><span class="mobile-more-count">06 projects</span> <i class="fas fa-plus" aria-hidden="true"></i></span></summary>
+                <summary><span>Earlier projects and clones</span><span class="more-work-count"><span class="desktop-more-count">05 projects</span><span class="mobile-more-count">06 projects</span> <i class="fas fa-plus" aria-hidden="true"></i></span></summary>
                 <div class="more-work-grid">
                     <article class="compact-project mobile-only-project"><div><h3>Lodgix</h3><p>A hotel-management system for booking, reservations, and secure account workflows.</p></div><div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#lodgixModal">View details</button><a class="project-link" href="https://github.com/mofixiu/lodgix" target="_blank" rel="noopener noreferrer">GitHub <i class="fab fa-github" aria-hidden="true"></i></a></div></article>
-                    <article class="compact-project mobile-only-project"><div><h3>DecoVentory</h3><p>A Decoration Unit resource-management website built for Covenant University.</p></div><a class="project-link" href="https://www.cudecorationunit.com.ng" target="_blank" rel="noopener noreferrer">Visit website <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></article>
-                    <article class="compact-project mobile-only-project"><div><h3>TheMentRent</h3><p>A mentorship matching platform with profiles and chat flows.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#thementrentModal">View details</button></article>
+                    <article class="compact-project"><div><h3>DecoVentory</h3><p>A resource-management website built for Covenant University’s Decoration Unit.</p></div><a class="project-link" href="https://www.cudecorationunit.com.ng" target="_blank" rel="noopener noreferrer">Visit website <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></article>
+                    <article class="compact-project"><div><h3>TheMentRent</h3><p>A mentorship matching platform with profiles and chat flows.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#thementrentModal">View details</button></article>
+                    <article class="compact-project"><div><h3>Spotify Clone</h3><p>A Flutter music experience with playback and playlists.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#spotifycloneModal">View details</button></article>
                     <article class="compact-project"><div><h3>Thriller</h3><p>A mobile streaming experience inspired by Netflix and ShowMax.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#thrillerModal">View details</button></article>
-                    <article class="compact-project mobile-only-project"><div><h3>Spotify Clone</h3><p>A Flutter music experience with playback and playlists.</p></div><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#spotifycloneModal">View details</button></article>
                     <article class="compact-project"><div><h3>Snapchat Clone</h3><p>A mobile social experience inspired by Snapchat.</p></div><a class="project-link" href="https://github.com/mofixiu/snapchatclone" target="_blank" rel="noopener noreferrer">GitHub <i class="fab fa-github" aria-hidden="true"></i></a></article>
                 </div>
             </details>
         </div>
     </section>
-    
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>work experience</h2>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company-info">
+                        <h3>Haze Couture / Mobile App Development Lead</h3>
+                        <span class="duration">Mar 2026 - Present</span>
+                    </div>
+                    <div class="location">Remote, US-Based</div>
+                </div>
+                <div class="experience-details">
+                    <div class="tech-stack">
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Dart</span>
+                        <span class="tech-badge">3D Visualisation</span>
+                    </div>
+                    <ul class="achievements">
+                        <li>Lead the Flutter app for a US fashion-tech startup, taking it from handover to its App Store launch.</li>
+                        <li>Shipped 3D try-on, personal wardrobes, real-time voice styling with Haze, Apple Pay and subscriptions, and teen accounts with guardian consent.</li>
+                        <li>Built iOS touches into the Flutter app: a home screen widget, a Dynamic Island and Live Activity that follow a try-on, and Face ID before payment.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="company-info">
+                        <h3>Alusoft Technologies Ltd / Software Engineering Intern</h3>
+                        <span class="duration">Mar 2025 - Sep 2025</span>
+                    </div>
+                    <div class="location">Ibadan, Nigeria</div>
+                </div>
+                <div class="experience-details">
+                    <div class="tech-stack">
+                        <span class="tech-badge">Dart</span>
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Git</span>
+                        <span class="tech-badge">Express.js</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                    <ul class="achievements">
+                        <li>Collaborated in a multi-developer team to build EduTraining, a platform for student course discovery and instructor management.</li>
+                        <li>Engineered reusable Flutter UI components and backend RESTful APIs using Node.js, Express, and PostgreSQL.</li>
+                        <li>Spearheaded initial development for OtakuPlanner, driving sprint planning and peer code reviews.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>skills</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Mobile</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">Flutter</span>
+                        <span class="skill-badge">Dart</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Node.js</span>
+                        <span class="skill-badge">Express.js</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">Flask</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">PostgreSQL</span>
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">REST APIs</span>
+                        <span class="skill-badge">JWT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>education</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="education-item">
+                        <div class="education-header">
+                            <h3>B.Sc Computer Science</h3>
+                            <span class="duration">Aug 2022 - Aug 2026</span>
+                        </div>
+                        <div class="education-details">
+                            <h4>Covenant University</h4>
+                            <p><strong>Relevant Coursework:</strong> Data Structures & Algorithms, Programming, Object Oriented Programming, 
+                               Problem Solving, Systems Analysis and Design</p>
+                            <p><strong>Member:</strong> Nigeria Association of Computing Students (NACOS), Hebron Startup Lab (HSL)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
@@ -643,15 +630,77 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2026 | built by mofixiu®</p>
+                <p>&copy; 2026 | built by mofixiu</p>
                 <div class="footer-social">
-                    <a href="https://linkedin.com/in/mofiyinfoluwa-ebo-57b65423a/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/mofixiu"target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="mailto:ebomofiyin@outlook.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/mofiyinfoluwa-ebo-57b65423a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="https://github.com/mofixiu" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    <a href="mailto:ebomofiyin@outlook.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Haze Couture Modal -->
+    <div class="modal fade" id="hazeModal" tabindex="-1" aria-labelledby="hazeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="hazeModalLabel">Haze Couture - Virtual Try-On &amp; Shopping</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-modal-content">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="phone-prototype" data-app="haze"></div>
+                                <div class="try-on-phone try-on-phone--modal">
+                                    <img class="try-on-phone-qr" src="assets/haze-couture-app-store-qr.svg" alt="QR code that opens Haze Couture on the App Store" width="88" height="88" loading="lazy" decoding="async">
+                                    <p><strong>Try it on your phone.</strong> Scan to open Haze Couture on the App Store.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="project-info">
+                                    <h6>Project Overview</h6>
+                                    <p>Haze Couture is a virtual try-on and shopping app. Shoppers scan their body once, then see clothes on their own 3D mannequin, shop with friends in chat and style outfits with Haze, the in-app stylist. I joined as Mobile App Development Lead at the handover and led the Flutter app to its App Store launch.</p>
+
+                                    <h6>What I built, month by month</h6>
+                                    <ol class="build-timeline">
+                                        <li><span>Mar</span>App Store submission: blocking, reporting and shopping preferences for review, deep links, one theme with appearance settings, and voice notes.</li>
+                                        <li><span>Apr</span>Apple Pay end to end, the order flow and saved addresses, message replies, and a written guide for every feature.</li>
+                                        <li><span>May</span>A move to a new backend, consent before body-scan data is used, and stories that upload in the background.</li>
+                                        <li><span>Jun–Jul</span>Group chats, subscription upgrades and downgrades across StoreKit 1 and 2, and a redesigned order timeline.</li>
+                                        <li><span>Aug</span>Personal wardrobes, mannequin sharing with friends, real-time voice with Haze, a home screen widget and Live Activity that track a try-on, and family plans.</li>
+                                        <li><span>Sep</span>Exact size, colour and length variants, brand pages and search, 3D versions of your own clothes, and separate staging and production builds.</li>
+                                        <li><span>Oct</span>The launch build: teen accounts with guardian consent, Pay For Me, Face ID before payment, live currency conversion, split shipping and delivery tracking.</li>
+                                    </ol>
+
+                                    <h6>Technologies</h6>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Flutter</span>
+                                        <span class="tech-badge">Dart</span>
+                                        <span class="tech-badge">3D try-on</span>
+                                        <span class="tech-badge">Apple Pay</span>
+                                        <span class="tech-badge">StoreKit</span>
+                                        <span class="tech-badge">Live Activities</span>
+                                    </div>
+
+                                    <div class="project-stats mt-4">
+                                        <div class="stat"><strong>Year:</strong> 2026</div>
+                                        <div class="stat"><strong>Role:</strong> Mobile App Development Lead</div>
+                                        <div class="stat"><strong>Platform:</strong> iOS, live on the App Store</div>
+                                    </div>
+
+                                    <div class="project-actions">
+                                        <a class="project-link" href="https://apps.apple.com/us/app/haze-couture-try-on-shop/id6759711912" target="_blank" rel="noopener noreferrer">View on the App Store <i class="fab fa-app-store-ios" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- aLaStudie Modal -->
     <div class="modal fade" id="alastudieModal" tabindex="-1" aria-labelledby="alastudieModalLabel" aria-hidden="true">
@@ -761,7 +810,7 @@
                                             <strong>Duration:</strong> Mar 2025 - May 2025
                                         </div>
                                         <div class="stat">
-                                            <strong>Team Size:</strong> Duo Project
+                                            <strong>Team Size:</strong> Two-person team
                                         </div>
                                         <div class="stat">
                                             <strong>Role:</strong> Lead Mobile Developer
@@ -792,7 +841,7 @@
                             <div class="col-md-7">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
-                                    <p>HYBSTOCKADVISOR is a stock market analysis app that combines technical indicators and sentiment intelligence to deliver personalized investment guidance for users.</p>
+                                    <p>HybStockAdvisor is a stock market analysis app that combines technical indicators and sentiment intelligence to deliver personalized investment guidance for users.</p>
                                     
                                     <h6>Key Features</h6>
                                     <ul>
@@ -823,7 +872,7 @@
                                             <strong>Duration:</strong> Mar 2026 - Jun 2026
                                         </div>
                                         <div class="stat">
-                                            <strong>Team Size:</strong> Solo Project
+                                            <strong>Team Size:</strong> Solo project
                                         </div>
                                         <div class="stat">
                                             <strong>Role:</strong> Lead Mobile Developer
@@ -843,7 +892,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="thementrentModalLabel">TheMentRent - Mentorship Platform - A clone of TheMentr</h5>
+                    <h5 class="modal-title" id="thementrentModalLabel">TheMentRent - Mentorship Platform</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -855,7 +904,7 @@
                             <div class="col-md-7">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
-                                    <p>A mentorship matching platform that connects users with professionals based on industry expertise and career goals.It's a clone of The Mentr mentor matching app</p>
+                                    <p>A mentorship matching platform that connects users with professionals based on industry expertise and career goals. It's modelled on The Mentr mentor-matching app.</p>
                                     
                                     <h6>Key Features</h6>
                                     <ul>
@@ -880,7 +929,7 @@
                                             <strong>Duration:</strong> Mar 2025 - Apr 2025
                                         </div>
                                         <div class="stat">
-                                            <strong>Team Size:</strong> 1 developer
+                                            <strong>Team Size:</strong> Solo project
                                         </div>
                                         <div class="stat">
                                             <strong>Role:</strong> Frontend Developer
@@ -941,7 +990,7 @@
                                             <strong>Duration:</strong> Aug 2025 - Sep 2025
                                         </div>
                                         <div class="stat">
-                                            <strong>Team Size:</strong> Duo Project
+                                            <strong>Team Size:</strong> Two-person team
                                         </div>
                                         <div class="stat">
                                             <strong>Role:</strong> Lead Mobile Developer
@@ -1003,7 +1052,7 @@
                                             <strong>Duration:</strong> Nov 2025 - Dec 2025
                                         </div>
                                         <div class="stat">
-                                            <strong>Team Size:</strong> Single Project
+                                            <strong>Team Size:</strong> Solo project
                                         </div>
                                         <div class="stat">
                                             <strong>Role:</strong> Lead Mobile Developer
@@ -1058,7 +1107,7 @@
                                             <strong>Duration:</strong> Dec 2023 - Feb 2024
                                         </div>
                                         <div class="stat">
-                                            <strong>Team Size:</strong> Solo Project
+                                            <strong>Team Size:</strong> Solo project
                                         </div>
                                         <div class="stat">
                                             <strong>Role:</strong> UI/UX Designer & Developer
@@ -1110,7 +1159,7 @@
                                             <strong>Duration:</strong> Mar 2022 - Sep 2022
                                         </div>
                                         <div class="stat">
-                                            <strong>Team Size:</strong> 1 developer
+                                            <strong>Team Size:</strong> Solo project
                                         </div>
                                         <div class="stat">
                                             <strong>Role:</strong> Mobile Developer

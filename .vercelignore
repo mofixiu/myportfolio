@@ -1,0 +1,17 @@
+# Files the site never loads: editor settings, notes, original images and old screenshots.
+.DS_Store
+.gitignore
+.vscode
+.claude
+*.code-workspace
+FAVICON-DEBUGGING-STEPS.md
+mofixiu - Copy.png
+mofixiu.png
+mofiyin.PNG
+mofiyin2.JPG
+assets/handmade-paper.png
+assets/dark-handmade-paper.jpg
+assets/bugs/ladybug.png
+screenshots/*.png
+screenshots/*.jpeg
+screenshots/alastudie_screenshots

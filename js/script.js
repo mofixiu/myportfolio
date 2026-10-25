@@ -17,44 +17,38 @@ document.addEventListener('DOMContentLoaded', function() {
 // Loading Screen Functions
 function initializeLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
-    const progressFill = document.querySelector('.progress-fill');
     const typingTextElement = document.getElementById('typing-text');
     const loadingText = "okay, let's build...";
-    
-    // Start typing animation
+
+    // The intro plays once per visit and stays under a second. The inline script in
+    // <head> marks repeat visits and reduced-motion visitors so it never paints for them.
+    if (document.documentElement.classList.contains('skip-intro')) {
+        loadingScreen.classList.add('hidden');
+        return;
+    }
+    try {
+        sessionStorage.setItem('mofixiu-intro-seen', '1');
+    } catch (error) {}
+
+    // Type the line fast enough to finish well before the screen fades
     let charIndex = 0;
     const typeText = () => {
         if (charIndex < loadingText.length) {
             typingTextElement.textContent += loadingText.charAt(charIndex);
             charIndex++;
-            setTimeout(typeText, 80); 
+            setTimeout(typeText, 22);
         }
     };
-    
-    // Start typing after a short delay
-    setTimeout(typeText, 500);
-    
-    // Simulate loading progress
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += Math.random() * 30;
-        if (progress >= 100) {
-            progress = 100;
-            clearInterval(interval);
-            
-            // Hide loading screen after completion
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-                
-                // Trigger entrance animations
-                triggerEntranceAnimations();
-            }, 800); // Wait a bit longer to see the completed text
-        }
-        
-        progressFill.style.width = progress + '%';
-    }, 200);
-    
+    typeText();
+
+    setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+
+        // Trigger entrance animations
+        triggerEntranceAnimations();
+    }, 600);
+
     // Prevent scrolling during loading
     document.body.style.overflow = 'hidden';
 }
@@ -70,6 +64,17 @@ function initializeNavigation() {
     };
     updateNavbarState();
     window.addEventListener('scroll', updateNavbarState);
+
+    // Scroll snapping settles sections just below the navbar. It is measured with the
+    // phone menu closed, so opening the menu never shifts where the page settles.
+    const menu = document.getElementById('navbarNav');
+    const updateNavbarHeight = () => {
+        if (!menu.classList.contains('show')) {
+            document.documentElement.style.setProperty('--nav-h', `${navbar.offsetHeight}px`);
+        }
+    };
+    updateNavbarHeight();
+    window.addEventListener('resize', updateNavbarHeight);
     
     // Active nav link highlighting
     window.addEventListener('scroll', () => {
@@ -144,14 +149,16 @@ function triggerEntranceAnimations() {
 // Typing Effect
 function initializeTypingEffect() {
     const nameElement = document.querySelector('.name');
-    if (!nameElement) return;
+    if (!nameElement || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     
     const originalText = nameElement.textContent;
     nameElement.textContent = '';
     
+    // Start as the intro fades, or almost at once when it was skipped
+    const delay = document.documentElement.classList.contains('skip-intro') ? 250 : 800;
     setTimeout(() => {
         typeWriter(nameElement, originalText, 100);
-    }, 1000);
+    }, delay);
 }
 
 function typeWriter(element, text, speed) {

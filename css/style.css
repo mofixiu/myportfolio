@@ -31,7 +31,7 @@ body.light-theme {
     --code-bg: rgba(251, 247, 239, 0.88);
     --card-hover-shadow: rgba(var(--primary-rgb), 0.12);
     background-color: #f4ecde;
-    background-image: url('../assets/handmade-paper.png');
+    background-image: url('../assets/handmade-paper.jpg');
     background-repeat: repeat;
     background-size: 520px auto;
 }
@@ -44,13 +44,13 @@ body.light-theme .experience-section,
 body.light-theme .projects-section,
 body.light-theme .contact-section,
 body.light-theme .footer {
-    background-image: url('../assets/handmade-paper.png');
+    background-image: url('../assets/handmade-paper.jpg');
     background-repeat: repeat;
     background-size: 520px auto;
 }
 
 body:not(.light-theme) {
-    background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('../assets/dark-handmade-paper.jpg');
+    background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('../assets/dark-handmade-paper-1040.jpg');
     background-repeat: no-repeat, repeat;
     background-size: 100% 100%, 520px 520px;
 }
@@ -63,7 +63,7 @@ body:not(.light-theme) .experience-section,
 body:not(.light-theme) .projects-section,
 body:not(.light-theme) .contact-section,
 body:not(.light-theme) .footer {
-    background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('../assets/dark-handmade-paper.jpg');
+    background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('../assets/dark-handmade-paper-1040.jpg');
     background-repeat: no-repeat, repeat;
     background-size: 100% 100%, 520px 520px;
 }
@@ -97,7 +97,7 @@ body {
     z-index: 9999;
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 #loading-screen.hidden {
@@ -105,16 +105,21 @@ body {
     visibility: hidden;
 }
 
+/* Repeat visits and reduced-motion visitors skip the intro (set by the inline script in <head>). */
+.skip-intro #loading-screen {
+    display: none;
+}
+
 /* Let the loading moment establish the same tactile paper identity as the site. */
 body.light-theme #loading-screen {
     background-color: #f4ecde;
-    background-image: url('../assets/handmade-paper.png');
+    background-image: url('../assets/handmade-paper.jpg');
     background-repeat: repeat;
     background-size: 520px auto;
 }
 
 body:not(.light-theme) #loading-screen {
-    background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('../assets/dark-handmade-paper.jpg');
+    background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('../assets/dark-handmade-paper-1040.jpg');
     background-repeat: no-repeat, repeat;
     background-size: 100% 100%, 520px 520px;
 }
@@ -251,7 +256,7 @@ body:not(.light-theme) .brand-mark img {
     height: 100%;
     background: var(--gradient-primary);
     width: 0%;
-    animation: progress 3s ease-in-out infinite;
+    animation: progress 0.55s ease-out forwards;
 }
 
 @keyframes progress {
@@ -2031,9 +2036,12 @@ body,
 .pp-personas {
     background: var(--background-color);
     border: 1px solid var(--border-color);
-    border-radius: 999px;
+    border-radius: 18px;
     display: inline-flex;
+    flex-wrap: wrap;
     gap: 2px;
+    justify-content: center;
+    max-width: 100%;
     padding: 2px;
 }
 
@@ -2147,6 +2155,114 @@ body,
 .project-preview:hover .phone-prototype--mini .pp-device,
 .project-preview:focus-visible .phone-prototype--mini .pp-device {
     transform: translateY(-8px);
+}
+/* Haze Couture: the flagship project spans the full row above the other cards. */
+.flagship-project {
+    margin-bottom: 1.5rem;
+}
+
+.flagship-kicker {
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.6rem;
+    text-transform: uppercase;
+}
+
+@media (min-width: 769px) {
+    .flagship-project {
+        display: grid;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+
+    .flagship-project .project-preview,
+    .flagship-project .phone-prototype--mini {
+        height: 100%;
+    }
+
+    .flagship-project .phone-prototype--mini {
+        --pp-w: 200px;
+        min-height: 380px;
+        padding-top: 36px;
+    }
+
+    .flagship-project .featured-project-content {
+        padding: 2rem 2.25rem;
+    }
+}
+
+/* "Try it on your phone": a QR code for desktop visitors; touch screens use the App Store link. */
+.try-on-phone {
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    padding-top: 1.1rem;
+}
+
+.try-on-phone-qr {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    flex: none;
+    height: 96px;
+    padding: 4px;
+    width: 96px;
+}
+
+.try-on-phone p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.try-on-phone strong {
+    color: var(--text-primary);
+}
+
+.try-on-phone--modal {
+    border-top: 0;
+    justify-content: center;
+    margin: 0.9rem auto 0;
+    max-width: 300px;
+    padding-top: 0;
+}
+
+.try-on-phone--modal .try-on-phone-qr {
+    height: 88px;
+    width: 88px;
+}
+
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+    .try-on-phone {
+        display: none;
+    }
+}
+
+/* Case-study month-by-month timeline. */
+.build-timeline {
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+}
+
+.project-info .build-timeline li {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 3.6rem minmax(0, 1fr);
+    margin: 0;
+    padding: 0.3rem 0;
+}
+
+.build-timeline li + li {
+    border-top: 1px dashed var(--border-color);
+}
+
+.build-timeline span {
+    color: var(--text-primary);
+    font-weight: 700;
 }
 
 .project-info {
@@ -2365,7 +2481,7 @@ body:not(.light-theme) .modal-content {
 @media (max-width: 768px) {
     body.light-theme .about-section {
         background-color: #f4ecde;
-        background-image: url('../assets/handmade-paper.png');
+        background-image: url('../assets/handmade-paper.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -2399,4 +2515,23 @@ body:not(.light-theme) .modal-content {
         left: -12%;
         top: 35%;
     }
+}
+
+/* Scroll snapping: the page settles on the start of a section or project card when you stop
+   near one, just below the fixed navbar (--nav-h is set in js/script.js). */
+html {
+    scroll-padding-top: var(--nav-h, 88px);
+    scroll-snap-type: y proximity;
+}
+
+body > section {
+    scroll-snap-align: start;
+}
+
+.flagship-project,
+.featured-projects > article,
+.more-work,
+.experience-item {
+    scroll-margin-top: 1.25rem;
+    scroll-snap-align: start;
 }
