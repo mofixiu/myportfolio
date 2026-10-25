@@ -429,8 +429,8 @@
             border: 0;
             caret-color: var(--graphite);
             color: var(--graphite);
-            font: 500 1.55rem/1.2 'Caveat', cursive;
-            letter-spacing: 0.08em;
+            font: 600 1.15rem/1.6 'Montserrat', sans-serif;
+            letter-spacing: 0.24em;
             outline: none;
             padding: 0 0.2rem 0.15rem;
             transition: filter 500ms ease, opacity 500ms ease;
@@ -502,19 +502,50 @@
             opacity: 1;
         }
 
-        /* Narrow pages have no side margin, so the note goes above the folio. */
+        /* Narrow pages have no side margin, and a phone's keyboard covers the foot of the page,
+           so the note is written on a slip of paper at the top of whatever is still visible. */
         @media (max-width: 760px) {
             .margin,
             .margin-note {
-                bottom: 3.2rem;
+                bottom: auto;
                 left: 50%;
+                position: fixed;
                 right: auto;
+                top: calc(var(--visible-top, 0px) + env(safe-area-inset-top) + 0.9rem);
                 transform: translateX(-50%);
+                width: min(19rem, calc(100vw - 2rem));
+                z-index: 10;
+            }
+
+            .margin {
+                background: var(--paper) url('https://mofiyinebo.com/assets/handmade-paper.jpg') repeat;
+                background-size: 520px auto;
+                border-radius: 4px;
+                box-shadow: 0 0 0 1px var(--rule), 0 18px 36px -18px rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                padding: 0.9rem 1.2rem 1rem;
+                transition: opacity 200ms ease;
+            }
+
+            [data-theme="dark"] .margin {
+                background-image: linear-gradient(rgba(23, 21, 18, 0.38), rgba(23, 21, 18, 0.38)), url('https://mofiyinebo.com/assets/dark-handmade-paper-1040.jpg');
+                background-repeat: no-repeat, repeat;
+                background-size: 100% 100%, 520px 520px;
+            }
+
+            .margin.is-open {
+                opacity: 1;
+            }
+
+            .margin::before {
+                top: 0.7rem;
             }
 
             .margin-note {
-                bottom: 3.7rem;
+                padding: 1.15rem 1.2rem 0;
                 text-align: center;
+                text-wrap: balance;
+                z-index: 11;
             }
         }
 
@@ -1172,6 +1203,16 @@
                     lastTap = now;
                 }
             });
+
+            // When a keyboard scrolls the visible part of the page, the slip on a phone follows it.
+            function follow() {
+                document.documentElement.style.setProperty('--visible-top', window.visualViewport.offsetTop + 'px');
+            }
+
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', follow);
+                window.visualViewport.addEventListener('scroll', follow);
+            }
 
             field.addEventListener('input', wait);
             field.addEventListener('keydown', (event) => {
