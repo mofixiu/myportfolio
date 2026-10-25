@@ -301,36 +301,20 @@ function initializeTheme() {
     }
 }
 
-// Theme Toggle (Enhanced version)
+// Theme Toggle
 function initializeThemeToggle() {
     const themeToggle = document.querySelector('#theme-toggle');
     
     if (themeToggle) {
-        // Set initial icon
-        updateThemeIcon();
+        updateThemeToggle();
         
         themeToggle.addEventListener('click', function() {
-            // Toggle theme
             document.body.classList.toggle('light-theme');
-            
-            // Update icon
-            updateThemeIcon();
+            updateThemeToggle();
             
             // Save theme preference
             const isLight = document.body.classList.contains('light-theme');
             localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
-            
-            // Add rotation animation
-            this.style.transform = 'rotate(360deg)';
-            setTimeout(() => {
-                this.style.transform = 'rotate(0deg)';
-            }, 300);
-            
-            // Show theme change notification
-            showNotification(
-                `Switched to ${isLight ? 'light' : 'dark'} mode`, 
-                'success'
-            );
         });
         
         // Listen for system theme changes
@@ -341,24 +325,21 @@ function initializeThemeToggle() {
                 } else {
                     document.body.classList.add('light-theme');
                 }
-                updateThemeIcon();
+                updateThemeToggle();
             }
         });
     }
 }
 
-function updateThemeIcon() {
+// The toggle names the theme it switches to.
+function updateThemeToggle() {
     const themeToggle = document.querySelector('#theme-toggle');
-    const icon = themeToggle?.querySelector('i');
+    const label = themeToggle?.querySelector('.theme-toggle-label');
     
-    if (icon) {
+    if (label) {
         const isLight = document.body.classList.contains('light-theme');
-        icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
-        
-        // Update aria-label for accessibility
-        themeToggle.setAttribute('aria-label', 
-            isLight ? 'Switch to dark mode' : 'Switch to light mode'
-        );
+        label.textContent = isLight ? 'dark' : 'light';
+        themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
     }
 }
 
