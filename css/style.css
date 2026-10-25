@@ -2535,3 +2535,8 @@ body > section {
     scroll-margin-top: 1.25rem;
     scroll-snap-align: start;
 }
+
+/* The bottom of the page is a resting point too, so a swipe down to the footer stays there. */
+.footer {
+    scroll-snap-align: end;
+}
