@@ -173,20 +173,6 @@ function typeWriter(element, text, speed) {
     type();
 }
 
-// Skill Badge Hover Effects
-document.addEventListener('DOMContentLoaded', function() {
-    const skillBadges = document.querySelectorAll('.skill-badge');
-    
-    skillBadges.forEach(badge => {
-        badge.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px) scale(1.05)';
-        });
-        
-        badge.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-});
 
 // Project Card Interactions
 document.addEventListener('DOMContentLoaded', function() {
@@ -427,16 +413,6 @@ function initializeAccessibility() {
         });
     }
     
-    // Keyboard navigation for custom elements
-    const interactiveElements = document.querySelectorAll('.skill-badge');
-    interactiveElements.forEach(element => {
-        element.setAttribute('tabindex', '0');
-        element.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                element.click();
-            }
-        });
-    });
 }
 
 document.addEventListener('DOMContentLoaded', initializeAccessibility);
@@ -464,6 +440,41 @@ function initializeModalFocus() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeModalFocus);
+
+// A single ladybug rests above the hero title. Tap it and it opens its wings and flies
+// off the screen, staying away for the rest of the visit.
+function initializeLadybug() {
+    const ladybug = document.querySelector('.ladybug');
+    if (!ladybug) return;
+
+    try {
+        if (sessionStorage.getItem('ladybug-flown')) {
+            ladybug.remove();
+            return;
+        }
+    } catch (error) {}
+
+    ladybug.addEventListener('click', () => {
+        if (ladybug.classList.contains('is-flying')) return;
+        ladybug.classList.add('is-flying');
+        try {
+            sessionStorage.setItem('ladybug-flown', '1');
+        } catch (error) {}
+
+        const flight = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            ? ladybug.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 200, fill: 'forwards' })
+            : ladybug.animate([
+                { transform: 'translate(0, 0) rotate(0deg)' },
+                { transform: 'translate(-14px, -28px) rotate(-22deg)', offset: 0.18 },
+                { transform: 'translate(34px, -96px) rotate(24deg)', offset: 0.42 },
+                { transform: 'translate(18vw, -48vh) rotate(36deg) scale(0.85)', offset: 0.72 },
+                { transform: 'translate(55vw, -120vh) rotate(40deg) scale(0.6)' }
+            ], { delay: 260, duration: 1700, easing: 'cubic-bezier(0.45, 0, 0.6, 1)', fill: 'forwards' });
+        flight.finished.then(() => ladybug.remove());
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initializeLadybug);
 
 // Error handling for missing images
 function handleImageErrors() {

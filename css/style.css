@@ -408,11 +408,6 @@ body.light-theme .nav-link.active {
     color: var(--primary-color) !important;
 }
 
-body.light-theme .skill-badge:hover {
-    background: var(--primary-color);
-    color: var(--background-color);
-}
-
 body.light-theme .featured-project-card:hover {
     box-shadow: 0 10px 30px var(--card-hover-shadow);
 }
@@ -683,80 +678,79 @@ body.light-theme .social-links a:hover {
     border: 1px solid rgba(var(--primary-rgb), 0.2);
 }
 
-.bug {
-    filter: grayscale(1) contrast(0.82);
-    mix-blend-mode: multiply;
-    opacity: 0.48;
-    pointer-events: none !important;
-    z-index: 6 !important;
-}
-
-body:not(.light-theme) .bug {
-    filter: grayscale(1) invert(1) contrast(0.8);
-    mix-blend-mode: screen;
-    opacity: 0.54;
-}
-
+/* One ladybug rests above the hero title; tap it and it flies off (js/script.js). */
 .ladybug {
-    font-size: 1.15rem;
-    line-height: 1;
-    opacity: 0.92;
-    pointer-events: none;
-    position: fixed;
-    z-index: 6;
+    background: none;
+    border: 0;
+    color: var(--text-primary);
+    cursor: pointer;
+    height: 44px;
+    left: calc(50% + clamp(6.5rem, 24vw, 20rem));
+    padding: 8px;
+    position: absolute;
+    top: -1.6rem;
+    width: 44px;
+    z-index: 3;
 }
 
-.ladybug-one {
-    animation: ladybug-wander-one 13s ease-in-out infinite;
-    right: 12vw;
-    top: 18vh;
+.ladybug svg {
+    animation: ladybug-shuffle 7s ease-in-out infinite;
+    display: block;
+    height: 100%;
+    overflow: visible;
+    transform: rotate(-18deg);
+    width: 100%;
 }
 
-.ladybug-two {
-    animation: ladybug-wander-two 16s ease-in-out infinite;
-    bottom: 16vh;
-    left: 14vw;
+.ladybug:focus-visible {
+    border-radius: 50%;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
-@keyframes ladybug-wander-one {
-    0%, 100% { transform: translate(0, 0) rotate(8deg); }
-    35% { transform: translate(-8vw, 7vh) rotate(-14deg); }
-    70% { transform: translate(-3vw, 15vh) rotate(18deg); }
+.ladybug-shell,
+.ladybug-wing {
+    transform-box: view-box;
+    transform-origin: 20px 13px;
+    transition: opacity 0.2s ease, transform 0.25s ease;
 }
 
-@keyframes ladybug-wander-two {
-    0%, 100% { transform: translate(0, 0) rotate(-12deg); }
-    40% { transform: translate(9vw, -8vh) rotate(16deg); }
-    75% { transform: translate(5vw, -17vh) rotate(-6deg); }
+.ladybug-wing {
+    opacity: 0;
 }
 
-@media (max-width: 991px) {
-    .ladybug {
-        font-size: 0.8rem;
-        opacity: 0.78;
-    }
+.ladybug.is-flying svg {
+    animation: none;
+}
 
-    .ladybug-one {
-        animation-duration: 19s;
-        right: 8vw;
-        top: 16vh;
-    }
+.ladybug.is-flying .ladybug-shell--left {
+    transform: rotate(-42deg);
+}
 
-    .ladybug-two {
-        animation-duration: 22s;
-        bottom: 12vh;
-        left: 9vw;
-    }
+.ladybug.is-flying .ladybug-shell--right {
+    transform: rotate(42deg);
+}
 
-    .bug {
-        opacity: 0.38;
-    }
+.ladybug.is-flying .ladybug-wing {
+    animation: ladybug-flutter 0.07s linear infinite alternate;
+    opacity: 1;
+}
+
+@keyframes ladybug-shuffle {
+    0%, 70%, 100% { transform: rotate(-18deg) translate(0, 0); }
+    76% { transform: rotate(-6deg) translate(2px, -3px); }
+    84% { transform: rotate(-28deg) translate(-1px, -5px); }
+    92% { transform: rotate(-14deg) translate(0, -2px); }
+}
+
+@keyframes ladybug-flutter {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0.5); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .ladybug,
-    .bug {
-        display: none;
+    .ladybug svg {
+        animation: none;
     }
 }
 
@@ -902,40 +896,78 @@ section {
     transform: scale(1.05);
 }
 
-/* Skills Section */
+/* Skills Section: mobile leads in big type; the other areas are quiet rows. */
 .skills-grid {
+    align-items: start;
+    column-gap: 4rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
 }
 
 .skill-category h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: lowercase;
 }
 
 .skill-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.8rem;
 }
 
 .skill-badge {
-    background: var(--surface-color);
-    color: var(--text-primary);
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    white-space: nowrap;
 }
 
-.skill-badge:hover {
-    background: var(--primary-color);
-    color: var(--background-color);
-    transform: translateY(-2px);
+/* The dot trails each item, so a wrapped line never starts with one. */
+.skill-badge:not(:last-child)::after {
+    color: var(--accent-color);
+    content: '·';
+    margin: 0 0.7rem;
+}
+
+.skill-category:first-child {
+    grid-row: 1 / span 3;
+}
+
+.skill-category:first-child h3 {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+}
+
+.skill-category:first-child .skill-badges {
+    flex-direction: column;
+}
+
+.skill-category:first-child .skill-badge {
+    color: var(--text-primary);
+    font-size: 4.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    text-transform: lowercase;
+}
+
+.skill-category:first-child .skill-badge::after {
+    content: none;
+}
+
+.skill-category:not(:first-child) {
+    align-items: baseline;
+    border-top: 1px solid var(--border-color);
+    display: grid;
+    grid-column: 2;
+    grid-template-columns: 140px 1fr;
+    padding: 1.1rem 0;
+}
+
+.skill-category:last-child {
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* Education Section */
@@ -1248,12 +1280,15 @@ section {
 }
 
 .project-preview {
-    background: var(--background-color);
+    align-items: center;
+    background: var(--surface-color);
     border: 0;
     cursor: pointer;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
     overflow: hidden;
-    padding: 0;
+    padding: 1.4rem 1rem 1.1rem;
     position: relative;
 }
 
@@ -1281,19 +1316,15 @@ section {
     align-items: center;
     background: var(--primary-color);
     border-radius: 999px;
-    bottom: 0.85rem;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
     color: var(--background-color);
     display: inline-flex;
     font-size: 0.68rem;
     font-weight: 700;
     gap: 0.4rem;
-    left: 1rem;
     letter-spacing: 0.08em;
     padding: 0.45rem 0.8rem;
-    position: absolute;
     text-transform: uppercase;
-    z-index: 1;
 }
 
 .featured-project-content {
@@ -1358,10 +1389,14 @@ section {
 }
 
 .project-link {
+    align-items: center;
     background: transparent;
     border: 0;
     color: var(--primary-color);
     cursor: pointer;
+    display: inline-flex;
+    gap: 0.35rem;
+    min-height: 44px;
     font-family: inherit;
     text-decoration: none;
     font-weight: 500;
@@ -1381,8 +1416,8 @@ section {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.85rem 1rem;
-    margin-top: 1.25rem;
+    gap: 0 1.1rem;
+    margin-top: 0.75rem;
 }
 
 .featured-project-content .project-actions {
@@ -1479,13 +1514,28 @@ section {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.6rem;
+    min-height: 44px;
     font-size: 1.1rem;
 }
 
 .contact-item i {
     color: var(--primary-color);
     width: 20px;
+}
+
+.contact-item a {
+    align-items: center;
+    color: var(--text-primary);
+    display: inline-flex;
+    min-height: 44px;
+    text-decoration: underline;
+    text-decoration-color: var(--border-color);
+    text-underline-offset: 4px;
+}
+
+.contact-item a:hover {
+    text-decoration-color: currentColor;
 }
 
 /* Footer */
@@ -1510,12 +1560,17 @@ section {
 
 .footer-social {
     display: flex;
-    gap: 1rem;
+    gap: 0.25rem;
 }
 
 .footer-social a {
+    align-items: center;
     color: var(--text-secondary);
+    display: inline-flex;
     font-size: 1.2rem;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
     transition: all 0.3s ease;
 }
 
@@ -1544,7 +1599,20 @@ section {
     
     .skills-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+    }
+
+    .skill-category:first-child {
+        grid-row: auto;
+        margin-bottom: 1.75rem;
+    }
+
+    .skill-category:first-child .skill-badge {
+        font-size: 3.2rem;
+    }
+
+    .skill-category:not(:first-child) {
+        grid-column: auto;
+        grid-template-columns: 110px 1fr;
     }
     
     .education-header,
@@ -1623,8 +1691,7 @@ section {
     }
 
     .featured-project-content { padding: 1.35rem; }
-    .project-preview > img,
-    .phone-prototype--mini { height: 225px; }
+    .project-preview > img { height: 225px; }
     .projects-intro { font-size: 1rem; margin-top: -2.5rem; }
     .compact-project { align-items: flex-start; flex-direction: column; }
     
@@ -2146,15 +2213,9 @@ body,
     text-underline-offset: 3px;
 }
 
-/* Card previews: a small phone rising from the bottom of the card. */
+/* Card previews: the whole phone, so the demo's taps on tab bars stay in view. */
 .phone-prototype--mini {
-    --pp-w: 150px;
-    background: var(--surface-color);
-    height: 250px;
-    justify-content: flex-start;
-    overflow: hidden;
-    padding-top: 24px;
-    width: 100%;
+    --pp-w: 132px;
 }
 
 .phone-prototype--mini .pp-device {
@@ -2185,15 +2246,14 @@ body,
         grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     }
 
-    .flagship-project .project-preview,
-    .flagship-project .phone-prototype--mini {
+    .flagship-project .project-preview {
         height: 100%;
+        justify-content: center;
+        padding: 2rem 1rem 1.5rem;
     }
 
     .flagship-project .phone-prototype--mini {
-        --pp-w: 200px;
-        min-height: 380px;
-        padding-top: 36px;
+        --pp-w: 190px;
     }
 
     .flagship-project .featured-project-content {

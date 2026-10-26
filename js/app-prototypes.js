@@ -156,6 +156,7 @@
     const hybstock = {
         name: 'HybStockAdvisor',
         base: 'screenshots/device/hybstock/',
+        island: true,
         start: '1',
         screens: {
             1: {
@@ -224,6 +225,7 @@
     const siwes360 = {
         name: 'SIWES360',
         base: 'screenshots/device/siwes360/',
+        island: true,
         start: '1',
         personas: [
             { id: 'student', label: 'Student', start: '1', chips: ['1', '2', '3', '4', '5', '6', '7'] },
@@ -292,6 +294,7 @@
     const otakuplanner = {
         name: 'OtakuPlanner',
         base: 'screenshots/device/otakuplanner/',
+        island: true,
         start: '1',
         chips: ['1', '3', '4', '2', '5'],
         screens: {
@@ -328,6 +331,7 @@
     const lodgix = {
         name: 'Lodgix',
         base: 'screenshots/device/lodgix/',
+        island: true,
         start: '1',
         screens: {
             1: {
@@ -423,8 +427,7 @@
     };
 
     // Haze Couture ---------------------------------------------------------------------------
-    // Personas here are areas of the app; screens that show other people's details,
-    // addresses or emails were left out of the screenshot set.
+    // Screens that show other people's details, addresses or emails were left out of the set.
     const hazeTabs = (skip) => tabBar(90, 7.5, [
         ['tab-shop', 'Shop', '03-shop'],
         null, // Explore: no screenshot
@@ -439,93 +442,81 @@
         base: 'screenshots/device/haze/',
         island: true,
         start: '01-onboarding',
-        personaLabel: 'Explore the app',
-        personas: [
-            {
-                id: 'tryon', label: 'Try-on', start: '03-shop',
-                chips: ['01-onboarding', '02-scan-building', '03-shop', '04-product', '05-tryon', '06-tryons', '07-cart']
-            },
-            { id: 'ai', label: 'Haze AI', start: '08-search', chips: ['08-search', '09-talk', '10-tryon-linen'] },
-            { id: 'chat', label: 'Chat', start: '11-group-menu', chips: ['11-group-menu', '12-poll', '13-chat-menu', '14-pay-for-me'] },
-            {
-                id: 'wardrobe', label: 'Wardrobe', start: '15-wardrobes',
-                chips: ['15-wardrobes', '16-garment-scan', '17-garment-details', '22-extracting', '18-trip-wardrobe', '19-suggestions']
-            },
-            { id: 'account', label: 'Account', start: '20-account', chips: ['20-account', '23-profile-sharing', '21-teen-approval'] }
-        ],
+        chips: ['01-onboarding', '03-shop', '05-tryon', '09-talk', '12-poll', '14-pay-for-me', '16-garment-scan', '18-trip-wardrobe', '21-teen-approval'],
         screens: {
             '01-onboarding': {
-                label: 'Body scan intro', persona: 'tryon',
+                label: 'Body scan intro',
                 hotspots: [
                     { id: 'maybe-later', label: 'Maybe later', to: '03-shop', t: 'fade', x: 7, y: 89, w: 41.6, h: 5 },
                     { id: 'start-scan', label: 'Start scan', to: '02-scan-building', x: 52, y: 89, w: 40, h: 5 }
                 ]
             },
             '02-scan-building': {
-                label: 'Building your body scan', persona: 'tryon',
+                label: 'Building your body scan',
                 hotspots: [{ id: 'next', label: 'Next', to: '03-shop', t: 'fade', x: 6.7, y: 88.9, w: 86.6, h: 4.4 }]
             },
             '03-shop': {
-                label: 'Shop', persona: 'tryon',
+                label: 'Shop',
                 hotspots: [
                     { id: 'heritage', label: 'Open Heritage Trail', to: '04-product', x: 50.3, y: 13.8, w: 48.6, h: 44.7 },
                     { id: 'tryons', label: 'Your try-ons', to: '06-tryons', x: 75, y: 7, w: 10, h: 6 },
                     { id: 'chats', label: 'Open a group chat', to: '11-group-menu', x: 87, y: 7, w: 11, h: 6 },
+                    { id: 'search', label: 'Search with Haze', to: '08-search', x: 84, y: 80.5, w: 11, h: 6 },
                     ...hazeTabs('tab-shop')
                 ]
             },
             '04-product': {
-                label: 'Product in 3D', persona: 'tryon', back: '03-shop',
+                label: 'Product in 3D', back: '03-shop',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'try-on', label: 'Try on', to: '05-tryon', x: 62.8, y: 90.7, w: 25.5, h: 4.2 }
                 ]
             },
             '05-tryon': {
-                label: 'Try-on', persona: 'tryon', back: '04-product',
+                label: 'Try-on', back: '04-product',
                 hotspots: [
                     back(2, 6.5, 11, 6),
                     { id: 'exit', label: 'Exit try-on', to: 'back', x: 57.2, y: 91.7, w: 27.2, h: 4.1 }
                 ]
             },
             '06-tryons': {
-                label: 'Your try-ons', persona: 'tryon', back: '03-shop',
+                label: 'Your try-ons', back: '03-shop',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'heritage', label: 'Open the Heritage Trail try-on', to: '05-tryon', x: 52, y: 19.5, w: 45.8, h: 35.2 }
                 ]
             },
-            '07-cart': { label: 'Cart', persona: 'tryon', hotspots: hazeTabs('tab-cart') },
+            '07-cart': { label: 'Cart', hotspots: hazeTabs('tab-cart') },
             '08-search': {
-                label: 'Magic search', persona: 'ai', back: '03-shop',
+                label: 'Magic search', back: '03-shop',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'talk', label: 'Talk to Haze', to: '09-talk', x: 84, y: 91, w: 13, h: 7 }
                 ]
             },
             '09-talk': {
-                label: 'Talk to Haze', persona: 'ai', back: '08-search',
+                label: 'Talk to Haze', back: '08-search',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'try-on', label: 'Try on the Linen Pant Set', to: '10-tryon-linen', x: 34, y: 84.9, w: 28, h: 4.6 }
                 ]
             },
             '10-tryon-linen': {
-                label: 'Try-on', persona: 'ai', back: '09-talk',
+                label: 'Try-on', back: '09-talk',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'exit', label: 'Exit try-on', to: 'back', x: 63.3, y: 91, w: 29.5, h: 4.4 }
                 ]
             },
             '11-group-menu': {
-                label: 'Group chat tools', persona: 'chat', back: '03-shop',
+                label: 'Group chat tools', back: '03-shop',
                 hotspots: [
                     { id: 'close', label: 'Close menu', to: 'back', x: 0, y: 0, w: 100, h: 18 },
                     { id: 'poll', label: 'Create an outfit poll', to: '12-poll', t: 'sheet', x: 5, y: 21.8, w: 55, h: 4.6 }
                 ]
             },
             '12-poll': {
-                label: 'Outfit poll', persona: 'chat', sheetTop: 47, back: '11-group-menu',
+                label: 'Outfit poll', sheetTop: 47, back: '11-group-menu',
                 hotspots: [
                     { id: 'scrim', label: 'Close poll', to: 'back', x: 0, y: 0, w: 100, h: 46 },
                     { id: 'close', label: 'Close poll', to: 'back', x: 84, y: 49, w: 9, h: 5 },
@@ -533,21 +524,21 @@
                 ]
             },
             '13-chat-menu': {
-                label: 'Chat tools', persona: 'chat', back: '03-shop',
+                label: 'Chat tools', back: '03-shop',
                 hotspots: [
                     { id: 'close', label: 'Close menu', to: 'back', x: 0, y: 0, w: 100, h: 18 },
                     { id: 'pay-for-me', label: 'Request a Pay For Me', to: '14-pay-for-me', x: 5, y: 73.2, w: 55, h: 4.4 }
                 ]
             },
             '14-pay-for-me': {
-                label: 'Pay For Me', persona: 'chat', back: '13-chat-menu',
+                label: 'Pay For Me', back: '13-chat-menu',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'continue', label: 'Send the request', to: 'back', x: 5.8, y: 60.4, w: 88.4, h: 4.5 }
                 ]
             },
             '15-wardrobes': {
-                label: 'Personal wardrobe', persona: 'wardrobe', back: '03-shop',
+                label: 'Personal wardrobe', back: '03-shop',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'scan-first', label: 'Scan your first garment', to: '16-garment-scan', x: 26.9, y: 71, w: 46.1, h: 4.1 },
@@ -555,35 +546,35 @@
                 ]
             },
             '16-garment-scan': {
-                label: 'Scan a garment', persona: 'wardrobe', back: '15-wardrobes',
+                label: 'Scan a garment', back: '15-wardrobes',
                 hotspots: [
                     { id: 'close', label: 'Close camera', to: 'back', x: 4, y: 8.6, w: 12, h: 6 },
                     { id: 'shutter', label: 'Take photo', to: '17-garment-details', x: 40, y: 83.5, w: 20, h: 9.5 }
                 ]
             },
             '17-garment-details': {
-                label: 'Garment details', persona: 'wardrobe', back: '16-garment-scan',
+                label: 'Garment details', back: '16-garment-scan',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'save', label: 'Save to my own clothes', to: '22-extracting', t: 'tab', x: 5.8, y: 90.7, w: 88.2, h: 4.5 }
                 ]
             },
             '22-extracting': {
-                label: 'Extracting garment', persona: 'wardrobe', back: '15-wardrobes',
+                label: 'Extracting garment', back: '15-wardrobes',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'scan', label: 'Scan clothes', to: '16-garment-scan', x: 62.5, y: 87.5, w: 32.5, h: 4.3 }
                 ]
             },
             '18-trip-wardrobe': {
-                label: 'Shared wardrobe', persona: 'wardrobe', back: '15-wardrobes',
+                label: 'Shared wardrobe', back: '15-wardrobes',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'suggestions', label: 'Wardrobe suggestions', to: '19-suggestions', t: 'sheet', x: 26.5, y: 16.4, w: 38.5, h: 4 }
                 ]
             },
             '19-suggestions': {
-                label: 'Suggestions', persona: 'wardrobe', sheetTop: 52, back: '18-trip-wardrobe',
+                label: 'Suggestions', sheetTop: 52, back: '18-trip-wardrobe',
                 hotspots: [
                     { id: 'scrim', label: 'Close suggestions', to: 'back', x: 0, y: 0, w: 100, h: 51 },
                     { id: 'close', label: 'Close suggestions', to: 'back', x: 83, y: 53.5, w: 10, h: 6 },
@@ -592,15 +583,15 @@
                 ]
             },
             '20-account': {
-                label: 'Account', persona: 'account', back: '03-shop',
+                label: 'Account', back: '03-shop',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'profile-sharing', label: 'Profile sharing', to: '23-profile-sharing', x: 4.4, y: 12.9, w: 89.2, h: 6.3 }
                 ]
             },
-            '23-profile-sharing': { label: 'Profile sharing', persona: 'account', back: '20-account', hotspots: [back(2, 7, 11, 6)] },
+            '23-profile-sharing': { label: 'Profile sharing', back: '20-account', hotspots: [back(2, 7, 11, 6)] },
             '21-teen-approval': {
-                label: 'Guardian approval', persona: 'account', back: '20-account',
+                label: 'Guardian approval', back: '20-account',
                 hotspots: [
                     back(2, 7, 11, 6),
                     { id: 'approve', label: 'Approve', to: 'back', x: 6.8, y: 65.5, w: 86.2, h: 4.4 },
@@ -608,7 +599,7 @@
                 ]
             }
         },
-        demo: ['start-scan', 'next', 'heritage', 'try-on', 'exit', { persona: 'ai' }, 'talk', 'try-on', { persona: 'wardrobe' }, 'scan-first', 'shutter', 'save'],
+        demo: ['start-scan', 'next', 'heritage', 'try-on', 'exit', 'back', 'search', 'talk', 'try-on'],
         preview: ['03-shop', '05-tryon', '09-talk', '12-poll']
     };
 
@@ -616,6 +607,7 @@
     const escra = {
         name: 'Escra',
         base: 'screenshots/device/escra/',
+        island: true,
         start: 'login',
         screens: { login: { label: 'Authenticate identity' } },
         preview: ['login']

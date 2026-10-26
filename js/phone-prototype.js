@@ -1,6 +1,6 @@
 // Interactive phone prototypes built from static app screenshots.
 // Screen maps live in js/app-prototypes.js. Each `.phone-prototype` element becomes a
-// clickable device; `.phone-prototype--mini` elements become auto-cycling card previews.
+// clickable device; `.phone-prototype--mini` elements play the same tap demo on the cards.
 (function () {
     'use strict';
 
@@ -59,9 +59,11 @@
     }
 
     class PhonePrototype {
-        constructor(root, app) {
+        // `mini` is the card version: just the phone, small screenshots, demo only.
+        constructor(root, app, mini = false) {
             this.root = root;
             this.app = app;
+            this.mini = mini;
             this.persona = app.personas ? app.personas[0].id : null;
             this.history = [];
             this.current = null;
@@ -75,6 +77,18 @@
             const { root, app } = this;
             root.textContent = '';
             root.classList.add('is-ready');
+
+            if (this.mini) {
+                // Cards are buttons and links, so the preview is built from spans and has no controls.
+                const { device, screen, stage } = buildDevice(app, true);
+                this.screen = screen;
+                this.stage = stage;
+                this.cursor = make('span', 'pp-cursor', { 'aria-hidden': 'true' });
+                screen.append(this.cursor);
+                root.append(device);
+                return;
+            }
+
             root.classList.toggle('pp-debug', debugHotspots);
 
             if (app.personas) {
@@ -140,18 +154,22 @@
             this.reset();
         }
 
-        reset() {
+        reset(start = this.app.start) {
             this.stage.getAnimations({ subtree: true }).forEach((animation) => animation.cancel());
             this.busy = false;
             this.current = null;
             this.cursorPos = null;
             if (this.app.personas) {
                 this.setPersona(this.app.personas[0].id);
-            } else if (!this.chips.childElementCount) {
+            } else if (this.chips && !this.chips.childElementCount) {
                 this.renderChips();
             }
-            this.history = [{ id: this.app.start, t: 'fade' }];
-            this.transition(this.app.start, 'fade');
+            this.history = [{ id: start, t: 'fade' }];
+            this.transition(start, 'fade');
+        }
+
+        preload(id) {
+            if (this.app.screens[id]) new Image().src = screenSrc(this.app, id, this.mini);
         }
 
         chipIds() {
@@ -170,6 +188,7 @@
         }
 
         renderChrome() {
+            if (this.mini) return;
             const id = this.current.id;
             const ids = this.chipIds();
             const index = ids.indexOf(id);
@@ -184,6 +203,7 @@
 
         setPersona(id) {
             this.persona = id;
+            if (this.mini) return;
             this.personaBar.querySelectorAll('.pp-persona').forEach((button) => {
                 button.setAttribute('aria-pressed', String(button.dataset.persona === id));
             });
@@ -244,13 +264,14 @@
 
         makeLayer(id) {
             const screen = this.app.screens[id];
-            const layer = make('div', 'pp-layer');
+            const layer = make(this.mini ? 'span' : 'div', 'pp-layer');
             layer.append(make('img', 'pp-shot', {
-                src: screenSrc(this.app, id),
-                alt: `${this.app.name}: ${screen.label}`,
+                src: screenSrc(this.app, id, this.mini),
+                alt: this.mini ? '' : `${this.app.name}: ${screen.label}`,
                 draggable: 'false',
                 decoding: 'async'
             }));
+            if (this.mini) return layer;
 
             (screen.hotspots || []).forEach((hotspot) => {
                 const button = make('button', 'pp-hotspot', { type: 'button', 'aria-label': hotspot.label });
@@ -435,16 +456,19 @@
             for (const step of this.app.demo) {
                 if (!alive()) return;
                 if (typeof step === 'object' && step.persona) {
-                    const button = this.personaBar.querySelector(`[data-persona="${step.persona}"]`);
-                    button.classList.add('is-demo-press');
+                    this.preload(this.app.personas.find((item) => item.id === step.persona).start);
+                    const button = this.personaBar && this.personaBar.querySelector(`[data-persona="${step.persona}"]`);
+                    if (button) button.classList.add('is-demo-press');
                     await pause(500);
-                    button.classList.remove('is-demo-press');
+                    if (button) button.classList.remove('is-demo-press');
                     if (!alive()) return;
                     await this.switchPersona(step.persona);
                 } else {
                     const hotspots = this.app.screens[this.current.id].hotspots || [];
                     const hotspot = hotspots.find((item) => item.id === step);
                     if (hotspot) {
+                        // Fetch the next screen while the finger is on its way.
+                        this.preload(this.resolve(hotspot.to));
                         await this.cursorTo(hotspot.x + hotspot.w / 2, hotspot.y + hotspot.h / 2, 650);
                         if (!alive()) return;
                         await this.press();
@@ -476,66 +500,24 @@
         }
     }
 
-    class PhonePreview {
-        constructor(root, app) {
-            this.root = root;
-            this.app = app;
-            this.index = 0;
-            this.timer = null;
-            this.visible = false;
+    // Card previews play the tap demo only while the card is on screen and the tab is visible.
+    function initializeCardPreview(root, app) {
+        const preview = new PhonePrototype(root, app, true);
+        preview.reset(app.preview ? app.preview[0] : app.start);
+        if (!app.demo) return;
 
-            root.textContent = '';
-            root.classList.add('is-ready');
-            const { device, stage } = buildDevice(app, true);
-            this.stage = stage;
-            root.append(device);
-            this.layer = this.makeLayer(app.preview[0], true);
-            stage.append(this.layer);
-
-            if (app.preview.length > 1) {
-                new IntersectionObserver((entries) => {
-                    this.visible = entries[entries.length - 1].isIntersecting;
-                    this.update();
-                }, { threshold: 0.35 }).observe(root);
-                document.addEventListener('visibilitychange', () => this.update());
-                reducedMotion.addEventListener('change', () => this.update());
-            }
-        }
-
-        makeLayer(id, lazy) {
-            const layer = make('span', 'pp-layer');
-            // `loading` has to be set before `src` for the browser to defer the request.
-            const attrs = lazy ? { loading: 'lazy' } : {};
-            layer.append(make('img', 'pp-shot', { ...attrs, src: screenSrc(this.app, id, true), alt: '', draggable: 'false', decoding: 'async' }));
-            return layer;
-        }
-
-        update() {
-            const run = this.visible && !document.hidden && !reducedMotion.matches;
-            if (run && !this.timer) {
-                if (!this.preloaded) {
-                    this.preloaded = true;
-                    this.app.preview.slice(1).forEach((id) => {
-                        new Image().src = screenSrc(this.app, id, true);
-                    });
-                }
-                this.timer = setInterval(() => this.advance(), 2600);
-            } else if (!run && this.timer) {
-                clearInterval(this.timer);
-                this.timer = null;
-            }
-        }
-
-        advance() {
-            this.index = (this.index + 1) % this.app.preview.length;
-            const previous = this.layer;
-            this.layer = this.makeLayer(this.app.preview[this.index]);
-            this.stage.append(this.layer);
-            this.layer.animate(
-                [{ opacity: 0, transform: RISE }, SETTLED],
-                { duration: 420, easing: EASE_OUT_CUBIC }
-            ).finished.then(() => previous.remove(), () => previous.remove());
-        }
+        let visible = false;
+        const update = () => {
+            const run = visible && !document.hidden && !reducedMotion.matches;
+            if (run && !preview.demo) preview.playDemo();
+            else if (!run && preview.demo) preview.stopDemo();
+        };
+        new IntersectionObserver((entries) => {
+            visible = entries[entries.length - 1].isIntersecting;
+            update();
+        }, { threshold: 0.5 }).observe(root);
+        document.addEventListener('visibilitychange', update);
+        reducedMotion.addEventListener('change', update);
     }
 
     function initializePhonePrototypes() {
@@ -546,7 +528,7 @@
             if (!app) return;
 
             if (root.classList.contains('phone-prototype--mini')) {
-                new PhonePreview(root, app);
+                initializeCardPreview(root, app);
                 return;
             }
 
