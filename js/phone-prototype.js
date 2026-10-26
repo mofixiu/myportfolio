@@ -75,6 +75,7 @@
 
         build() {
             const { root, app } = this;
+            const fallback = root.querySelector('.pp-fallback');
             root.textContent = '';
             root.classList.add('is-ready');
 
@@ -83,6 +84,13 @@
                 const { device, screen, stage } = buildDevice(app, true);
                 this.screen = screen;
                 this.stage = stage;
+                // The static screenshot stays on screen until the first live one has decoded.
+                if (fallback) {
+                    fallback.className = 'pp-shot';
+                    const layer = make('span', 'pp-layer');
+                    layer.append(fallback);
+                    stage.append(layer);
+                }
                 this.cursor = make('span', 'pp-cursor', { 'aria-hidden': 'true' });
                 screen.append(this.cursor);
                 root.append(device);
@@ -302,12 +310,17 @@
             this.current = { id, layer: to };
             this.renderChrome();
 
+            // Hold the old screen until the new screenshot can paint, so the phone never flashes black.
+            this.busy = true;
+            await to.querySelector('.pp-shot').decode().catch(() => {});
+            if (!this.current || this.current.layer !== to) return;
+
             if (!from || reducedMotion.matches) {
                 this.stage.replaceChildren(to);
+                this.busy = false;
                 return;
             }
 
-            this.busy = true;
             from.inert = true;
             const animations = this.animate(from, to, type, fromScreen, this.app.screens[id]);
             await Promise.all(animations.map((animation) => animation.finished)).catch(() => {});
@@ -505,6 +518,14 @@
         const preview = new PhonePrototype(root, app, true);
         preview.reset(app.preview ? app.preview[0] : app.start);
         if (!app.demo) return;
+
+        // Fetch the demo's screens while the card is still a little way off screen.
+        const nearby = new IntersectionObserver((entries) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+            nearby.disconnect();
+            Object.keys(app.screens).forEach((id) => preview.preload(id));
+        }, { rootMargin: '400px 0px' });
+        nearby.observe(root);
 
         let visible = false;
         const update = () => {
