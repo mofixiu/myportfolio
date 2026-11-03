@@ -144,6 +144,181 @@
         preview: ['01-home-nia', '02-discover', '07-my-rooms-nia', '09-room-detail-chemistry']
     };
 
+    // neFaRec ------------------------------------------------------------------------------
+    const nefaTabs = (skip) => tabBar(89, 8, [
+        ['tab-today', 'Today', '01-today'],
+        ['tab-routines', 'Routines', '06-routines'],
+        ['tab-history', 'History', '18-history-sessions'],
+        ['tab-library', 'Library', '24-library']
+    ].map((tab) => (tab[0] === skip ? null : tab)), 4, 96);
+    const nefaBack = back(2, 8, 10, 5);
+    const nefaHistory = (skip) => [
+        ['sessions', 'Sessions', '18-history-sessions', 5],
+        ['progress', 'Progress', '19-history-progress', 35],
+        ['calendar', 'Calendar', '21-history-calendar', 65]
+    ].filter((seg) => seg[0] !== skip).map((seg) => ({ id: seg[0], label: seg[1], to: seg[2], t: 'tab', x: seg[3], y: 21.5, w: 30, h: 5 }));
+
+    const nefarec = {
+        name: 'neFaRec',
+        base: 'screenshots/device/nefarec/',
+        island: true,
+        start: '01-today',
+        chips: ['01-today', '02-paste', '04-review', '06-routines', '09-workout', '09b-workout-video', '13-rest-countdown', '14-rest-overtime', '15-hold-timer', '17-summary-receipt', '18-history-sessions', '19-history-progress', '21-history-calendar', '24-library', '25b-exercise-detail-video', '27-form-check', '28-settings'],
+        screens: {
+            '01-today': {
+                label: 'Today',
+                hotspots: [
+                    { id: 'resume', label: 'Back to workout', to: '09-workout', x: 11, y: 50, w: 78, h: 6.5 },
+                    { id: 'paste', label: 'Paste a routine', to: '02-paste', x: 63, y: 9, w: 10, h: 4.5 },
+                    { id: 'settings', label: 'Settings', to: '28-settings', x: 74, y: 9, w: 10, h: 4.5 },
+                    { id: 'profile', label: 'Profile', to: '29-account-profile', x: 85, y: 8.5, w: 11, h: 5 },
+                    { id: 'in-progress', label: 'Open the workout in progress', to: '09-workout', x: 4, y: 82, w: 92, h: 6 },
+                    ...nefaTabs('tab-today')
+                ]
+            },
+            '02-paste': {
+                label: 'Paste a routine', back: '01-today',
+                hotspots: [
+                    { id: 'close', label: 'Close', to: 'back', x: 2, y: 8, w: 10, h: 5 },
+                    { id: 'example', label: 'Try the example', to: '03-paste-filled', t: 'fade', x: 26, y: 72, w: 31, h: 4.5 }
+                ]
+            },
+            '03-paste-filled': {
+                label: 'Routine pasted', back: '01-today',
+                hotspots: [
+                    { id: 'close', label: 'Close', to: 'back', x: 2, y: 8, w: 10, h: 5 },
+                    { id: 'read', label: 'Read routine', to: '04-review', x: 4, y: 88, w: 92, h: 7 }
+                ]
+            },
+            '04-review': {
+                label: 'Review', back: '03-paste-filled',
+                hotspots: [
+                    nefaBack,
+                    { id: 'card', label: 'Edit Side Lateral Raise', to: '05-edit-sheet', t: 'sheet', x: 5, y: 55.5, w: 90, h: 14.5 },
+                    { id: 'save', label: 'Save routine', to: '06-routines', t: 'fade', x: 4, y: 88, w: 92, h: 7 }
+                ]
+            },
+            '05-edit-sheet': {
+                label: 'Edit exercise', sheetTop: 10, back: '04-review',
+                hotspots: [
+                    { id: 'scrim', label: 'Close', to: 'back', x: 0, y: 0, w: 100, h: 9.5 },
+                    { id: 'close', label: 'Close', to: 'back', x: 85, y: 13, w: 10, h: 4.5 },
+                    { id: 'done', label: 'Done', to: 'back', x: 7, y: 89.5, w: 86, h: 6.5 }
+                ]
+            },
+            '06-routines': {
+                label: 'Routines',
+                hotspots: [
+                    { id: 'routine', label: 'Open Thursday — Legs', to: '07-routine-detail', x: 4, y: 22, w: 92, h: 10.5 },
+                    { id: 'paste', label: 'Paste a routine', to: '02-paste', x: 76, y: 10, w: 22, h: 5 },
+                    { id: 'in-progress', label: 'Open the workout in progress', to: '09-workout', x: 4, y: 82, w: 92, h: 6 },
+                    ...nefaTabs('tab-routines')
+                ]
+            },
+            '07-routine-detail': {
+                label: 'Routine', back: '06-routines',
+                hotspots: [
+                    nefaBack,
+                    { id: 'start', label: 'Start Thursday — Legs', to: '09-workout', x: 5, y: 88, w: 90, h: 7 }
+                ]
+            },
+            '09-workout': {
+                label: 'Workout', back: '01-today',
+                hotspots: [
+                    { id: 'minimise', label: 'Minimise the workout', to: 'back', x: 2, y: 7.5, w: 10, h: 5 },
+                    { id: 'how-to', label: 'How to', to: '10-how-to', t: 'sheet', x: 61, y: 51, w: 14, h: 4.5 },
+                    { id: 'swap', label: 'Swap exercise', to: '11-swap-sheet', t: 'sheet', x: 5, y: 55.5, w: 17, h: 4 },
+                    { id: 'form-check', label: 'Form check', to: '27-form-check', x: 5, y: 59.5, w: 23, h: 4.5 },
+                    { id: 'tick', label: 'Complete set 3', to: '13-rest-countdown', t: 'fade', x: 81, y: 81.5, w: 15, h: 6.5 }
+                ]
+            },
+            '09b-workout-video': {
+                label: 'Video demo', back: '01-today',
+                hotspots: [{ id: 'minimise', label: 'Minimise the workout', to: 'back', x: 2, y: 7.5, w: 10, h: 5 }]
+            },
+            '10-how-to': {
+                label: 'How to', sheetTop: 10, back: '09-workout',
+                hotspots: [
+                    { id: 'scrim', label: 'Close', to: 'back', x: 0, y: 0, w: 100, h: 9.5 },
+                    { id: 'close', label: 'Close', to: 'back', x: 85, y: 13, w: 10, h: 4.5 }
+                ]
+            },
+            '11-swap-sheet': {
+                label: 'Swap', sheetTop: 7, back: '09-workout',
+                hotspots: [
+                    { id: 'scrim', label: 'Close', to: 'back', x: 0, y: 0, w: 100, h: 6.5 },
+                    { id: 'close', label: 'Close', to: 'back', x: 84, y: 10, w: 11, h: 5 }
+                ]
+            },
+            '13-rest-countdown': {
+                label: 'Rest', back: '09-workout',
+                hotspots: [
+                    { id: 'wait', label: 'Let the rest run over', to: '14-rest-overtime', t: 'fade', x: 5, y: 70, w: 55, h: 10 },
+                    { id: 'skip-rest', label: 'Skip rest', to: '12-sets-logged', t: 'fade', x: 53, y: 87, w: 41, h: 6.5 }
+                ]
+            },
+            '14-rest-overtime': {
+                label: 'Overtime', back: '09-workout',
+                hotspots: [{ id: 'next-set', label: 'Next set', to: '12-sets-logged', t: 'fade', x: 44, y: 87, w: 48, h: 6.5 }]
+            },
+            '12-sets-logged': {
+                label: 'Sets logged', back: '09-workout',
+                hotspots: [
+                    { id: 'minimise', label: 'Minimise the workout', to: '01-today', t: 'fade', x: 2, y: 7.5, w: 10, h: 5 },
+                    { id: 'skip', label: 'Skip to Wall Sit', to: '15-hold-timer', t: 'fade', x: 51, y: 95.5, w: 45, h: 4.5 }
+                ]
+            },
+            '15-hold-timer': {
+                label: 'Hold timer', back: '12-sets-logged',
+                hotspots: [{ id: 'stop', label: 'Stop, log and finish', to: '17-summary-receipt', t: 'fade', x: 37, y: 87, w: 54, h: 6.5 }]
+            },
+            '17-summary-receipt': {
+                label: 'Summary',
+                hotspots: [
+                    { id: 'done', label: 'Done', to: '18-history-sessions', t: 'fade', x: 4, y: 88, w: 92, h: 7 },
+                    { id: 'close', label: 'Close', to: '18-history-sessions', t: 'fade', x: 2, y: 8, w: 10, h: 5 }
+                ]
+            },
+            '18-history-sessions': {
+                label: 'History',
+                hotspots: [
+                    ...nefaHistory('sessions'),
+                    { id: 'session', label: 'Open Monday — Push', to: '23-session-detail', x: 5, y: 68, w: 90, h: 9.5 },
+                    ...nefaTabs('tab-history')
+                ]
+            },
+            '19-history-progress': { label: 'Progress', hotspots: [...nefaHistory('progress'), ...nefaTabs('tab-history')] },
+            '21-history-calendar': {
+                label: 'Calendar',
+                hotspots: [
+                    { id: 'sessions', label: 'Sessions', to: '18-history-sessions', t: 'tab', x: 5, y: 5, w: 28, h: 5 },
+                    { id: 'progress', label: 'Progress', to: '19-history-progress', t: 'tab', x: 33, y: 5, w: 29, h: 5 },
+                    ...nefaTabs('tab-history')
+                ]
+            },
+            '23-session-detail': { label: 'Session receipt', back: '18-history-sessions', hotspots: [nefaBack] },
+            '24-library': {
+                label: 'Library',
+                hotspots: [
+                    { id: 'exercise', label: 'Open Barbell Bench Press', to: '25b-exercise-detail-video', x: 4, y: 62, w: 92, h: 9 },
+                    ...nefaTabs('tab-library')
+                ]
+            },
+            '25b-exercise-detail-video': { label: 'Exercise', back: '24-library', hotspots: [nefaBack] },
+            '27-form-check': { label: 'Form check', back: '09-workout', hotspots: [nefaBack] },
+            '28-settings': {
+                label: 'Settings', back: '01-today',
+                hotspots: [
+                    nefaBack,
+                    { id: 'account', label: 'Profile & account', to: '29-account-profile', x: 5, y: 22, w: 90, h: 9 }
+                ]
+            },
+            '29-account-profile': { label: 'Profile', back: '28-settings', hotspots: [nefaBack] }
+        },
+        demo: ['resume', 'how-to', 'close', 'tick', 'wait', 'next-set', 'skip', 'stop', 'done', 'progress', 'calendar', 'tab-library', 'exercise'],
+        preview: ['01-today', '09b-workout-video', '14-rest-overtime', '19-history-progress']
+    };
+
     // HYBSTOCKADVISOR ----------------------------------------------------------------------
     const hybTabs = (skip) => tabBar(89, 8, [
         ['tab-home', 'Home', '1'],
@@ -613,5 +788,5 @@
         preview: ['login']
     };
 
-    window.APP_PROTOTYPES = { haze, alastudie, hybstock, siwes360, otakuplanner, lodgix, thementrent, spotifyclone, escra };
+    window.APP_PROTOTYPES = { haze, alastudie, nefarec, hybstock, siwes360, otakuplanner, lodgix, thementrent, spotifyclone, escra };
 })();

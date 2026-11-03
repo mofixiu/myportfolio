@@ -387,6 +387,19 @@
                 </article>
 
                 <article class="featured-project-card">
+                    <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#nefarecModal" aria-label="Open neFaRec interactive prototype">
+                        <span class="phone-prototype phone-prototype--mini" data-app="nefarec" aria-hidden="true"><img class="pp-fallback" src="screenshots/device/nefarec/sm/01-today.webp" alt="" loading="lazy" decoding="async"></span>
+                        <span class="preview-label"><i class="fas fa-hand-pointer" aria-hidden="true"></i> Try the prototype</span>
+                    </button>
+                    <div class="featured-project-content">
+                        <div class="project-header"><h3>neFaRec</h3><span class="project-duration">Nov 2026</span></div>
+                        <p class="project-description">A workout tracker that starts from the routine you already have. Paste it from a note or a chat, check what was read, then train it with a set table, rest and hold timers, and a Live Activity on the lock screen.</p>
+                        <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span><span class="tech-badge">Drift</span><span class="tech-badge">Live Activities</span><span class="tech-badge">Vision</span><span class="tech-badge">Node.js</span><span class="tech-badge">PostgreSQL</span></div>
+                        <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#nefarecModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button><a class="project-link" href="https://github.com/mofixiu/neFaRecmobile" target="_blank" rel="noopener noreferrer">Mobile <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://github.com/mofixiu/neFaRecbackend" target="_blank" rel="noopener noreferrer">Backend <i class="fab fa-github" aria-hidden="true"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="featured-project-card">
                     <button type="button" class="project-preview" data-bs-toggle="modal" data-bs-target="#hybstockadvisorModal" aria-label="Open HybStockAdvisor interactive prototype">
                         <span class="phone-prototype phone-prototype--mini" data-app="hybstock" aria-hidden="true"><img class="pp-fallback" src="screenshots/device/hybstock/sm/1.webp" alt="" loading="lazy" decoding="async"></span>
                         <span class="preview-label"><i class="fas fa-hand-pointer" aria-hidden="true"></i> Try the prototype</span>
@@ -757,6 +770,66 @@
                                     <div class="project-actions">
                                         <a class="project-link" href="https://github.com/mofixiu/alastudiemobile" target="_blank" rel="noopener noreferrer">Mobile repository <i class="fab fa-github" aria-hidden="true"></i></a>
                                         <a class="project-link" href="https://github.com/mofixiu/alastudiebackend" target="_blank" rel="noopener noreferrer">Backend repository <i class="fab fa-github" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- neFaRec Modal -->
+    <div class="modal fade" id="nefarecModal" tabindex="-1" aria-labelledby="nefarecModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="nefarecModalLabel">neFaRec - Workout Tracker</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-modal-content">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="phone-prototype" data-app="nefarec"></div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="project-info">
+                                    <h6>Project Overview</h6>
+                                    <p>Most people already have a routine, written in a note, a WhatsApp message or an AI chat. neFaRec starts there. You paste the text, check what it read on a review screen, and train it with a set table that remembers last time’s numbers. Everything is stored on the phone and works offline. An optional account backs it up to a small Node server.</p>
+
+                                    <h6>Key Features</h6>
+                                    <ul>
+                                        <li>Paste a routine as plain text; the parser reads sets, rep ranges, timed holds and rest, and highlights anything it filled in.</li>
+                                        <li>Track sets against last session’s numbers, with a rest scoreboard that counts into overtime and a hold timer for planks and wall sits.</li>
+                                        <li>Follow the rest timer on the lock screen and in the Dynamic Island with a Live Activity.</li>
+                                        <li>Review sessions as receipts, with weekly volume, muscle split and lift trend charts and a training calendar.</li>
+                                        <li>Browse 884 exercises with steps, photos and 42 looping demo videos, swap moves for your equipment, and try an on-device squat form check.</li>
+                                    </ul>
+
+                                    <h6>Technologies</h6>
+                                    <div class="tech-stack">
+                                        <span class="tech-badge">Flutter</span>
+                                        <span class="tech-badge">Dart</span>
+                                        <span class="tech-badge">Riverpod</span>
+                                        <span class="tech-badge">Drift (SQLite)</span>
+                                        <span class="tech-badge">SwiftUI Live Activities</span>
+                                        <span class="tech-badge">Apple Vision</span>
+                                        <span class="tech-badge">Node.js</span>
+                                        <span class="tech-badge">Express</span>
+                                        <span class="tech-badge">PostgreSQL</span>
+                                    </div>
+
+                                    <div class="project-stats mt-4">
+                                        <div class="stat"><strong>Year:</strong> 2026</div>
+                                        <div class="stat"><strong>Team Size:</strong> Solo project</div>
+                                        <div class="stat"><strong>Role:</strong> Product design and app development</div>
+                                    </div>
+
+                                    <div class="project-actions">
+                                        <a class="project-link" href="https://github.com/mofixiu/neFaRecmobile" target="_blank" rel="noopener noreferrer">Mobile repository <i class="fab fa-github" aria-hidden="true"></i></a>
+                                        <a class="project-link" href="https://github.com/mofixiu/neFaRecbackend" target="_blank" rel="noopener noreferrer">Backend repository <i class="fab fa-github" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
