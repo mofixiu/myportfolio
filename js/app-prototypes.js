@@ -228,8 +228,8 @@
                     { id: 'minimise', label: 'Minimise the workout', to: 'back', x: 2, y: 7.5, w: 10, h: 5 },
                     { id: 'how-to', label: 'How to', to: '10-how-to', t: 'sheet', x: 61, y: 51, w: 14, h: 4.5 },
                     { id: 'swap', label: 'Swap exercise', to: '11-swap-sheet', t: 'sheet', x: 5, y: 55.5, w: 17, h: 4 },
-                    { id: 'form-check', label: 'Form check', to: '27-form-check', x: 5, y: 59.5, w: 23, h: 4.5 },
-                    { id: 'tick', label: 'Complete set 3', to: '13-rest-countdown', t: 'fade', x: 81, y: 81.5, w: 15, h: 6.5 }
+                    { id: 'form-check', label: 'Form check', to: '27-form-check', x: 61, y: 55.5, w: 34, h: 4.5 },
+                    { id: 'tick', label: 'Complete set 3', to: '13-rest-countdown', t: 'fade', x: 81, y: 80.5, w: 15, h: 6 }
                 ]
             },
             '09b-workout-video': {
@@ -283,7 +283,7 @@
                 label: 'History',
                 hotspots: [
                     ...nefaHistory('sessions'),
-                    { id: 'session', label: 'Open Monday — Push', to: '23-session-detail', x: 5, y: 68, w: 90, h: 9.5 },
+                    { id: 'session', label: 'Open Thursday — Legs', to: '23-session-detail', x: 5, y: 45.5, w: 90, h: 9.5 },
                     ...nefaTabs('tab-history')
                 ]
             },
