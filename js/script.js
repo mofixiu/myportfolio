@@ -55,46 +55,20 @@ function initializeLoadingScreen() {
 
 // Navigation Functions
 function initializeNavigation() {
-    const navbar = document.querySelector('.navbar');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    // Navbar scroll effect
-    const updateNavbarState = () => {
-        navbar.classList.toggle('navbar-scrolled', window.scrollY > 20);
-    };
-    updateNavbarState();
-    window.addEventListener('scroll', updateNavbarState);
-
-    // Scroll snapping settles sections just below the navbar. It is measured with the
-    // phone menu closed, so opening the menu never shifts where the page settles.
-    const menu = document.getElementById('navbarNav');
-    const updateNavbarHeight = () => {
-        if (!menu.classList.contains('show')) {
-            document.documentElement.style.setProperty('--nav-h', `${navbar.offsetHeight}px`);
-        }
-    };
-    updateNavbarHeight();
-    window.addEventListener('resize', updateNavbarHeight);
-    
-    // Active nav link highlighting
-    window.addEventListener('scroll', () => {
-        let current = '';
-        const sections = document.querySelectorAll('section[id]');
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
-            }
+    // The dock underlines the section you're reading.
+    const links = [...document.querySelectorAll('.dock-link[href^="#"]')];
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const link = links.find((item) => item.hash === `#${entry.target.id}`);
+            if (!link) return;
+            link.classList.toggle('active', entry.isIntersecting);
+            if (entry.isIntersecting) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
         });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    links.forEach((link) => {
+        const section = document.querySelector(link.hash);
+        if (section) observer.observe(section);
     });
 }
 
@@ -112,11 +86,8 @@ function initializeSmoothScrolling() {
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = targetSection.offsetTop - navbarHeight;
-                
                 window.scrollTo({
-                    top: targetPosition,
+                    top: targetSection.offsetTop,
                     behavior: 'smooth'
                 });
             }
@@ -288,77 +259,82 @@ function initializeTheme() {
 }
 
 // Theme Toggle
-function initializeThemeToggle() {
-    const themeToggle = document.querySelector('#theme-toggle');
-    
-    if (themeToggle) {
-        updateThemeToggle();
-        
-        themeToggle.addEventListener('click', function() {
-            document.body.classList.toggle('light-theme');
-            updateThemeToggle();
-            
-            // Save theme preference
-            const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
-        });
-        
-        // Listen for system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (!localStorage.getItem('portfolio-theme')) {
-                if (e.matches) {
-                    document.body.classList.remove('light-theme');
-                } else {
-                    document.body.classList.add('light-theme');
-                }
-                updateThemeToggle();
-            }
-        });
+// Same as the paper kit: the new theme spreads from the toggle like an ink blot.
+function inkBlot(cx, cy, radius, phase, points = 72) {
+    const vertices = [];
+    for (let i = 0; i < points; i += 1) {
+        const angle = (i / points) * Math.PI * 2;
+        const wobble = 1 + 0.07 * Math.sin(3 * angle + phase) + 0.045 * Math.sin(7 * angle + phase * 1.7) + 0.025 * Math.sin(13 * angle - phase * 2.3);
+        const r = Math.max(0, radius * wobble);
+        vertices.push(`${(cx + r * Math.cos(angle)).toFixed(1)}px ${(cy + r * Math.sin(angle)).toFixed(1)}px`);
     }
+    return `polygon(${vertices.join(', ')})`;
 }
 
-// The toggle names the theme it switches to.
+function inkBlotFrames(cx, cy, width, height, steps = 10) {
+    const reach = Math.hypot(Math.max(cx, width - cx), Math.max(cy, height - cy)) * 1.2;
+    return Array.from({ length: steps + 1 }, (_, i) => ({ clipPath: inkBlot(cx, cy, (reach * i) / steps, (i / steps) * 2.4) }));
+}
+
+function setTheme(isLight) {
+    document.body.classList.toggle('light-theme', isLight);
+    updateThemeToggle();
+}
+
+function initializeThemeToggle() {
+    const themeToggle = document.querySelector('#theme-toggle');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!themeToggle) return;
+
+    updateThemeToggle();
+
+    themeToggle.addEventListener('click', () => {
+        const isLight = !document.body.classList.contains('light-theme');
+        const apply = () => {
+            setTheme(isLight);
+            try {
+                localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+            } catch (error) {}
+        };
+        if (!document.startViewTransition || reducedMotion.matches) {
+            apply();
+            return;
+        }
+        const dot = themeToggle.querySelector('.theme-toggle-dot').getBoundingClientRect();
+        const root = document.documentElement;
+        root.classList.add('theme-swapping');
+        const transition = document.startViewTransition(apply);
+        transition.ready.then(() => {
+            root.animate(inkBlotFrames(dot.left + dot.width / 2, dot.top + dot.height / 2, innerWidth, innerHeight), {
+                duration: 760,
+                easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
+                pseudoElement: '::view-transition-new(root)'
+            });
+        }).catch(() => {});
+        transition.finished.finally(() => root.classList.remove('theme-swapping'));
+    });
+
+    // Follow the system theme until the visitor picks one.
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('portfolio-theme')) setTheme(!e.matches);
+    });
+}
+
+// The toggle names the theme it switches to; the browser bar matches the paper.
 function updateThemeToggle() {
     const themeToggle = document.querySelector('#theme-toggle');
     const label = themeToggle?.querySelector('.theme-toggle-label');
+    const isLight = document.body.classList.contains('light-theme');
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.content = isLight ? '#f4ecde' : '#171512';
     
     if (label) {
-        const isLight = document.body.classList.contains('light-theme');
         label.textContent = isLight ? 'dark' : 'light';
         themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
     }
 }
 
 // Mobile Navigation Toggle
-function initializeMobileNav() {
-    const navbarToggler = document.querySelector('.navbar-toggler');
-    const navbarCollapse = document.querySelector('.navbar-collapse');
-
-    if (navbarToggler && navbarCollapse) {
-        // Bootstrap manages aria-expanded on its collapse trigger. Keep the
-        // accessible name in sync so screen-reader users know the next action.
-        navbarCollapse.addEventListener('show.bs.collapse', () => {
-            navbarToggler.setAttribute('aria-label', 'Close navigation menu');
-        });
-
-        navbarCollapse.addEventListener('hide.bs.collapse', () => {
-            navbarToggler.setAttribute('aria-label', 'Open navigation menu');
-        });
-
-        // Close mobile nav when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (navbarCollapse.classList.contains('show')) {
-                    navbarToggler.click();
-                }
-            });
-        });
-    }
-}
-
-// Initialize mobile nav
-document.addEventListener('DOMContentLoaded', initializeMobileNav);
 
 // Preloader for images
 function preloadImages() {

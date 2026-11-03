@@ -186,14 +186,6 @@ body:not(.light-theme) #loading-screen {
     text-transform: lowercase;
 }
 
-.navbar-brand {
-    gap: 0.45rem;
-}
-
-.navbar-brand:hover .brand-wordmark {
-    color: var(--accent-color);
-}
-
 .loading-brand .brand-wordmark {
     font-weight: 600;
 }
@@ -265,96 +257,160 @@ body:not(.light-theme) .brand-mark img {
     100% { width: 100%; }
 }
 
-/* Navigation */
-.navbar {
-    background: rgba(23, 21, 18, 0.94);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
-    padding: 1rem 0;
-    transition: all 0.3s ease;
-}
-
-.navbar.navbar-scrolled {
-    background: rgba(23, 21, 18, 0.98);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-primary) !important;
-    text-decoration: none;
-    display: flex;
+/* Section dock: a strip of the same handmade paper, floating at the bottom of the screen. */
+.site-brand {
     align-items: center;
-}
-
-.brand-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.nav-link {
-    color: var(--text-secondary) !important;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: lowercase;
-    letter-spacing: 0.5px;
-    padding: 0.5rem 1rem !important;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.nav-link:hover {
-    color: var(--primary-color) !important;
-}
-
-.nav-link::after {
-    content: '';
+    color: var(--text-primary);
+    display: flex;
+    gap: 0.45rem;
+    left: max(1.25rem, env(safe-area-inset-left));
     position: absolute;
-    bottom: 0;
+    text-decoration: none;
+    top: max(1.25rem, env(safe-area-inset-top));
+    z-index: 3;
+}
+
+.site-brand:hover .brand-wordmark {
+    color: var(--accent-color);
+}
+
+.dock {
+    align-items: center;
+    background-color: var(--surface-color);
+    background-image: linear-gradient(rgba(251, 247, 239, 0.78), rgba(251, 247, 239, 0.78)), url('../assets/handmade-paper.jpg');
+    background-size: 100% 100%, 520px auto;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    bottom: max(14px, env(safe-area-inset-bottom));
+    box-shadow: 0 16px 34px -14px rgba(33, 30, 25, 0.4), 0 2px 5px rgba(33, 30, 25, 0.08);
+    display: flex;
+    gap: 2px;
     left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--primary-color);
-    transition: all 0.3s ease;
+    max-width: calc(100% - 20px);
+    padding: 4px 6px;
+    position: fixed;
     transform: translateX(-50%);
+    z-index: 1030;
 }
 
-.nav-link:hover::after {
-    width: 80%;
+/* A strip of tape holding the paper in place. */
+.dock::before {
+    background: rgba(201, 189, 167, 0.55);
+    content: '';
+    height: 14px;
+    left: 50%;
+    position: absolute;
+    top: -8px;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 54px;
 }
 
-/* Theme toggle: lowercase text like the nav links, with a half-inked dot. */
+body:not(.light-theme) .dock {
+    background-color: #211f1b;
+    background-image: linear-gradient(rgba(33, 31, 27, 0.72), rgba(33, 31, 27, 0.72)), url('../assets/dark-handmade-paper-1040.jpg');
+    box-shadow: 0 16px 34px -14px rgba(0, 0, 0, 0.75), 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+body:not(.light-theme) .dock::before {
+    background: rgba(201, 189, 167, 0.24);
+}
+
+.dock-link {
+    align-items: center;
+    color: var(--text-secondary);
+    display: inline-flex;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    min-height: 44px;
+    padding: 0 0.7rem;
+    position: relative;
+    text-decoration: none;
+    text-transform: lowercase;
+    white-space: nowrap;
+}
+
+/* The section you're reading is underlined in ink. */
+.dock-link::after {
+    background: currentColor;
+    border-radius: 2px;
+    bottom: 9px;
+    content: '';
+    height: 2px;
+    left: 0.7rem;
+    position: absolute;
+    right: 0.7rem;
+    transform: scaleX(0) rotate(-1deg);
+    transform-origin: left center;
+    transition: transform 0.35s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.dock-link:hover,
+.dock-link.active {
+    color: var(--text-primary);
+}
+
+.dock-link.active::after {
+    transform: scaleX(1) rotate(-1deg);
+}
+
+.dock-link:focus-visible {
+    border-radius: 8px;
+    outline: 2px solid var(--primary-color);
+    outline-offset: -4px;
+}
+
+.dock-rule {
+    align-self: stretch;
+    background: var(--border-color);
+    margin: 10px 4px;
+    width: 1px;
+}
+
+@media (max-width: 767.98px) {
+    .dock-wide {
+        display: none;
+    }
+
+    .dock-link {
+        font-size: 0.8rem;
+        padding: 0 0.55rem;
+    }
+
+    .dock-link::after {
+        left: 0.55rem;
+        right: 0.55rem;
+    }
+}
+
+/* Theme toggle: names the theme it switches to, with a half-inked dot. */
 .theme-toggle {
     align-items: center;
     background: transparent;
     border: 0;
-    border-left: 1px solid var(--border-color);
     color: var(--text-secondary);
     cursor: pointer;
     display: inline-flex;
     font-family: inherit;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    gap: 0.5rem;
-    letter-spacing: 0.5px;
-    line-height: inherit;
-    margin-left: 0.75rem;
-    padding: 0.5rem 0 0.5rem 1.25rem;
+    gap: 0.45rem;
+    letter-spacing: 0.02em;
+    min-height: 44px;
+    min-width: 44px;
+    justify-content: center;
+    padding: 0 0.7rem;
     text-transform: lowercase;
-    transition: color 0.3s ease;
 }
 
 .theme-toggle:hover {
-    color: var(--primary-color);
+    color: var(--text-primary);
 }
 
 .theme-toggle:focus-visible {
-    border-radius: 4px;
+    border-radius: 8px;
     outline: 2px solid var(--primary-color);
-    outline-offset: 4px;
+    outline-offset: -4px;
 }
 
 .theme-toggle-dot {
@@ -363,16 +419,41 @@ body:not(.light-theme) .brand-mark img {
     border-radius: 50%;
     display: inline-block;
     height: 0.8rem;
+    transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
     width: 0.8rem;
 }
 
-/* In the collapsed phone menu the toggle lines up with the links. */
-@media (max-width: 991.98px) {
-    .theme-toggle {
-        border-left: 0;
-        margin-left: 0;
-        padding: 0.5rem 1rem;
+body:not(.light-theme) .theme-toggle-dot {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 767.98px) {
+    .theme-toggle-label {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
     }
+}
+
+/* The new theme spreads from the toggle like an ink blot (js/script.js drives the clip). */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+    z-index: 2;
+}
+
+html.theme-swapping *,
+html.theme-swapping *::before,
+html.theme-swapping *::after {
+    transition: none !important;
 }
 
 body.light-theme .hero-bg {
@@ -387,26 +468,6 @@ body.light-theme .code-snippet {
     color: #5f5649;
 }
 
-body.light-theme .navbar {
-    background: rgba(232, 220, 199, 0.98);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #d1c3ac;
-    box-shadow: 0 4px 16px rgba(50, 45, 38, 0.06);
-}
-
-body.light-theme .navbar.navbar-scrolled {
-    background: rgba(225, 211, 187, 0.98);
-    box-shadow: 0 6px 20px rgba(50, 45, 38, 0.12);
-}
-
-body.light-theme .nav-link {
-    color: #51483c !important;
-}
-
-body.light-theme .nav-link:hover,
-body.light-theme .nav-link.active {
-    color: var(--primary-color) !important;
-}
 
 body.light-theme .featured-project-card:hover {
     box-shadow: 0 10px 30px var(--card-hover-shadow);
@@ -605,36 +666,6 @@ body.light-theme .social-links a:hover {
     transform: translateY(-3px);
 }
 
-.scroll-indicator {
-    animation: scroll-bounce 2s infinite;
-    bottom: 1.75rem;
-    left: 50%;
-    position: absolute;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    transform: translateX(-50%);
-}
-
-.scroll-arrow {
-    margin-top: 0.3rem;
-    font-size: 1.3rem;
-}
-
-@keyframes scroll-bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-    40% { transform: translateX(-50%) translateY(-10px); }
-    60% { transform: translateX(-50%) translateY(-5px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .scroll-indicator {
-        animation: none;
-    }
-}
 
 /* The chess board has been replaced visually by a quieter, portfolio-specific companion. */
 .chess-board-container {
@@ -1543,7 +1574,8 @@ section {
 .footer {
     background: var(--surface-color);
     border-top: 1px solid var(--border-color);
-    padding: 2rem 0;
+    /* Room below the footer so the dock never covers it. */
+    padding: 2rem 0 calc(2rem + 64px + env(safe-area-inset-bottom));
 }
 
 .footer-content {
@@ -1662,11 +1694,11 @@ section {
         justify-content: center;
     }
     
-    .navbar-brand .brand-mark {
+    .site-brand .brand-mark {
         --brand-mark-size: 42px;
     }
 
-    .navbar-brand .brand-wordmark {
+    .site-brand .brand-wordmark {
         font-size: 1.3rem;
     }
     
@@ -1724,11 +1756,11 @@ section {
         height: 280px;
     }
     
-    .navbar-brand .brand-mark {
+    .site-brand .brand-mark {
         --brand-mark-size: 40px;
     }
 
-    .navbar-brand .brand-wordmark {
+    .site-brand .brand-wordmark {
         font-size: 1.2rem;
     }
     
@@ -1737,23 +1769,9 @@ section {
     }
 }
 
-/* Landscape phones have very little vertical space once the browser chrome and
-   fixed navigation are visible. Keep the introduction below the navigation
-   instead of vertically centering it underneath the bar. */
+/* Landscape phones have very little vertical space once the browser chrome is
+   visible. Keep the introduction below the logo instead of vertically centering it. */
 @media screen and (orientation: landscape) and (max-height: 600px) {
-    .navbar {
-        inset-inline: 0;
-        max-width: none;
-        padding-block: 0.65rem;
-        width: 100vw;
-    }
-
-    .navbar > .container {
-        max-width: none;
-        padding-inline: max(1.25rem, env(safe-area-inset-left)) max(1.25rem, env(safe-area-inset-right));
-        width: 100%;
-    }
-
     .hero-section,
     .hero-section > .container {
         min-height: 100svh;
@@ -1762,7 +1780,7 @@ section {
     .hero-section > .container {
         justify-content: flex-start;
         padding-bottom: 1rem;
-        padding-top: max(7.5rem, calc(env(safe-area-inset-top) + 6.5rem));
+        padding-top: max(4.5rem, calc(env(safe-area-inset-top) + 3.5rem));
     }
 
     .hero-title {
@@ -1779,7 +1797,6 @@ section {
 
     .hero-cta { margin-bottom: 0.9rem; }
     .social-links { display: none; }
-    .scroll-indicator { display: none; }
 }
 
 /* Custom Scrollbar */
@@ -1813,7 +1830,6 @@ section {
 
 /* Smooth theme transition for specific elements */
 body,
-.navbar,
 .hero-section,
 .about-section,
 .skills-section,
@@ -2606,9 +2622,8 @@ body:not(.light-theme) .modal-content {
 }
 
 /* Scroll snapping: the page settles on the start of a section or project card when you stop
-   near one, just below the fixed navbar (--nav-h is set in js/script.js). */
+   near one. */
 html {
-    scroll-padding-top: var(--nav-h, 88px);
     scroll-snap-type: y proximity;
 }
 

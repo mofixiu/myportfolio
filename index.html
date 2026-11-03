@@ -123,49 +123,27 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#home" aria-label="Mofixiu home">
-                <span class="brand-mark" aria-hidden="true"><img src="mofixiu-transparent.png" alt=""></span>
-                <span class="brand-wordmark">mofixiu</span>
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Open navigation menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">about me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#experience">experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://cv.mofiyinebo.com">cv</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://kit.mofiyinebo.com">paper kit</a>
-                    </li>
-                    <li class="nav-item">
-                        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">
-                            <span class="theme-toggle-dot" aria-hidden="true"></span><span class="theme-toggle-label">dark</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <!-- Section dock: a paper strip at the bottom of the screen, in reach on phones -->
+    <nav class="dock" aria-label="Sections">
+        <a class="dock-link" href="#about">about</a>
+        <a class="dock-link" href="#projects">projects</a>
+        <a class="dock-link" href="#experience">experience</a>
+        <a class="dock-link" href="#contact">contact</a>
+        <span class="dock-rule dock-wide" aria-hidden="true"></span>
+        <a class="dock-link dock-wide" href="https://cv.mofiyinebo.com">cv</a>
+        <a class="dock-link dock-wide" href="https://kit.mofiyinebo.com">paper kit</a>
+        <span class="dock-rule" aria-hidden="true"></span>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">
+            <span class="theme-toggle-dot" aria-hidden="true"></span><span class="theme-toggle-label">dark</span>
+        </button>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
+        <a class="site-brand" href="#home" aria-label="mofixiu, back to the top">
+            <span class="brand-mark" aria-hidden="true"><img src="mofixiu-transparent.png" alt=""></span>
+            <span class="brand-wordmark">mofixiu</span>
+        </a>
         <div class="hero-bg">
             <div class="code-snippet code-snippet-left">
                 <pre><code>Widget build(BuildContext context) {
@@ -339,10 +317,6 @@
                 </div>
             </div>
             
-            <div class="scroll-indicator">
-                <span>scroll</span>
-                <div class="scroll-arrow">↓</div>
-            </div>
         </div>
     </section>
 
