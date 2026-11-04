@@ -37,6 +37,18 @@
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
+    // Resolves once a screenshot has loaded and decoded, or failed. Waiting on decode()
+    // alone isn't enough: Safari can settle it before the image has arrived.
+    function imageReady(img) {
+        const loaded = img.complete && img.naturalWidth
+            ? Promise.resolve()
+            : new Promise((resolve) => {
+                img.addEventListener('load', resolve, { once: true });
+                img.addEventListener('error', resolve, { once: true });
+            });
+        return loaded.then(() => img.decode().catch(() => {}));
+    }
+
     // Card previews sit inside <button>/<a> elements, so they are built from spans.
     function buildDevice(app, inline) {
         const box = inline ? 'span' : 'div';
@@ -152,14 +164,28 @@
         open() {
             if (!this.loaded) {
                 this.loaded = true;
-                Object.keys(this.app.screens).forEach((id) => {
-                    const image = new Image();
-                    image.decoding = 'async';
-                    image.src = screenSrc(this.app, id);
-                });
+                this.loadInOrder();
             }
             this.stopDemo();
             this.reset();
+        }
+
+        // Screens download two at a time, the first screen and the demo's path first,
+        // so the screen being shown never waits behind every other screenshot.
+        loadInOrder() {
+            const queue = [...new Set([this.app.start, ...this.chipIds(), ...Object.keys(this.app.screens)])]
+                .filter((id) => this.app.screens[id]);
+            const next = () => {
+                const id = queue.shift();
+                if (!id) return;
+                const image = new Image();
+                image.decoding = 'async';
+                image.onload = next;
+                image.onerror = next;
+                image.src = screenSrc(this.app, id, this.mini);
+            };
+            next();
+            next();
         }
 
         reset(start = this.app.start) {
@@ -311,8 +337,15 @@
             this.renderChrome();
 
             // Hold the old screen until the new screenshot can paint, so the phone never flashes black.
+            // The first screen stands in with its small card version, usually already cached.
             this.busy = true;
-            await to.querySelector('.pp-shot').decode().catch(() => {});
+            const shot = to.querySelector('.pp-shot');
+            if (!from && !this.mini && !(shot.complete && shot.naturalWidth)) {
+                const standIn = make('div', 'pp-layer');
+                standIn.append(make('img', 'pp-shot', { src: screenSrc(this.app, id, true), alt: '', draggable: 'false' }));
+                this.stage.replaceChildren(standIn);
+            }
+            await imageReady(shot);
             if (!this.current || this.current.layer !== to) return;
 
             if (!from || reducedMotion.matches) {
@@ -523,7 +556,7 @@
         const nearby = new IntersectionObserver((entries) => {
             if (!entries.some((entry) => entry.isIntersecting)) return;
             nearby.disconnect();
-            Object.keys(app.screens).forEach((id) => preview.preload(id));
+            preview.loadInOrder();
         }, { rootMargin: '400px 0px' });
         nearby.observe(root);
 
