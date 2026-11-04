@@ -248,8 +248,9 @@ document.addEventListener('DOMContentLoaded', initializeParallax);
 
 // Theme Management
 function initializeTheme() {
-    // Load saved theme preference
-    const savedTheme = localStorage.getItem('portfolio-theme');
+    // A theme picked on any mofiyinebo.com site (a shared cookie) wins; then this site's own choice.
+    const shared = document.cookie.match(/(?:^|; )mofixiu-theme=(light|dark)/);
+    const savedTheme = shared ? shared[1] : localStorage.getItem('portfolio-theme');
     // Use the cream light theme by default; retain a visitor's explicit choice.
     if (savedTheme !== 'dark') {
         document.body.classList.add('light-theme');
@@ -295,6 +296,10 @@ function initializeThemeToggle() {
             try {
                 localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
             } catch (error) {}
+            // Shared with the CV, the paper kit and the other subdomains.
+            const domain = /(^|\.)mofiyinebo\.com$/.test(location.hostname) ? '; domain=mofiyinebo.com' : '';
+            const secure = location.protocol === 'https:' ? '; secure' : '';
+            document.cookie = `mofixiu-theme=${isLight ? 'light' : 'dark'}; path=/; max-age=31536000; samesite=lax${domain}${secure}`;
         };
         if (!document.startViewTransition || reducedMotion.matches) {
             apply();
