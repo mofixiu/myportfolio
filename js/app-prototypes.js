@@ -163,7 +163,7 @@
         base: 'screenshots/device/nefarec/',
         island: true,
         start: '01-today',
-        chips: ['01-today', '02-paste', '04-review', '06-routines', '09-workout', '09b-workout-video', '13-rest-countdown', '14-rest-overtime', '15-hold-timer', '17-summary-receipt', '18-history-sessions', '19-history-progress', '21-history-calendar', '24-library', '25b-exercise-detail-video', '27-form-check', '28-settings'],
+        chips: ['01-today', '02-paste', '04-review', '06-routines', '09-workout', '09c-exercise-options', '09b-workout-video', '13-rest-countdown', '14-rest-overtime', '15-hold-timer', '17-summary-receipt', '18-history-sessions', '19-history-progress', '21-history-calendar', '24-library', '25b-exercise-detail-video', '27-form-check', '28-settings'],
         screens: {
             '01-today': {
                 label: 'Today',
@@ -226,10 +226,18 @@
                 label: 'Workout', back: '01-today',
                 hotspots: [
                     { id: 'minimise', label: 'Minimise the workout', to: 'back', x: 2, y: 7.5, w: 10, h: 5 },
-                    { id: 'how-to', label: 'How to', to: '10-how-to', t: 'sheet', x: 61, y: 51, w: 14, h: 4.5 },
-                    { id: 'swap', label: 'Swap exercise', to: '11-swap-sheet', t: 'sheet', x: 5, y: 55.5, w: 17, h: 4 },
-                    { id: 'form-check', label: 'Form check', to: '27-form-check', x: 61, y: 55.5, w: 34, h: 4.5 },
-                    { id: 'tick', label: 'Complete set 3', to: '13-rest-countdown', t: 'fade', x: 81, y: 80.5, w: 15, h: 6 }
+                    { id: 'options', label: 'Exercise options', to: '09c-exercise-options', t: 'sheet', x: 84, y: 41, w: 12, h: 6 },
+                    { id: 'tick', label: 'Complete set 3', to: '13-rest-countdown', t: 'fade', x: 81, y: 79, w: 15, h: 6 }
+                ]
+            },
+            '09c-exercise-options': {
+                label: 'Exercise options', sheetTop: 48, back: '09-workout',
+                hotspots: [
+                    { id: 'scrim', label: 'Close', to: 'back', x: 0, y: 0, w: 100, h: 47 },
+                    { id: 'close-options', label: 'Close', to: 'back', x: 84, y: 50.5, w: 12, h: 6 },
+                    { id: 'how-to', label: 'How to do it', to: '10-how-to', t: 'sheet', x: 5, y: 59.5, w: 90, h: 6.5 },
+                    { id: 'swap', label: 'Swap exercise', to: '11-swap-sheet', t: 'sheet', x: 5, y: 67, w: 90, h: 6.5 },
+                    { id: 'form-check', label: 'Form check', to: '27-form-check', x: 5, y: 81.5, w: 90, h: 6.5 }
                 ]
             },
             '09b-workout-video': {
@@ -291,8 +299,7 @@
             '21-history-calendar': {
                 label: 'Calendar',
                 hotspots: [
-                    { id: 'sessions', label: 'Sessions', to: '18-history-sessions', t: 'tab', x: 5, y: 5, w: 28, h: 5 },
-                    { id: 'progress', label: 'Progress', to: '19-history-progress', t: 'tab', x: 33, y: 5, w: 29, h: 5 },
+                    ...nefaHistory('calendar'),
                     ...nefaTabs('tab-history')
                 ]
             },
@@ -315,7 +322,7 @@
             },
             '29-account-profile': { label: 'Profile', back: '28-settings', hotspots: [nefaBack] }
         },
-        demo: ['resume', 'how-to', 'close', 'tick', 'wait', 'next-set', 'skip', 'stop', 'done', 'progress', 'calendar', 'tab-library', 'exercise'],
+        demo: ['resume', 'options', 'how-to', 'close', 'close-options', 'tick', 'wait', 'next-set', 'skip', 'stop', 'done', 'progress', 'calendar', 'tab-library', 'exercise'],
         preview: ['01-today', '09b-workout-video', '14-rest-overtime', '19-history-progress']
     };
 
