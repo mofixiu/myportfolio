@@ -1425,6 +1425,21 @@ section {
     color: var(--primary-color);
 }
 
+/* Inline links in case-study text, in the theme's ink rather than Bootstrap blue. */
+.modal-body p a {
+    color: var(--text-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.modal-body p a:hover,
+.modal-body p a:focus-visible {
+    color: var(--primary-color);
+    text-decoration-thickness: 2px;
+}
+
 .project-links {
     display: flex;
     gap: 1rem;
@@ -1509,7 +1524,7 @@ section {
 
 .compact-project {
     align-items: center;
-    background: rgba(255, 255, 255, 0.28);
+    background: var(--surface-color);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     display: flex;

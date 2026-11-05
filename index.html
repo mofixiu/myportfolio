@@ -160,11 +160,11 @@
 }</code></pre>
             </div>
             <div class="code-snippet">
-                <pre><code>Future&lt;Map?&gt; saveCategory(String developerName, int userId) async {
+                <pre><code>Future&lt;Map?&gt; saveDeveloper(int userId, {String developerName = 'Mofiyin Ebo'}) async {
   try {
-    final response = await post('/categories', {
+    final response = await post('/developers', {
       'user_id': userId,
-      'developerName': MofiyinEbo,
+      'developer_name': developerName,
     });
     
     if (response != null) {
@@ -393,7 +393,7 @@
                         <div class="project-header"><h3>neFaRec</h3><span class="project-duration">Nov 2026</span></div>
                         <p class="project-description">A workout tracker that starts from the routine you already have. Paste it from a note or a chat, check what was read, then train it with a set table, rest and hold timers, and a Live Activity on the lock screen.</p>
                         <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span><span class="tech-badge">Drift</span><span class="tech-badge">Live Activities</span><span class="tech-badge">Vision</span><span class="tech-badge">Node.js</span><span class="tech-badge">PostgreSQL</span></div>
-                        <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#nefarecModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button><a class="project-link" href="https://github.com/mofixiu/neFaRecmobile" target="_blank" rel="noopener noreferrer">Mobile <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://github.com/mofixiu/neFaRecbackend" target="_blank" rel="noopener noreferrer">Backend <i class="fab fa-github" aria-hidden="true"></i></a></div>
+                        <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#nefarecModal">Read case study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></button><a class="project-link" href="https://github.com/mofixiu/neFaRecmobile" target="_blank" rel="noopener noreferrer">Mobile <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://github.com/mofixiu/neFaRecbackend" target="_blank" rel="noopener noreferrer">Backend <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://pub.dev/packages/workout_parser" target="_blank" rel="noopener noreferrer">Parser on pub.dev <i class="fas fa-box-open" aria-hidden="true"></i></a></div>
                     </div>
                 </article>
 
@@ -793,6 +793,9 @@
                                         <li>Browse 884 exercises with steps, photos and 42 looping demo videos, swap moves for your equipment, and try an on-device squat form check.</li>
                                     </ul>
 
+                                    <h6>Open source</h6>
+                                    <p>I published the routine parser as <a href="https://pub.dev/packages/workout_parser" target="_blank" rel="noopener noreferrer">workout_parser</a> on pub.dev, a pure Dart package any Flutter or Dart app can use. It reads days, sets, reps, holds, rest, weight, tempo and supersets, matches names against 884 exercises, and marks every value it filled in. It reads all 39 test routines with every checked field right, and a typical routine parses in about 10 ms.</p>
+
                                     <h6>Technologies</h6>
                                     <div class="tech-stack">
                                         <span class="tech-badge">Flutter</span>
@@ -815,6 +818,7 @@
                                     <div class="project-actions">
                                         <a class="project-link" href="https://github.com/mofixiu/neFaRecmobile" target="_blank" rel="noopener noreferrer">Mobile repository <i class="fab fa-github" aria-hidden="true"></i></a>
                                         <a class="project-link" href="https://github.com/mofixiu/neFaRecbackend" target="_blank" rel="noopener noreferrer">Backend repository <i class="fab fa-github" aria-hidden="true"></i></a>
+                                        <a class="project-link" href="https://pub.dev/packages/workout_parser" target="_blank" rel="noopener noreferrer">workout_parser on pub.dev <i class="fas fa-box-open" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
