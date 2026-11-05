@@ -457,6 +457,19 @@ function initializeLadybug() {
 
 document.addEventListener('DOMContentLoaded', initializeLadybug);
 
+// Cut-out letters are laid down one by one, like the paper kit's.
+function initializeCutouts() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('.hv-cut .cutout').forEach((letter, index) => {
+        letter.animate(
+            [{ transform: `translateY(-0.18em) rotate(${index % 2 ? 4 : -3}deg)`, opacity: 0 }, { transform: 'none', opacity: 1 }],
+            { duration: 520, delay: 300 + index * 45, easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)', fill: 'backwards' }
+        );
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initializeCutouts);
+
 // Error handling for missing images
 function handleImageErrors() {
     const images = document.querySelectorAll('img');

@@ -190,6 +190,11 @@
 
         reset(start = this.app.start) {
             this.stage.getAnimations({ subtree: true }).forEach((animation) => animation.cancel());
+            // Clear any screen left half-way through a transition, so nothing ever stacks.
+            const settled = this.current && this.current.layer;
+            this.stage.querySelectorAll('.pp-layer').forEach((layer) => {
+                if (layer !== settled) layer.remove();
+            });
             this.busy = false;
             this.current = null;
             this.cursorPos = null;
