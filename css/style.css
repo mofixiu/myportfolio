@@ -892,20 +892,14 @@ section {
     display: inline-block;
 }
 
-/* A strip of tape under each heading, like the one holding the dock. */
 .section-header h2::before {
     content: '';
     position: absolute;
-    bottom: -16px;
-    left: -4px;
-    width: 64px;
-    height: 14px;
-    background: rgba(201, 189, 167, 0.55);
-    transform: rotate(-2deg);
-}
-
-body:not(.light-theme) .section-header h2::before {
-    background: rgba(201, 189, 167, 0.24);
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--gradient-primary);
 }
 
 /* About Section */
@@ -2784,20 +2778,31 @@ body > section {
 }
 
 
-/* Tape, as on the dock and the paper kit. */
+/* Washi tape: yellow with paler dots, like a slice of cheese, and torn zig-zag ends. */
 .hv-tape {
-    background: repeating-linear-gradient(135deg, transparent 0 6px, rgba(255, 255, 255, 0.22) 6px 9px), rgba(201, 189, 167, 0.62);
-    height: 22px;
+    --tape-tear: polygon(0 0, 100% 0, 96% 16%, 100% 33%, 96% 50%, 100% 67%, 96% 84%, 100% 100%, 0 100%, 4% 84%, 0 67%, 4% 50%, 0 33%, 4% 16%);
+    background:
+        radial-gradient(circle at 22% 38%, #ffd76e 0 4px, transparent 4.5px),
+        radial-gradient(circle at 58% 70%, #ffd76e 0 6px, transparent 6.5px),
+        radial-gradient(circle at 84% 28%, #ffd76e 0 3.5px, transparent 4px),
+        radial-gradient(circle at 40% 18%, #ffd76e 0 2.5px, transparent 3px),
+        radial-gradient(circle at 74% 92%, #ffd76e 0 3px, transparent 3.5px),
+        #f3c54e;
+    background-size: 64px 100%;
+    box-shadow: 0 2px 4px rgba(40, 26, 14, 0.12);
+    clip-path: var(--tape-tear);
+    height: 24px;
     left: 50%;
+    opacity: 0.92;
     position: absolute;
-    top: -11px;
+    top: -12px;
     transform: translateX(-50%) rotate(-4deg);
-    width: 76px;
+    width: 84px;
     z-index: 4;
 }
 
 body:not(.light-theme) .hv-tape {
-    background: repeating-linear-gradient(135deg, transparent 0 6px, rgba(255, 255, 255, 0.08) 6px 9px), rgba(201, 189, 167, 0.28);
+    opacity: 0.78;
 }
 
 /* A: the work beside the name. */
@@ -2923,7 +2928,21 @@ body:not(.light-theme) .hv-note {
 
     .hero-main {
         grid-template-columns: minmax(0, 1fr);
-        padding: 5rem 0 7rem;
+        padding: 4.2rem 0 7rem;
+    }
+
+    .hero-main .hv-sheet {
+        padding-top: 2.2rem;
+    }
+
+    .hero-main .hv-kicker {
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+    }
+
+    .hero-main .hv-lede {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .hv-phone .phone-prototype--mini {
