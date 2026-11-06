@@ -1,6 +1,7 @@
 {
   "name": "Mofiyinfoluwa Ebo - Portfolio",
   "short_name": "Mofiyin Ebo",
+  "description": "Mofiyinfoluwa Ebo, Head of Product and Mobile App Development Lead at Haze Couture, and a Flutter developer in Nigeria.",
   "icons": [
     {
       "src": "web-app-manifest-192x192.png?v=20261010-dark-icon",
@@ -15,7 +16,7 @@
       "purpose": "any"
     }
   ],
-  "theme_color": "#1e3a8a",
-  "background_color": "#000000",
+  "theme_color": "#171512",
+  "background_color": "#171512",
   "display": "standalone"
 }
