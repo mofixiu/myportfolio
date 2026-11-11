@@ -2695,27 +2695,13 @@ body:not(.light-theme) .modal-content {
     }
 }
 
-/* Scroll snapping: the page settles on the start of a section or project card when you stop
-   near one. */
-html {
-    scroll-snap-type: y proximity;
-}
-
-body > section {
-    scroll-snap-align: start;
-}
-
+/* No scroll snapping: the page is for reading, and snapping moved it after people stopped.
+   Jumps from the dock still land with a little room above the card. */
 .flagship-project,
 .featured-projects > article,
 .more-work,
 .experience-item {
     scroll-margin-top: 1.25rem;
-    scroll-snap-align: start;
-}
-
-/* The bottom of the page is a resting point too, so a swipe down to the footer stays there. */
-.footer {
-    scroll-snap-align: end;
 }
 
 /* Hero: a taped sheet with the name in paper cut-outs, beside the Haze Couture phone. */
