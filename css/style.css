@@ -2992,3 +2992,17 @@ body:not(.light-theme) .hv-note {
         right: auto;
     }
 }
+
+/* Project cards open their case study from anywhere on the card (js/script.js). */
+.is-openable {
+    cursor: pointer;
+}
+
+.compact-project.is-openable {
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.compact-project.is-openable:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}

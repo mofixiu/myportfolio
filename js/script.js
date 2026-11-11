@@ -558,3 +558,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// A project card opens its case study wherever you click it, not only on "Read case study".
+// Its own links and buttons still do their own thing, and selecting text never opens anything.
+function initializeCardCaseStudies() {
+    document.querySelectorAll('.featured-project-card, .compact-project').forEach(function(card) {
+        const opener = card.querySelector('.project-link[data-bs-toggle="modal"]') || card.querySelector('[data-bs-toggle="modal"]');
+        if (!opener) return;
+        card.classList.add('is-openable');
+        card.addEventListener('click', function(event) {
+            if (event.target.closest('a, button, input, select, textarea, summary, label')) return;
+            if (String(window.getSelection()).trim()) return;
+            opener.click();
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initializeCardCaseStudies);
