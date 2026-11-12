@@ -401,6 +401,12 @@ document.addEventListener('DOMContentLoaded', initializeAccessibility);
 // Keep keyboard focus in a predictable place when project dialogs open and close.
 function initializeModalFocus() {
     const modalTriggers = new WeakMap();
+    let openedByKeyboard = false;
+
+    // Bootstrap already moves focus into the dialog itself. Keyboard users also get it on the
+    // close button; after a tap or click, focusing it would only draw a focus ring on it.
+    document.addEventListener('keydown', () => { openedByKeyboard = true; }, true);
+    document.addEventListener('pointerdown', () => { openedByKeyboard = false; }, true);
 
     document.addEventListener('show.bs.modal', function(event) {
         if (event.relatedTarget instanceof HTMLElement) {
@@ -409,7 +415,7 @@ function initializeModalFocus() {
     });
 
     document.addEventListener('shown.bs.modal', function(event) {
-        event.target.querySelector('.btn-close')?.focus();
+        if (openedByKeyboard) event.target.querySelector('.btn-close')?.focus();
     });
 
     document.addEventListener('hidden.bs.modal', function(event) {
@@ -521,42 +527,10 @@ function initializeEscapeKey() {
     });
 }
 
-// Add mobile touch indicator for modals
-function addMobileModalIndicator() {
-    const modals = document.querySelectorAll('.modal');
-    
-    modals.forEach(modal => {
-        const modalContent = modal.querySelector('.modal-content');
-        if (modalContent && window.innerWidth <= 768) {
-            // Add swipe indicator at the top of modal
-            const existingIndicator = modalContent.querySelector('.mobile-modal-indicator');
-            if (!existingIndicator) {
-                const indicator = document.createElement('div');
-                indicator.className = 'mobile-modal-indicator';
-                indicator.innerHTML = '<div class="swipe-bar"></div>';
-                
-                modalContent.insertBefore(indicator, modalContent.firstChild);
-            }
-        }
-    });
-}
-
 // Initialize all mobile modal features
 document.addEventListener('DOMContentLoaded', function() {
     initializeMobileModalClose();
     initializeEscapeKey();
-    
-    // Check if on mobile and add indicators
-    if (window.innerWidth <= 768) {
-        addMobileModalIndicator();
-    }
-    
-    // Re-initialize on window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth <= 768) {
-            addMobileModalIndicator();
-        }
-    });
 });
 
 // A project card opens its case study wherever you click it, not only on "Read case study".

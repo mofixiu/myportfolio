@@ -13,6 +13,12 @@
     --gradient-secondary: #c9bda7;
     --code-bg: rgba(33, 31, 27, 0.88);
     --card-hover-shadow: rgba(var(--primary-rgb), 0.12);
+    /* Liquid glass: a see-through tint over a blur, a bright top edge and a soft drop shadow. */
+    --glass-tint: rgba(33, 31, 27, 0.6);
+    --glass-tint-hover: rgba(58, 54, 48, 0.72);
+    --glass-edge: rgba(255, 255, 255, 0.14);
+    --glass-highlight: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
 /* Light Theme Variables */
@@ -30,6 +36,11 @@ body.light-theme {
     --gradient-secondary: #8e7d67;
     --code-bg: rgba(251, 247, 239, 0.88);
     --card-hover-shadow: rgba(var(--primary-rgb), 0.12);
+    --glass-tint: rgba(251, 247, 239, 0.62);
+    --glass-tint-hover: rgba(255, 255, 255, 0.9);
+    --glass-edge: rgba(255, 255, 255, 0.75);
+    --glass-highlight: rgba(255, 255, 255, 0.95);
+    --glass-shadow: 0 6px 18px rgba(60, 45, 25, 0.13);
     background-color: #f4ecde;
     background-image: url('../assets/handmade-paper.jpg');
     background-repeat: repeat;
@@ -1927,10 +1938,30 @@ body,
     border-radius: 12px;
 }
 
+/* The case-study header is a pane of glass that stays put while the text scrolls under it.
+   Its blur fades out below the header instead of ending on a divider line. */
 .modal-header {
-    background-color: var(--surface-color);
-    border-bottom: 1px solid var(--border-color);
+    background: transparent;
+    border-bottom: 0;
+    isolation: isolate;
     padding: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
+.modal-header::before {
+    -webkit-backdrop-filter: blur(18px) saturate(1.6);
+    backdrop-filter: blur(18px) saturate(1.6);
+    background: var(--glass-tint);
+    border-radius: inherit;
+    content: '';
+    inset: 0 0 -1rem;
+    -webkit-mask-image: linear-gradient(#000 calc(100% - 1.6rem), transparent);
+    mask-image: linear-gradient(#000 calc(100% - 1.6rem), transparent);
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
 }
 
 .modal-header .modal-title {
@@ -1939,21 +1970,29 @@ body,
     font-size: 1.25rem;
 }
 
-.btn-close {
+/* A round glass button. Bootstrap pads the header's close button, so that padding is reset here. */
+.btn-close,
+.modal-header .btn-close {
     background: transparent !important;
     background-image: none !important;
-    border: 1px solid var(--border-color);
+    background-color: var(--glass-tint) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(1.8);
+    backdrop-filter: blur(12px) saturate(1.8);
+    border: 1px solid var(--glass-edge);
+    border-radius: 50%;
+    box-shadow: inset 0 1px 0 var(--glass-highlight), var(--glass-shadow);
+    box-sizing: border-box;
     color: var(--text-primary);
-    flex: 0 0 44px;
-    height: 44px;
+    flex: 0 0 40px;
+    height: 40px;
+    margin: 0 0 0 auto;
     opacity: 1;
     padding: 0;
-    width: 44px;
+    width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 /* The themed close button intentionally replaces Bootstrap's background SVG. */
@@ -1965,8 +2004,12 @@ body,
 }
 
 .btn-close:hover {
-    background-color: var(--border-color) !important;
+    background-color: var(--glass-tint-hover) !important;
     color: var(--text-primary);
+}
+
+.btn-close:active {
+    transform: scale(0.94);
 }
 
 .btn-close:focus-visible {
@@ -1975,7 +2018,7 @@ body,
 }
 
 .btn-close:focus {
-    box-shadow: 0 0 0 0.25rem rgba(var(--primary-rgb), 0.22);
+    box-shadow: inset 0 1px 0 var(--glass-highlight), var(--glass-shadow);
 }
 
 .modal-body {
@@ -2419,30 +2462,6 @@ body,
     }
 }
 
-/* Case-study month-by-month timeline. */
-.build-timeline {
-    list-style: none;
-    margin: 0 0 0.75rem;
-    padding: 0;
-}
-
-.project-info .build-timeline li {
-    display: grid;
-    gap: 0.75rem;
-    grid-template-columns: 3.6rem minmax(0, 1fr);
-    margin: 0;
-    padding: 0.3rem 0;
-}
-
-.build-timeline li + li {
-    border-top: 1px dashed var(--border-color);
-}
-
-.build-timeline span {
-    color: var(--text-primary);
-    font-weight: 700;
-}
-
 .project-info {
     padding-left: 1rem;
 }
@@ -2560,80 +2579,9 @@ body,
     }
 }
 
-/* Modal Responsive Design */
-@media (max-width: 768px) {
-    .modal-dialog {
-        margin: 0.5rem;
-    }
-    
-    .modal-body {
-        padding: 1rem;
-    }
-    
-    .project-info {
-        padding-left: 0;
-        margin-top: 1.5rem;
-    }
-    
-    .modal .phone-prototype {
-        --pp-w: min(62vw, 240px);
-    }
-    
-    /* Enhanced mobile close button */
-    .btn-close {
-        font-size: 1.5rem;
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--surface-color);
-        border: 2px solid var(--border-color);
-        border-radius: 50%;
-        color: var(--text-primary);
-        opacity: 1;
-        position: relative;
-        z-index: 1050;
-    }
-    
-    .btn-close:hover,
-    .btn-close:focus-visible {
-        background-color: var(--primary-color) !important;
-        color: var(--background-color);
-        border-color: var(--primary-color);
-        transform: scale(1.1);
-        transition: all 0.2s ease;
-    }
-    
-    /* Mobile modal swipe indicator */
-    .mobile-modal-indicator {
-        position: sticky;
-        top: 0;
-        z-index: 1050;
-        padding: 8px 0;
-        display: flex;
-        justify-content: center;
-        background-color: var(--surface-color);
-    }
-    
-    .swipe-bar {
-        width: 40px;
-        height: 4px;
-        background-color: var(--border-color);
-        border-radius: 2px;
-        opacity: 0.7;
-    }
-    
-    /* Adjust modal header padding for mobile */
-    .modal-header {
-        padding: 1rem 1.5rem 1rem 1rem;
-        position: relative;
-    }
-    
-    .modal-title {
-        padding-right: 50px; /* Space for close button */
-        font-size: 1.1rem;
-    }
+/* On wider screens the title and subtitle share a line: "neFaRec – Workout Tracker". */
+.modal-subtitle::before {
+    content: '– ';
 }
 
 /* Modal Animation */
@@ -2644,6 +2592,116 @@ body,
 
 .modal.show .modal-dialog {
     transform: scale(1);
+}
+
+/* Phones: a case study fills the screen and scrolls under the glass header,
+   so the close button is always in reach. */
+@media (max-width: 768px) {
+    /* The sheet scrolls instead; this stops it briefly adding a scrollbar as it rises. */
+    .modal {
+        overflow: hidden;
+    }
+
+    .modal-dialog {
+        height: 100%;
+        margin: 0;
+        max-width: none;
+        width: 100%;
+    }
+
+    .modal-content {
+        border: 0;
+        border-radius: 0;
+        height: 100%;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+
+    .modal-header {
+        border-radius: 0;
+        flex-shrink: 0;
+        gap: 0.75rem;
+        padding: 0.7rem 0.75rem 0.7rem 1rem;
+    }
+
+    .modal-header .modal-title {
+        font-size: 1.1rem;
+        line-height: 1.25;
+    }
+
+    .modal-subtitle {
+        color: var(--text-secondary);
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 400;
+        margin-top: 0.1rem;
+    }
+
+    .modal-subtitle::before {
+        content: none;
+    }
+
+    .modal-body {
+        flex: none;
+        padding: 1.25rem 1rem 2rem;
+    }
+
+    .project-info {
+        padding-left: 0;
+        margin-top: 1.5rem;
+    }
+
+    .modal .phone-prototype {
+        --pp-w: min(62vw, 240px);
+    }
+
+    /* A full-size touch target on phones. */
+    .modal-header .btn-close {
+        flex-basis: 44px;
+        height: 44px;
+        width: 44px;
+    }
+
+    /* Rises into place like a sheet instead of zooming. */
+    .modal.fade .modal-dialog {
+        transform: translateY(1.5rem);
+    }
+
+    .modal.show .modal-dialog {
+        transform: none;
+    }
+
+    /* Screen chips sit in one row that scrolls sideways, with soft edges to show there's more. */
+    .modal .pp-chips {
+        -webkit-mask-image: linear-gradient(90deg, transparent, #000 1rem, #000 calc(100% - 1rem), transparent);
+        mask-image: linear-gradient(90deg, transparent, #000 1rem, #000 calc(100% - 1rem), transparent);
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        max-width: none;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        padding: 3px 1rem;
+        scrollbar-width: none;
+        width: calc(100% + 2rem);
+    }
+
+    .modal .pp-chips::-webkit-scrollbar {
+        display: none;
+    }
+
+    .modal .pp-chip {
+        flex: none;
+        white-space: nowrap;
+    }
+
+    /* Centred when they all fit; these margins collapse to nothing once the row scrolls. */
+    .modal .pp-chip:first-child {
+        margin-left: auto;
+    }
+
+    .modal .pp-chip:last-child {
+        margin-right: auto;
+    }
 }
 
 /* Dark theme modal adjustments */

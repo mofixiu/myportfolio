@@ -240,6 +240,18 @@
             this.chips.querySelectorAll('.pp-chip').forEach((chip) => {
                 chip.setAttribute('aria-pressed', String(chip.dataset.screen === id));
             });
+            this.revealChip(this.chips.querySelector(`[data-screen="${id}"]`));
+        }
+
+        // On phones the chips are one row that scrolls sideways; keep the current one in view.
+        // Only the row scrolls, never the page around it.
+        revealChip(chip) {
+            const row = this.chips;
+            if (!chip || row.scrollWidth <= row.clientWidth) return;
+            const rowBox = row.getBoundingClientRect();
+            const chipBox = chip.getBoundingClientRect();
+            const offset = chipBox.left + chipBox.width / 2 - (rowBox.left + rowBox.width / 2);
+            row.scrollBy({ left: offset, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
         }
 
         setPersona(id) {
