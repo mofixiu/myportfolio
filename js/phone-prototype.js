@@ -147,8 +147,10 @@
 
             root.append(device, this.caption, this.chips, actions);
 
-            // Any real input hands control back to the visitor.
-            root.addEventListener('pointerdown', (event) => {
+            // A tap or click hands control back to the visitor. It's caught on pointerup: a thumb
+            // that lands on the phone to scroll the case study ends in pointercancel instead, so
+            // scrolling past the prototype doesn't stop the demo.
+            root.addEventListener('pointerup', (event) => {
                 if (!event.target.closest('.pp-replay')) this.stopDemo();
             });
             root.addEventListener('keydown', (event) => {
@@ -494,6 +496,12 @@
             this.cursor.classList.remove('is-pressing');
         }
 
+        // Resolves once the screen on show has loaded and finished animating in. Taps made
+        // while a screenshot is still downloading are ignored, so the demo waits here first.
+        async whenSettled(alive) {
+            while (this.busy && alive()) await pause(80);
+        }
+
         async playDemo() {
             if (!this.app.demo) return;
             this.stopDemo();
@@ -502,9 +510,11 @@
             this.demo = token;
             this.root.classList.add('is-demo');
             this.reset();
+            await this.whenSettled(alive);
             await pause(1100);
 
             for (const step of this.app.demo) {
+                await this.whenSettled(alive);
                 if (!alive()) return;
                 if (typeof step === 'object' && step.persona) {
                     this.preload(this.app.personas.find((item) => item.id === step.persona).start);
