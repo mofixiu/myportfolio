@@ -853,7 +853,7 @@
                             <div class="col-md-7">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
-                                    <p>A productivity planner built for anime fans. Tasks live on a custom calendar, recurring tasks can be set up by typing them in plain English, and reminders, a daily streak and badges keep you on track. An assistant reads your own tasks and suggests times for what you want to fit in; nothing is added until you tap Add.</p>
+                                    <p>A productivity planner built for anime fans. Tasks live on a custom calendar, recurring tasks can be set up by typing them in plain English, and reminders, a daily streak and badges keep you on track. A planning assistant finds time in your week for whatever you want to fit in.</p>
                                     
                                     <h6>Key Features</h6>
                                     <ul>
@@ -864,11 +864,12 @@
                                         <li>Reminders five minutes before a task and when it is due</li>
                                         <li>A daily quote and a dashboard of today’s tasks by time of day</li>
                                         <li>Badges with levels, filters and progress, and a daily streak</li>
-                                        <li>An assistant that reads your tasks and suggests times, using the Gemini API</li>
-
-
+                                        <li>A planning assistant that suggests tasks you add with one tap</li>
                                     </ul>
-                                    
+
+                                    <h6>The planning assistant</h6>
+                                    <p>Added in November 2026. Ask it something like “Fit two episodes in this week”. It reads your overdue tasks, today and the next two weeks, answers in a line or two, and offers up to five tasks as cards with a date, time and category. Nothing goes on your calendar until you tap Add. The app only talks to the Express backend, which calls Gemini, so the API key never ships with the app. The server checks every suggestion and drops any that are in the past, at an impossible time or listed twice, and each user can ask 30 questions an hour.</p>
+
                                     <h6>Technologies Used</h6>
                                     <div class="tech-stack">
                                         <span class="tech-badge">Flutter</span>

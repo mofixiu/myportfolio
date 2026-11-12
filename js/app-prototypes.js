@@ -414,7 +414,7 @@
             10: {
                 label: 'Sign in',
                 hotspots: [
-                    { id: 'signin', label: 'Sign in', to: { student: '1', supervisor: '4', school: '6', itf: '9' }, t: 'fade', x: 4, y: 53.8, w: 92, h: 6.8 }
+                    { id: 'signin', label: 'Sign in', to: { student: '1', supervisor: '4', school: '6', itf: '9' }, t: 'fade', x: 4, y: 64.6, w: 92, h: 7 }
                 ]
             },
             1: {
@@ -489,7 +489,7 @@
             1: {
                 label: 'Log in',
                 hotspots: [
-                    { id: 'login', label: 'Log in', to: '3', t: 'fade', x: 5.5, y: 50.8, w: 89, h: 6.2 }
+                    { id: 'login', label: 'Log in', to: '3', t: 'fade', x: 5.5, y: 67.4, w: 89, h: 6.3 }
                 ]
             },
             2: {
