@@ -19,6 +19,8 @@
     --glass-edge: rgba(255, 255, 255, 0.14);
     --glass-highlight: rgba(255, 255, 255, 0.2);
     --glass-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    --glass-backdrop: rgba(0, 0, 0, 0.45);
+    --glass-well: rgba(255, 255, 255, 0.05);
 }
 
 /* Light Theme Variables */
@@ -41,6 +43,8 @@ body.light-theme {
     --glass-edge: rgba(255, 255, 255, 0.75);
     --glass-highlight: rgba(255, 255, 255, 0.95);
     --glass-shadow: 0 6px 18px rgba(60, 45, 25, 0.13);
+    --glass-backdrop: rgba(36, 30, 22, 0.3);
+    --glass-well: rgba(50, 45, 38, 0.06);
     background-color: #f4ecde;
     background-image: url('../assets/handmade-paper.jpg');
     background-repeat: repeat;
@@ -1932,10 +1936,27 @@ body,
 }
 
 /* Project Modal Styles */
+/* Set through Bootstrap's variable so the header, which Bootstrap rounds with its own inner
+   radius, curves with the panel instead of poking out past its top corners. */
+.modal {
+    --bs-modal-border-radius: 12px;
+    --bs-modal-inner-border-radius: 11px;
+}
+
 .modal-content {
     background-color: var(--surface-color);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: var(--bs-modal-border-radius);
+}
+
+/* The page behind an open case study is frosted rather than only darkened. Bootstrap fades
+   the backdrop with opacity, so the tint goes in the colour and full opacity is kept, or the
+   blur would show at half strength over a sharp copy of the page. */
+.modal-backdrop {
+    --bs-backdrop-bg: var(--glass-backdrop);
+    --bs-backdrop-opacity: 1;
+    -webkit-backdrop-filter: blur(10px) saturate(1.3);
+    backdrop-filter: blur(10px) saturate(1.3);
 }
 
 /* The case-study header is a pane of glass that stays put while the text scrolls under it.
@@ -2214,12 +2235,20 @@ body,
     width: auto;
 }
 
+/* The demo's fingertip is a small glass lens: it brightens what's under it, catches light on its
+   top edge and sits in a soft shadow, with a faint dark ring so it still shows on white screens. */
 .pp-cursor {
     aspect-ratio: 1;
-    background-color: rgba(20, 20, 20, 0.28);
-    border: 2px solid rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(1.5px) saturate(1.8) brightness(1.08);
+    backdrop-filter: blur(1.5px) saturate(1.8) brightness(1.08);
+    background-color: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.85);
     border-radius: 50%;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 0 4px 14px rgba(0, 0, 0, 0.35);
+    box-shadow:
+        inset 0 1.5px 2px rgba(255, 255, 255, 0.9),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.14),
+        0 0 0 1px rgba(0, 0, 0, 0.14),
+        0 4px 14px rgba(0, 0, 0, 0.3);
     left: 50%;
     opacity: 0;
     pointer-events: none;
@@ -2304,34 +2333,43 @@ body,
     font-weight: 600;
 }
 
+/* The screen chips are a glass segmented control: a soft, slightly sunken well, with the
+   current screen raised in a bright glass pill. */
+.pp-chips-well {
+    background: var(--glass-well);
+    border-radius: 18px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08), 0 1px 0 var(--glass-highlight);
+    max-width: 330px;
+    padding: 3px;
+}
+
 .pp-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.3rem;
+    gap: 2px;
     justify-content: center;
-    max-width: 330px;
 }
 
 .pp-chip {
     background: transparent;
-    border: 1px solid var(--border-color);
+    border: 1px solid transparent;
     border-radius: 999px;
     color: var(--text-secondary);
     font-size: 0.68rem;
     line-height: 1.35;
     padding: 0.18rem 0.55rem;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 }
 
 .pp-chip:hover {
-    border-color: var(--accent-color);
     color: var(--text-primary);
 }
 
 .pp-chip[aria-pressed="true"] {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    color: var(--background-color);
+    background: var(--glass-tint-hover);
+    border-color: var(--glass-edge);
+    box-shadow: inset 0 1px 0 var(--glass-highlight), 0 1px 3px rgba(0, 0, 0, 0.14);
+    color: var(--text-primary);
 }
 
 .pp-chip:focus-visible,
@@ -2603,6 +2641,12 @@ body,
         overflow: hidden;
     }
 
+    /* The sheet covers the whole screen, so blurring the page under it would be wasted work. */
+    .modal-backdrop {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
     .modal-dialog {
         height: 100%;
         margin: 0;
@@ -2672,18 +2716,25 @@ body,
         transform: none;
     }
 
-    /* Screen chips sit in one row that scrolls sideways, with soft edges to show there's more. */
+    /* On phones the well is one capsule, as wide as the chips need up to the full width. Inside
+       it the chips sit in one row that scrolls sideways and fades at the ends to show there's
+       more; the fade falls on the row's padding, so nothing is faded until it scrolls. */
+    .modal .pp-chips-well {
+        border-radius: 999px;
+        max-width: 100%;
+        padding: 0;
+    }
+
     .modal .pp-chips {
-        -webkit-mask-image: linear-gradient(90deg, transparent, #000 1rem, #000 calc(100% - 1rem), transparent);
-        mask-image: linear-gradient(90deg, transparent, #000 1rem, #000 calc(100% - 1rem), transparent);
+        -webkit-mask-image: linear-gradient(90deg, transparent, #000 0.75rem, #000 calc(100% - 0.75rem), transparent);
+        mask-image: linear-gradient(90deg, transparent, #000 0.75rem, #000 calc(100% - 0.75rem), transparent);
+        border-radius: inherit;
         flex-wrap: nowrap;
         justify-content: flex-start;
-        max-width: none;
         overflow-x: auto;
         overscroll-behavior-x: contain;
-        padding: 3px 1rem;
+        padding: 3px 0.75rem;
         scrollbar-width: none;
-        width: calc(100% + 2rem);
     }
 
     .modal .pp-chips::-webkit-scrollbar {
@@ -2695,13 +2746,9 @@ body,
         white-space: nowrap;
     }
 
-    /* Centred when they all fit; these margins collapse to nothing once the row scrolls. */
-    .modal .pp-chip:first-child {
-        margin-left: auto;
-    }
-
-    .modal .pp-chip:last-child {
-        margin-right: auto;
+    /* Drawn inside the chip so the scrolling row doesn't clip it. */
+    .modal .pp-chip:focus-visible {
+        outline-offset: -2px;
     }
 }
 

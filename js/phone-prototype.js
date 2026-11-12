@@ -145,7 +145,10 @@
                 actions.append(replay);
             }
 
-            root.append(device, this.caption, this.chips, actions);
+            // The well is the glass capsule; the chips scroll inside it on phones.
+            const chipsWell = make('div', 'pp-chips-well');
+            chipsWell.append(this.chips);
+            root.append(device, this.caption, chipsWell, actions);
 
             // A tap or click hands control back to the visitor. It's caught on pointerup: a thumb
             // that lands on the phone to scroll the case study ends in pointercancel instead, so
