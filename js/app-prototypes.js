@@ -393,119 +393,141 @@
     };
 
     // SIWES360 -------------------------------------------------------------------------------
-    const studentTabs = (skip) => tabBar(89.5, 7, [
-        ['tab-home', 'Home', '1'],
-        ['tab-logbook', 'Logbook', '3'],
-        ['tab-profile', 'Profile', '6']
-    ].map((tab) => (tab[0] === skip ? null : tab)));
-    const supervisorTabs = (skip) => tabBar(89.5, 7, [
-        ['tab-home', 'Home', '9'],
-        ['tab-students', 'Students', '10'],
-        ['tab-profile', 'Profile and settings', '8']
-    ].map((tab) => (tab[0] === skip ? null : tab)));
+    // One sign-in screen, then four roles. Tabs without a screenshot are left out.
+    const siwesTabs = (tabs) => (skip) => tabBar(90, 7, tabs.map((tab) => (tab && tab[0] === skip ? null : tab)));
+    const studentTabs = siwesTabs([['tab-today', 'Today', '1'], ['tab-logbook', 'Logbook', '2'], null]);
+    const supervisorTabs = siwesTabs([['tab-review', 'Review', '4'], null, null]);
+    const schoolTabs = siwesTabs([['tab-overview', 'Overview', '6'], ['tab-students', 'Students', '7'], null]);
 
     const siwes360 = {
         name: 'SIWES360',
         base: 'screenshots/device/siwes360/',
         island: true,
-        start: '1',
+        start: '10',
         personas: [
-            { id: 'student', label: 'Student', start: '1', chips: ['1', '2', '3', '4', '5', '6', '7'] },
-            { id: 'supervisor', label: 'Supervisor', start: '9', chips: ['9', '10', '8'] }
+            { id: 'student', label: 'Student', start: '1', chips: ['1', '2', '3'] },
+            { id: 'supervisor', label: 'Supervisor', start: '4', chips: ['4', '5'] },
+            { id: 'school', label: 'School', start: '6', chips: ['6', '7', '8'] },
+            { id: 'itf', label: 'ITF', start: '9', chips: ['9'] }
         ],
         screens: {
-            1: {
-                label: 'Dashboard', persona: 'student',
+            10: {
+                label: 'Sign in',
                 hotspots: [
-                    { id: 'more', label: 'Scroll down', to: '2', t: 'scroll', x: 4, y: 64, w: 92, h: 13.5 },
-                    { id: 'write', label: 'Write new log entry', to: '4', x: 4.7, y: 79.8, w: 90.6, h: 6.4 },
-                    ...studentTabs('tab-home')
+                    { id: 'signin', label: 'Sign in', to: { student: '1', supervisor: '4', school: '6', itf: '9' }, t: 'fade', x: 4, y: 53.8, w: 92, h: 6.8 }
+                ]
+            },
+            1: {
+                label: 'Today', persona: 'student',
+                hotspots: [
+                    { id: 'write', label: "Write today's entry", to: '3', x: 5, y: 27.3, w: 90, h: 6.3 },
+                    { id: 'all-entries', label: 'All entries', to: '2', t: 'tab', x: 3, y: 84, w: 94, h: 5.5 },
+                    ...studentTabs('tab-today')
                 ]
             },
             2: {
-                label: 'Recent entries', persona: 'student',
-                hotspots: [
-                    { id: 'view-all', label: 'View all entries', to: '3', t: 'tab', x: 76, y: 10.5, w: 20, h: 5 },
-                    ...tabBar(89.5, 7, [['tab-home', 'Home', '1'], ['tab-logbook', 'Logbook', '3'], ['tab-profile', 'Profile', '6']])
-                ]
-            },
-            3: {
                 label: 'Logbook', persona: 'student',
                 hotspots: [
-                    { id: 'entry', label: 'Open log entry', to: '5', t: 'sheet', x: 5, y: 56.3, w: 90.3, h: 11.8 },
-                    { id: 'add', label: 'New log entry', to: '4', x: 83, y: 80, w: 13, h: 8 },
+                    { id: 'new', label: 'New entry', to: '3', x: 66, y: 9.8, w: 31, h: 5 },
                     ...studentTabs('tab-logbook')
                 ]
             },
-            4: { label: 'New log entry', persona: 'student', back: '3', hotspots: [back(2, 7.5, 10, 5.5)] },
-            5: {
-                label: 'Entry details', persona: 'student', sheetTop: 30, back: '3',
-                hotspots: [{ id: 'scrim', label: 'Close entry', to: 'back', x: 0, y: 0, w: 100, h: 29 }]
+            3: {
+                label: 'New entry', persona: 'student', back: '2',
+                hotspots: [
+                    back(1, 9, 11, 6),
+                    { id: 'submit', label: 'Submit for review', to: 'back', x: 4, y: 88.3, w: 92, h: 6.4 }
+                ]
             },
+            4: {
+                label: 'Logbooks to review', persona: 'supervisor',
+                hotspots: [
+                    { id: 'week', label: "Open Kelechi Obi's week 9", to: '5', x: 3, y: 36.2, w: 94, h: 6.6 },
+                    ...supervisorTabs('tab-review')
+                ]
+            },
+            5: { label: 'Week review', persona: 'supervisor', back: '4', hotspots: [back(1, 9, 11, 6)] },
             6: {
-                label: 'Profile', persona: 'student',
+                label: 'School overview', persona: 'school',
                 hotspots: [
-                    { id: 'edit', label: 'Edit profile', to: '7', x: 9.7, y: 44, w: 80.3, h: 5.6 },
-                    ...studentTabs('tab-profile')
+                    { id: 'see-all', label: 'See all students behind', to: '7', t: 'tab', x: 78, y: 43.3, w: 19, h: 4 },
+                    { id: 'behind', label: "Open Ibrahim Musa's record", to: '8', x: 3, y: 48, w: 94, h: 6 },
+                    ...schoolTabs('tab-overview')
                 ]
             },
-            7: { label: 'Edit profile', persona: 'student', back: '6', hotspots: [back(2, 7.5, 10, 5.5)] },
-            8: { label: 'Settings', persona: 'supervisor', back: '9', hotspots: [back(2, 7.5, 10, 5.5)] },
-            9: {
-                label: 'Supervisor dashboard', persona: 'supervisor',
+            7: {
+                label: 'Students', persona: 'school',
                 hotspots: [
-                    { id: 'pending', label: 'Pending approvals', to: '10', t: 'tab', x: 52.2, y: 18.9, w: 43.1, h: 16 },
-                    ...supervisorTabs('tab-home')
+                    { id: 'student', label: "Open Ibrahim Musa's record", to: '8', x: 3, y: 74.8, w: 94, h: 8 },
+                    ...schoolTabs('tab-students')
                 ]
             },
-            10: { label: 'My students', persona: 'supervisor', hotspots: supervisorTabs('tab-students') }
+            8: { label: "A student's record", persona: 'school', back: '7', hotspots: [back(1, 9, 11, 6)] },
+            9: { label: 'Institutions', persona: 'itf', hotspots: [] }
         },
-        demo: ['write', 'back', 'tab-logbook', 'entry', 'scrim', 'tab-profile', 'edit', 'back', { persona: 'supervisor' }, 'tab-students'],
-        preview: ['1', '3', '4', '9']
+        demo: ['signin', 'write', 'back', 'tab-logbook', { persona: 'supervisor' }, 'week', 'back', { persona: 'school' }, 'behind', 'back', 'tab-students', { persona: 'itf' }],
+        preview: ['1', '2', '4', '6']
     };
 
     // OtakuPlanner ---------------------------------------------------------------------------
-    const otakuTabs = (skip) => tabBar(89.5, 7, [
-        ['tab-home', 'Home', '3'],
-        null, // Calendar: no screenshot
+    const otakuTabs = (skip) => tabBar(90, 7.5, [
+        ['tab-today', 'Today', '3'],
+        ['tab-calendar', 'Calendar', '6'],
         ['tab-tasks', 'Tasks', '4'],
-        ['tab-achievements', 'Achievements', '5'],
-        null // Settings: no screenshot
-    ].map((tab) => (tab && tab[0] === skip ? null : tab)));
+        ['tab-badges', 'Badges', '5'],
+        ['tab-settings', 'Settings', '7']
+    ].map((tab) => (tab[0] === skip ? null : tab)));
+    const otakuAsk = { id: 'ask', label: 'Ask the assistant', to: '8', x: 18, y: 9.5, w: 14, h: 5 };
 
     const otakuplanner = {
         name: 'OtakuPlanner',
         base: 'screenshots/device/otakuplanner/',
         island: true,
         start: '1',
-        chips: ['1', '3', '4', '2', '5'],
+        chips: ['1', '3', '6', '4', '2', '5', '8', '7'],
         screens: {
             1: {
                 label: 'Log in',
                 hotspots: [
-                    { id: 'login', label: 'Log in', to: '3', t: 'fade', x: 9.7, y: 66.4, w: 80.3, h: 4.9 },
-                    { id: 'social', label: 'Continue with a social account', to: '3', t: 'fade', x: 9.7, y: 77.9, w: 80.3, h: 4.5 }
+                    { id: 'login', label: 'Log in', to: '3', t: 'fade', x: 5.5, y: 50.8, w: 89, h: 6.2 }
                 ]
             },
-            2: { label: 'Task automation', back: '4', hotspots: [back(2, 7.5, 10, 5.5)] },
-            3: { label: 'Home', hotspots: otakuTabs('tab-home') },
-            4: {
-                label: 'My tasks',
+            2: {
+                label: 'Automate a task', back: '4',
                 hotspots: [
-                    { id: 'automate', label: 'Automate a task', to: '2', x: 60.6, y: 16, w: 37.2, h: 4.4 },
+                    back(1, 8.5, 11, 7),
+                    { id: 'add', label: 'Add the repeats to my calendar', to: '6', t: 'tab', x: 4, y: 65.5, w: 92, h: 6 }
+                ]
+            },
+            3: {
+                label: 'Today',
+                hotspots: [
+                    otakuAsk,
+                    { id: 'badges', label: 'Badges', to: '5', t: 'tab', x: 69.5, y: 23.5, w: 25.5, h: 14 },
+                    ...otakuTabs('tab-today')
+                ]
+            },
+            4: {
+                label: 'Tasks',
+                hotspots: [
+                    otakuAsk,
+                    { id: 'automate', label: 'Automate a task', to: '2', x: 68.5, y: 16.5, w: 31, h: 5.5 },
                     ...otakuTabs('tab-tasks')
                 ]
             },
-            5: { label: 'Achievements', hotspots: otakuTabs('tab-achievements') }
+            5: { label: 'Badges', hotspots: [otakuAsk, ...otakuTabs('tab-badges')] },
+            6: { label: 'Calendar', hotspots: [otakuAsk, ...otakuTabs('tab-calendar')] },
+            7: { label: 'Settings', hotspots: [otakuAsk, ...otakuTabs('tab-settings')] },
+            8: { label: 'Ask', back: '3', hotspots: [back(1, 8.5, 11, 6.5)] }
         },
-        demo: ['login', 'tab-tasks', 'automate', 'back', 'tab-achievements'],
-        preview: ['3', '4', '2', '5']
+        demo: ['login', 'ask', 'back', 'tab-tasks', 'automate', 'add', 'tab-badges', 'tab-settings'],
+        preview: ['3', '4', '8', '5']
     };
 
     // Lodgix -------------------------------------------------------------------------------
-    const lodgixTabs = (skip) => tabBar(89, 8, [
+    const lodgixTabs = (skip) => tabBar(90, 8, [
         ['tab-home', 'Home', '1'],
-        ['tab-booked', 'Booked', '2'],
+        ['tab-booked', 'Bookings', '2'],
         ['tab-saved', 'Saved', '3'],
         ['tab-profile', 'Profile', '4']
     ].map((tab) => (tab[0] === skip ? null : tab)));
@@ -515,35 +537,59 @@
         base: 'screenshots/device/lodgix/',
         island: true,
         start: '1',
+        chips: ['1', '5', '7', '8', '10', '2', '9', '3', '4', '6'],
         screens: {
             1: {
                 label: 'Home',
                 hotspots: [
-                    { id: 'search', label: 'Search hotels', to: '5', x: 5.5, y: 15, w: 86.5, h: 5.7 },
-                    { id: 'bookmarks', label: 'Bookmarks', to: '3', t: 'tab', x: 84, y: 4.5, w: 12, h: 7.5 },
+                    { id: 'search', label: 'Search stays', to: '5', x: 7.5, y: 33, w: 85, h: 7.5 },
+                    { id: 'see-all', label: 'See all stays in Lagos', to: '5', x: 79, y: 45, w: 18, h: 5 },
+                    { id: 'open-hotel', label: 'Open Grand Plaza Hotel', to: '7', x: 4.5, y: 50, w: 63, h: 28.5 },
                     ...lodgixTabs('tab-home')
                 ]
             },
             2: {
                 label: 'Bookings',
                 hotspots: [
-                    { id: 'payments', label: 'Payment history', to: '6', x: 77, y: 7, w: 10, h: 6 },
+                    { id: 'open-booking', label: 'Open the Ocean View Resort booking', to: '9', x: 3, y: 20, w: 94, h: 11.5 },
                     ...lodgixTabs('tab-booked')
                 ]
             },
-            3: { label: 'Saved hotels', hotspots: lodgixTabs('tab-saved') },
+            3: { label: 'Saved', hotspots: lodgixTabs('tab-saved') },
             4: {
                 label: 'Profile',
                 hotspots: [
-                    { id: 'payment', label: 'Payment', to: '6', x: 3, y: 48.5, w: 94, h: 6 },
+                    { id: 'payments', label: 'Payment history', to: '6', x: 3, y: 31, w: 94, h: 6.5 },
                     ...lodgixTabs('tab-profile')
                 ]
             },
-            5: { label: 'Search', back: '1', hotspots: [back(2, 7, 10, 6)] },
-            6: { label: 'Payment history', back: '4', hotspots: [back(2, 7, 10, 6)] }
+            5: {
+                label: 'Search results', back: '1',
+                hotspots: [
+                    back(1, 8.5, 10, 6),
+                    { id: 'open-hotel', label: 'Open Grand Plaza Hotel', to: '7', x: 3, y: 23, w: 94, h: 11.5 }
+                ]
+            },
+            6: { label: 'Payment history', back: '4', hotspots: [back(1, 8.5, 10, 6)] },
+            7: {
+                label: 'Hotel details', back: '1',
+                hotspots: [
+                    back(3, 8.5, 10, 6.5),
+                    { id: 'dates', label: 'Choose dates', to: '8', x: 54.5, y: 87.5, w: 41.5, h: 7.5 }
+                ]
+            },
+            8: {
+                label: 'Your stay', back: '7',
+                hotspots: [
+                    back(1, 8.5, 10, 6),
+                    { id: 'continue', label: 'Continue to payment', to: '10', x: 4.5, y: 87.8, w: 91, h: 7 }
+                ]
+            },
+            9: { label: 'Booking', back: '2', hotspots: [back(1, 8.5, 10, 6)] },
+            10: { label: 'Payment', back: '8', hotspots: [back(1, 8.5, 10, 6)] }
         },
-        demo: ['search', 'back', 'tab-booked', 'payments', 'back', 'tab-saved', 'tab-profile'],
-        preview: ['1', '2', '3', '5']
+        demo: ['open-hotel', 'dates', 'continue', 'back', 'back', 'back', 'tab-booked', 'open-booking', 'back', 'tab-profile', 'payments'],
+        preview: ['1', '7', '8', '2']
     };
 
     // TheMentRent ----------------------------------------------------------------------------
