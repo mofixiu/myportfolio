@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OtakuPlanner · Mofiyinfoluwa Ebo</title>
+    <meta name="description" content="OtakuPlanner, a planner for anime fans. Anime mode prints the whole planner in a character's colours, with their lines and their voice. Tap through it.">
+    <link rel="canonical" href="https://mofiyinebo.com/otakuplanner/">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261010-dark-icon" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20261010-dark-icon" sizes="96x96" />
+    <link rel="shortcut icon" href="/favicon.ico?v=20261010-dark-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261010-dark-icon" />
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mofiyinebo.com/otakuplanner/">
+    <meta property="og:title" content="OtakuPlanner, with Anime mode">
+    <meta property="og:description" content="A planner for anime fans. Pick a character and the planner takes their colours, their lines and their voice.">
+    <meta property="og:image" content="https://mofiyinebo.com/assets/og-otakuplanner.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="OtakuPlanner's Today screen in Normal mode and in Anime mode as Luffy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OtakuPlanner, with Anime mode">
+    <meta name="twitter:description" content="A planner for anime fans. Pick a character and the planner takes their colours, their lines and their voice.">
+    <meta name="twitter:image" content="https://mofiyinebo.com/assets/og-otakuplanner.jpg">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .case-page {
+            min-height: 100vh;
+        }
+
+        .cs-top {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 0.5rem;
+            padding-top: 1.25rem;
+        }
+
+        .cs-home {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+        }
+
+        .cs-home:hover,
+        .cs-home:focus-visible {
+            color: var(--text-primary);
+        }
+
+        .cs-theme {
+            align-items: center;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            color: var(--text-primary);
+            display: inline-flex;
+            height: 40px;
+            justify-content: center;
+            width: 40px;
+        }
+
+        .cs-main {
+            padding-bottom: 4rem;
+        }
+
+        .cs-kicker {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            margin: 1.5rem 0 0.4rem;
+            text-transform: uppercase;
+        }
+
+        .cs-title {
+            font-size: clamp(2.2rem, 6vw, 3.4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            margin: 0 0 0.75rem;
+        }
+
+        .cs-lede {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0 0 2rem;
+            max-width: 46rem;
+        }
+
+        .cs-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        body.light-theme .cs-card {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .case-page .phone-prototype {
+            --pp-w: 250px;
+            position: sticky;
+            top: 1.5rem;
+        }
+
+        .cs-section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 3.5rem 0 0.4rem;
+        }
+
+        .cs-section-lede {
+            color: var(--text-secondary);
+            margin: 0 0 1.5rem;
+            max-width: 42rem;
+        }
+
+        .cs-gallery {
+            display: grid;
+            gap: 2rem 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cs-gallery figure {
+            margin: 0;
+        }
+
+        .cs-gallery img {
+            border: 1px solid var(--border-color);
+            border-radius: 22px;
+            display: block;
+            height: auto;
+            width: 100%;
+        }
+
+        body.light-theme .cs-gallery img {
+            box-shadow: 0 12px 30px -16px rgba(60, 45, 25, 0.35);
+        }
+
+        .cs-gallery figcaption {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-top: 0.75rem;
+        }
+
+        .cs-gallery figcaption strong {
+            color: var(--text-primary);
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .cs-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .cs-footer {
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            padding: 1.5rem 0 2.5rem;
+        }
+
+        @media (max-width: 991px) {
+            .case-page .phone-prototype {
+                position: static;
+            }
+
+            .cs-card .project-info {
+                margin-top: 2rem;
+                padding-left: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .cs-card {
+                border-radius: 0;
+                border-left: 0;
+                border-right: 0;
+                margin-left: calc(-1 * var(--bs-gutter-x, 1.5rem) * 0.5);
+                margin-right: calc(-1 * var(--bs-gutter-x, 1.5rem) * 0.5);
+                padding: 1.5rem 1rem;
+            }
+
+            .case-page .phone-prototype {
+                --pp-w: min(62vw, 240px);
+            }
+
+            .cs-gallery {
+                gap: 1.75rem 1rem;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .cs-gallery img {
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="light-theme case-page">
+    <script>
+        // Same theme as the rest of mofiyinebo.com: a shared choice wins, then this site's own.
+        (function () {
+            try {
+                var shared = document.cookie.match(/(?:^|; )mofixiu-theme=(light|dark)/);
+                var saved = shared ? shared[1] : localStorage.getItem('portfolio-theme');
+                if (saved === 'dark') document.body.classList.remove('light-theme');
+            } catch (error) {}
+        })();
+    </script>
+
+    <header class="container cs-top">
+        <a class="cs-home" href="/#projects"><i class="fas fa-arrow-left" aria-hidden="true"></i> mofiyinebo.com</a>
+        <button type="button" class="cs-theme" id="cs-theme" aria-label="Switch between light and dark">
+            <i class="fas fa-circle-half-stroke" aria-hidden="true"></i>
+        </button>
+    </header>
+
+    <main class="container cs-main">
+        <p class="cs-kicker">Case study · Mobile app</p>
+        <h1 class="cs-title">OtakuPlanner</h1>
+        <p class="cs-lede">A planner for anime fans. Tasks live on a calendar, recurring tasks are typed in plain English, and a daily streak, badges and a planning assistant keep you going. Anime mode is the second half: pick a character, and the whole planner takes their colours, their lines and their voice.</p>
+
+        <section class="cs-card" aria-labelledby="overview">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="phone-prototype" data-app="otakuplanner"></div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="project-info">
+                        <h6 id="overview">Project Overview</h6>
+                        <p>The phone on the left is the real app, screen by screen. Switch between <strong>Normal</strong> and <strong>Anime mode</strong> above it, or tap the screen to explore. In Anime mode the planner is printed in Luffy's colours, the line of the day is one of his, a finished streak gets a word from him, and the assistant plans your week in his voice.</p>
+
+                        <h6>Key Features</h6>
+                        <ul>
+                            <li>Custom calendar to add, edit and complete tasks, including recurring ones</li>
+                            <li>Recurring tasks set up by typing them in plain English</li>
+                            <li>Searchable tasks with custom categories saved per user</li>
+                            <li>Reminders five minutes before a task and when it is due</li>
+                            <li>Badges with levels and progress, and a daily streak</li>
+                            <li>A planning assistant that suggests tasks you add with one tap</li>
+                        </ul>
+
+                        <h6>Anime mode</h6>
+                        <ul>
+                            <li>Pick any character on AniList, or start from the ones fans favourite most</li>
+                            <li>The planner's ink and stamp are taken from their art, in light and dark</li>
+                            <li>The line of the day comes from the character's own lines</li>
+                            <li>Reminders and celebrations (a streak, a cleared day, a new badge) come with one of their lines</li>
+                            <li>The assistant answers as them, with the same tasks, dates and times</li>
+                            <li>Their portrait stands in for the mascot on empty days and in the app bar</li>
+                        </ul>
+
+                        <h6>How Anime mode works</h6>
+                        <p>Characters and art come from AniList's public API, which is free and needs no key. The colours are read on the phone with Google's Material colour utilities, then darkened or lightened until text is as readable as in the normal theme. Lines come from Animechan's free API, fetched once per character and kept on the phone, without stage directions or grim lines. For the voice, the app sends the character's name with each question and the Express backend adds it to the Gemini prompt; only a cleaned name gets through.</p>
+
+                        <h6>Technologies</h6>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Flutter</span>
+                            <span class="tech-badge">Dart</span>
+                            <span class="tech-badge">Provider</span>
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Express.js</span>
+                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">Gemini API</span>
+                            <span class="tech-badge">AniList API</span>
+                            <span class="tech-badge">Material colour</span>
+                        </div>
+
+                        <div class="project-stats mt-4">
+                            <div class="stat"><strong>Timeline:</strong> Mar 2025 – May 2025; assistant and Anime mode Nov 2026</div>
+                            <div class="stat"><strong>Team Size:</strong> Two-person team</div>
+                            <div class="stat"><strong>Role:</strong> Lead Mobile Developer</div>
+                        </div>
+
+                        <div class="cs-links">
+                            <a class="project-link" href="https://github.com/mofixiu/OtakuPlanner" target="_blank" rel="noopener noreferrer">Mobile <i class="fab fa-github" aria-hidden="true"></i></a>
+                            <a class="project-link" href="https://github.com/mofixiu/OtakuPlannerBackend" target="_blank" rel="noopener noreferrer">Backend <i class="fab fa-github" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="cs-section-title">Anime mode, screen by screen</h2>
+        <p class="cs-section-lede">Screenshots from the iPhone simulator, with Luffy picked. Normal mode is the same app in navy ink with a vermilion stamp.</p>
+        <ul class="cs-gallery">
+            <li>
+                <figure>
+                    <img src="/screenshots/device/otakuplanner/sm/anime-picker.webp" srcset="/screenshots/device/otakuplanner/sm/anime-picker.webp 360w, /screenshots/device/otakuplanner/anime-picker.webp 720w" sizes="(max-width: 576px) 45vw, 240px" alt="Pick a character screen with Satoru Gojo, Levi, Luffy, Killua, Eren and Zoro" width="360" height="783" loading="lazy" decoding="async">
+                    <figcaption><strong>Pick a character</strong>Search AniList, or start from the characters fans favourite most.</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="/screenshots/device/otakuplanner/sm/anime-colours.webp" srcset="/screenshots/device/otakuplanner/sm/anime-colours.webp 360w, /screenshots/device/otakuplanner/anime-colours.webp 720w" sizes="(max-width: 576px) 45vw, 240px" alt="Luffy's portrait with four colours from his art and a preview of the planner in red" width="360" height="783" loading="lazy" decoding="async">
+                    <figcaption><strong>Colours from their art</strong>Four colours are read from the portrait, with a live preview of the planner in each.</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="/screenshots/device/otakuplanner/sm/anime-today.webp" srcset="/screenshots/device/otakuplanner/sm/anime-today.webp 360w, /screenshots/device/otakuplanner/anime-today.webp 720w" sizes="(max-width: 576px) 45vw, 240px" alt="Today screen printed in Luffy's colours with a line of the day from Monkey D. Luffy" width="360" height="783" loading="lazy" decoding="async">
+                    <figcaption><strong>The whole page in his colours</strong>The ink, the stamp and the line of the day are all his.</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="/screenshots/device/otakuplanner/sm/anime-celebrate.webp" srcset="/screenshots/device/otakuplanner/sm/anime-celebrate.webp 360w, /screenshots/device/otakuplanner/anime-celebrate.webp 720w" sizes="(max-width: 576px) 45vw, 240px" alt="A 2-day streak message with Luffy's portrait and one of his lines" width="360" height="783" loading="lazy" decoding="async">
+                    <figcaption><strong>A streak, from Luffy</strong>Streaks, cleared days, new badges and reminders come with one of his lines.</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="/screenshots/device/otakuplanner/sm/anime-reply.webp" srcset="/screenshots/device/otakuplanner/sm/anime-reply.webp 360w, /screenshots/device/otakuplanner/anime-reply.webp 720w" sizes="(max-width: 576px) 45vw, 240px" alt="The assistant replying as Luffy with two episode slots to add" width="360" height="783" loading="lazy" decoding="async">
+                    <figcaption><strong>The assistant, in his voice</strong>Same planning and the same suggestions you tap to add. It just sounds like him.</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="/screenshots/device/otakuplanner/sm/anime-empty.webp" srcset="/screenshots/device/otakuplanner/sm/anime-empty.webp 360w, /screenshots/device/otakuplanner/anime-empty.webp 720w" sizes="(max-width: 576px) 45vw, 240px" alt="An empty calendar day showing Luffy's portrait instead of the mascot" width="360" height="783" loading="lazy" decoding="async">
+                    <figcaption><strong>He stands in for the mascot</strong>Empty days show the character instead of the planner's mascot.</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="/screenshots/device/otakuplanner/sm/anime-settings.webp" srcset="/screenshots/device/otakuplanner/sm/anime-settings.webp 360w, /screenshots/device/otakuplanner/anime-settings.webp 720w" sizes="(max-width: 576px) 45vw, 240px" alt="Settings with Normal and Anime side by side and Luffy as the chosen character" width="360" height="783" loading="lazy" decoding="async">
+                    <figcaption><strong>Switch any time</strong>Normal and Anime sit side by side in Settings, and the character is remembered.</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="/screenshots/device/otakuplanner/sm/normal-today.webp" srcset="/screenshots/device/otakuplanner/sm/normal-today.webp 360w, /screenshots/device/otakuplanner/normal-today.webp 720w" sizes="(max-width: 576px) 45vw, 240px" alt="The same Today screen in Normal mode, navy ink with a vermilion stamp" width="360" height="783" loading="lazy" decoding="async">
+                    <figcaption><strong>Normal mode</strong>The same day, in the planner's own navy and vermilion.</figcaption>
+                </figure>
+            </li>
+        </ul>
+    </main>
+
+    <footer class="container cs-footer">
+        &copy; 2026 | built by mofixiu · <a href="/">mofiyinebo.com</a>
+    </footer>
+
+    <script>
+        document.getElementById('cs-theme').addEventListener('click', function () {
+            var isLight = !document.body.classList.contains('light-theme');
+            document.body.classList.toggle('light-theme', isLight);
+            try {
+                localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+            } catch (error) {}
+            var domain = /(^|\.)mofiyinebo\.com$/.test(location.hostname) ? '; domain=mofiyinebo.com' : '';
+            var secure = location.protocol === 'https:' ? '; secure' : '';
+            document.cookie = 'mofixiu-theme=' + (isLight ? 'light' : 'dark') + '; path=/; max-age=31536000; samesite=lax' + domain + secure;
+        });
+    </script>
+    <script src="/js/otakuplanner-demo.js"></script>
+    <script src="/js/phone-prototype.js"></script>
+</body>
+</html>
