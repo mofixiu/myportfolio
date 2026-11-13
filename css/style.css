@@ -1537,6 +1537,11 @@ section {
     margin-top: 1.5rem;
 }
 
+/* With an odd number of projects, the last one takes the whole row instead of half of it. */
+.more-work-grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+
 .compact-project {
     align-items: center;
     background: var(--surface-color);
