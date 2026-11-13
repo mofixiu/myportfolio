@@ -620,15 +620,6 @@
             const modal = root.closest('.modal');
             if (!modal) {
                 prototype.open();
-                // A prototype on its own page plays its demo once, when it first comes into view.
-                if (app.demo && !reducedMotion.matches) {
-                    const seen = new IntersectionObserver((entries) => {
-                        if (!entries.some((entry) => entry.isIntersecting)) return;
-                        seen.disconnect();
-                        prototype.playDemo();
-                    }, { threshold: 0.4 });
-                    seen.observe(root);
-                }
                 return;
             }
             // Screens load only when their project is opened.

@@ -2721,19 +2721,16 @@ body,
         transform: none;
     }
 
-    /* On phones (in a case study or on a case-study page) the well is one capsule, as wide as
-       the chips need up to the full width. Inside
+    /* On phones the well is one capsule, as wide as the chips need up to the full width. Inside
        it the chips sit in one row that scrolls sideways and fades at the ends to show there's
        more; the fade falls on the row's padding, so nothing is faded until it scrolls. */
-    .modal .pp-chips-well,
-    .case-page .pp-chips-well {
+    .modal .pp-chips-well {
         border-radius: 999px;
         max-width: 100%;
         padding: 0;
     }
 
-    .modal .pp-chips,
-    .case-page .pp-chips {
+    .modal .pp-chips {
         -webkit-mask-image: linear-gradient(90deg, transparent, #000 0.75rem, #000 calc(100% - 0.75rem), transparent);
         mask-image: linear-gradient(90deg, transparent, #000 0.75rem, #000 calc(100% - 0.75rem), transparent);
         border-radius: inherit;
@@ -2745,20 +2742,17 @@ body,
         scrollbar-width: none;
     }
 
-    .modal .pp-chips::-webkit-scrollbar,
-    .case-page .pp-chips::-webkit-scrollbar {
+    .modal .pp-chips::-webkit-scrollbar {
         display: none;
     }
 
-    .modal .pp-chip,
-    .case-page .pp-chip {
+    .modal .pp-chip {
         flex: none;
         white-space: nowrap;
     }
 
     /* Drawn inside the chip so the scrolling row doesn't clip it. */
-    .modal .pp-chip:focus-visible,
-    .case-page .pp-chip:focus-visible {
+    .modal .pp-chip:focus-visible {
         outline-offset: -2px;
     }
 }
