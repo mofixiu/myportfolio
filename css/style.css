@@ -930,6 +930,17 @@ section {
     margin-bottom: 2rem;
 }
 
+/* off the clock: a quiet pointer to the shelf, saying nothing of what's on it */
+.off-clock {
+    border-top: 1px solid rgba(var(--primary-rgb), 0.16);
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+}
+
+.off-clock p:not(.section-kicker) {
+    margin-bottom: 0.15rem;
+}
+
 .profile-image {
     text-align: center;
     max-width: 250px;
