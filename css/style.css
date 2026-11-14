@@ -930,15 +930,69 @@ section {
     margin-bottom: 2rem;
 }
 
-/* off the clock: a quiet pointer to the shelf, saying nothing of what's on it */
+/* off the clock: a sticky note taped under About, like the hero's, pointing to the shelf */
 .off-clock {
-    border-top: 1px solid rgba(var(--primary-rgb), 0.16);
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    background: #f3e3b5;
+    box-shadow: 0 14px 22px -14px rgba(40, 26, 14, 0.55);
+    color: #3a3328;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    line-height: 1.35;
+    margin-top: 2.2rem;
+    padding: 1.35rem 1.4rem 1.05rem;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transform: rotate(-2deg);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.off-clock p:not(.section-kicker) {
-    margin-bottom: 0.15rem;
+.off-clock:hover,
+.off-clock:focus-visible {
+    box-shadow: 0 20px 28px -14px rgba(40, 26, 14, 0.6);
+    color: #3a3328;
+    transform: rotate(1.5deg) translateY(-3px);
+}
+
+.off-clock:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+.off-clock-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+.off-clock-go {
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+.off-clock-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+.off-clock:hover .off-clock-arrow,
+.off-clock:focus-visible .off-clock-arrow {
+    transform: translateX(5px);
+}
+
+body:not(.light-theme) .off-clock,
+body:not(.light-theme) .off-clock:hover,
+body:not(.light-theme) .off-clock:focus-visible {
+    background: #4a4130;
+    color: #f3e3b5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .off-clock,
+    .off-clock-arrow {
+        transition: none;
+    }
 }
 
 .profile-image {
