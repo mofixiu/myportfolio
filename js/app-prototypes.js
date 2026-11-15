@@ -632,28 +632,6 @@
         preview: ['2', '3', '4', '5']
     };
 
-    // Spotify Clone --------------------------------------------------------------------------
-    const spotifyclone = {
-        name: 'Spotify Clone',
-        base: 'screenshots/device/spotifyclone/',
-        statusBar: 'light',
-        island: true,
-        start: '1',
-        screens: {
-            1: {
-                label: 'Home',
-                hotspots: [
-                    { id: 'birthday', label: 'Open My 24th Birthday', to: '3', x: 4.2, y: 20.3, w: 43.3, h: 6.8 },
-                    { id: 'mix', label: 'Open Burna Boy Mix', to: '2', x: 3, y: 84.5, w: 33.4, h: 14.6 }
-                ]
-            },
-            2: { label: 'Mix', back: '1' },
-            3: { label: 'Playlist', back: '1' }
-        },
-        demo: ['mix', 'back', 'birthday'],
-        preview: ['1', '2', '3']
-    };
-
     // Haze Couture ---------------------------------------------------------------------------
     // Screens that show other people's details, addresses or emails were left out of the set.
     const hazeTabs = (skip) => tabBar(90, 7.5, [
@@ -841,5 +819,5 @@
         preview: ['login']
     };
 
-    window.APP_PROTOTYPES = { haze, alastudie, nefarec, hybstock, siwes360, otakuplanner, lodgix, thementrent, spotifyclone, escra };
+    window.APP_PROTOTYPES = { haze, alastudie, nefarec, hybstock, siwes360, otakuplanner, lodgix, thementrent, escra };
 })();
