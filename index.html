@@ -401,9 +401,9 @@
                     </button>
                     <div class="featured-project-content">
                         <div class="project-header"><h3>neFaRec</h3><span class="project-duration">Nov 2026</span></div>
-                        <p class="project-description">A workout tracker that starts from the routine you already have. Paste it from a note or a chat, check what was read, then train it with a set table, rest and hold timers, and a Live Activity on the lock screen.</p>
-                        <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span><span class="tech-badge">Drift</span><span class="tech-badge">Live Activities</span><span class="tech-badge">Vision</span><span class="tech-badge">Node.js</span><span class="tech-badge">PostgreSQL</span></div>
-                        <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#nefarecModal">Read case study <i class="fas fa-arrow-right" aria-hidden="true"></i></button><a class="project-link" href="https://github.com/mofixiu/neFaRecmobile" target="_blank" rel="noopener noreferrer">Mobile <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://github.com/mofixiu/neFaRecbackend" target="_blank" rel="noopener noreferrer">Backend <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://pub.dev/packages/workout_parser" target="_blank" rel="noopener noreferrer">Parser on pub.dev <i class="fas fa-box-open" aria-hidden="true"></i></a></div>
+                        <p class="project-description">A workout app for messy routines. Paste yours from a note or a chat, train it with a set table, rest timers and a Live Activity, and check your form live with the camera. On iPhone and Android.</p>
+                        <div class="tech-stack"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span><span class="tech-badge">Drift</span><span class="tech-badge">Live Activities</span><span class="tech-badge">Vision</span><span class="tech-badge">ML Kit</span><span class="tech-badge">Node.js</span><span class="tech-badge">PostgreSQL</span></div>
+                        <div class="project-actions"><button type="button" class="project-link" data-bs-toggle="modal" data-bs-target="#nefarecModal">Read case study <i class="fas fa-arrow-right" aria-hidden="true"></i></button><a class="project-link" href="https://github.com/mofixiu/neFaRecmobile/releases/latest" target="_blank" rel="noopener noreferrer">Android APK <i class="fab fa-android" aria-hidden="true"></i></a><a class="project-link" href="https://github.com/mofixiu/neFaRecmobile" target="_blank" rel="noopener noreferrer">Mobile <i class="fab fa-github" aria-hidden="true"></i></a><a class="project-link" href="https://pub.dev/packages/workout_parser" target="_blank" rel="noopener noreferrer">Parser on pub.dev <i class="fas fa-box-open" aria-hidden="true"></i></a></div>
                     </div>
                 </article>
 
@@ -798,19 +798,23 @@
                             <div class="col-md-7">
                                 <div class="project-info">
                                     <h6>Project Overview</h6>
-                                    <p>Most people already have a routine, written in a note, a WhatsApp message or an AI chat. neFaRec starts there. You paste the text, check what it read on a review screen, and train it with a set table that remembers last time’s numbers. Everything is stored on the phone and works offline. An optional account backs it up to a small Node server.</p>
+                                    <p>Most people already have a routine, written in a note, a WhatsApp message or an AI chat. neFaRec starts there. You paste the text or a screenshot, check what it read on a review screen, and train it with a set table that remembers last time’s numbers. Then you can point the camera at yourself and it counts and checks your reps as you go. It runs on iPhone and Android, keeps everything on the phone and works offline. An optional account backs it up to a small Node server.</p>
 
                                     <h6>Key Features</h6>
                                     <ul>
-                                        <li>Paste a routine as plain text; the parser reads sets, rep ranges, timed holds and rest, and highlights anything it filled in.</li>
+                                        <li>Paste a routine, or pick a screenshot, photo or PDF and the phone reads the text. The parser finds sets, rep ranges, timed holds and rest, and highlights anything it filled in.</li>
                                         <li>Track sets against last session’s numbers, with a rest scoreboard that counts into overtime and a hold timer for planks and wall sits.</li>
                                         <li>Follow the rest timer on the lock screen and in the Dynamic Island with a Live Activity.</li>
                                         <li>Review sessions as receipts, with weekly volume, muscle split and lift trend charts and a training calendar.</li>
-                                        <li>Browse 884 exercises with steps, photos and 42 looping demo videos, swap moves for your equipment, and try an on-device squat form check.</li>
+                                        <li>Browse 884 exercises with steps, photos and 42 looping demo videos, and swap moves for the equipment you have.</li>
+                                        <li>Check your form live with the camera, or from a filmed set, for squats, push-ups, deadlifts, lunges, overhead presses and curls.</li>
                                     </ul>
 
+                                    <h6>Live form check</h6>
+                                    <p>The form check tracks your joints in every camera frame, with Apple Vision on iPhone and ML Kit pose detection on Android, behind one platform channel. It counts reps and checks what matters for each lift: depth for squats, lunges and push-ups, body line for push-ups, hinge and lockout for deadlifts, lockout and lean for presses, and range and swing for curls. The numbers update about twice a second while you move, and it tells you when the view isn’t clear enough to judge. Nothing is uploaded.</p>
+
                                     <h6>Open source</h6>
-                                    <p>I published the routine parser as <a href="https://pub.dev/packages/workout_parser" target="_blank" rel="noopener noreferrer">workout_parser</a> on pub.dev, a pure Dart package any Flutter or Dart app can use. It reads days, sets, reps, holds, rest, weight, tempo and supersets, matches names against 884 exercises, and marks every value it filled in. It reads all 39 test routines with every checked field right, and a typical routine parses in about 10 ms. You can <a href="https://workoutparse.mofiyinebo.com" target="_blank" rel="noopener noreferrer">try it in your browser</a>: paste a routine and see what it reads.</p>
+                                    <p>I published the routine parser as <a href="https://pub.dev/packages/workout_parser" target="_blank" rel="noopener noreferrer">workout_parser</a> on pub.dev, a pure Dart package any Flutter or Dart app can use. It reads days, sets, reps, holds, rest, weight, tempo and supersets, matches names against 884 exercises, and marks every value it filled in. It reads all 39 test routines with every checked field right, and a typical routine parses in about 10 ms. You can <a href="https://workoutparse.mofiyinebo.com" target="_blank" rel="noopener noreferrer">try it in your browser</a>: paste a routine and see what it reads. The app’s look comes from <a href="https://pub.dev/packages/paper_kit" target="_blank" rel="noopener noreferrer">paper_kit</a>, my handmade-paper UI kit, also on pub.dev.</p>
 
                                     <h6>Technologies</h6>
                                     <div class="tech-stack">
@@ -820,6 +824,8 @@
                                         <span class="tech-badge">Drift (SQLite)</span>
                                         <span class="tech-badge">SwiftUI Live Activities</span>
                                         <span class="tech-badge">Apple Vision</span>
+                                        <span class="tech-badge">ML Kit</span>
+                                        <span class="tech-badge">Kotlin</span>
                                         <span class="tech-badge">Node.js</span>
                                         <span class="tech-badge">Express</span>
                                         <span class="tech-badge">PostgreSQL</span>
@@ -832,6 +838,7 @@
                                     </div>
 
                                     <div class="project-actions">
+                                        <a class="project-link" href="https://github.com/mofixiu/neFaRecmobile/releases/latest" target="_blank" rel="noopener noreferrer">Android APK and demo <i class="fab fa-android" aria-hidden="true"></i></a>
                                         <a class="project-link" href="https://github.com/mofixiu/neFaRecmobile" target="_blank" rel="noopener noreferrer">Mobile repository <i class="fab fa-github" aria-hidden="true"></i></a>
                                         <a class="project-link" href="https://github.com/mofixiu/neFaRecbackend" target="_blank" rel="noopener noreferrer">Backend repository <i class="fab fa-github" aria-hidden="true"></i></a>
                                         <a class="project-link" href="https://pub.dev/packages/workout_parser" target="_blank" rel="noopener noreferrer">workout_parser on pub.dev <i class="fas fa-box-open" aria-hidden="true"></i></a>

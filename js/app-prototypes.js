@@ -322,7 +322,7 @@
             },
             '29-account-profile': { label: 'Profile', back: '28-settings', hotspots: [nefaBack] }
         },
-        demo: ['resume', 'options', 'how-to', 'close', 'close-options', 'tick', 'wait', 'next-set', 'skip', 'stop', 'done', 'progress', 'calendar', 'tab-library', 'exercise'],
+        demo: ['resume', 'options', 'form-check', 'back', 'how-to', 'close', 'close-options', 'tick', 'wait', 'next-set', 'skip', 'stop', 'done', 'progress', 'calendar', 'tab-library', 'exercise'],
         preview: ['01-today', '09b-workout-video', '14-rest-overtime', '19-history-progress']
     };
 
