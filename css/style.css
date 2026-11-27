@@ -621,7 +621,7 @@ body.light-theme .social-links a:hover {
     font-weight: 500;
     text-decoration: none;
     display: inline-block;
-    transition: all 0.3s ease;
+    transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease, border-color 150ms ease, color 150ms ease;
     border: none;
     cursor: pointer;
     font-size: 0.9rem;
@@ -683,7 +683,7 @@ body.light-theme .social-links a:hover {
     justify-content: center;
     color: var(--text-secondary);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: border-color 150ms ease, color 150ms ease, transform 150ms ease;
 }
 
 .social-links a:hover {
@@ -1016,13 +1016,13 @@ body:not(.light-theme) .off-clock:focus-visible {
     object-position: center;
     border-radius: 20px;
     border: 3px solid var(--border-color);
-    transition: all 0.3s ease;
+    transition: border-color 150ms ease, transform 150ms ease;
     display: block;
 }
 
 .profile-image img:hover {
     border-color: var(--primary-color);
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 /* Skills Section: mobile leads in big type; the other areas are quiet rows. */
@@ -1183,7 +1183,7 @@ body:not(.light-theme) .off-clock:focus-visible {
     background: var(--surface-color);
     border-radius: 8px;
     border: 1px solid transparent;
-    transition: all 0.3s ease;
+    transition: border-color 150ms ease, transform 150ms ease;
 }
 
 .achievement-item:hover {
@@ -1245,7 +1245,7 @@ body:not(.light-theme) .off-clock:focus-visible {
     background: var(--surface-color);
     border-radius: 8px;
     border: 1px solid transparent;
-    transition: all 0.3s ease;
+    transition: border-color 150ms ease, transform 150ms ease;
 }
 
 .focus-area:hover {
@@ -1550,7 +1550,7 @@ body:not(.light-theme) .off-clock:focus-visible {
     padding: 0;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    transition: all 0.3s ease;
+    transition: color 150ms ease;
 }
 
 .project-link:hover {
@@ -1883,7 +1883,7 @@ body:not(.light-theme) .off-clock:focus-visible {
     justify-content: center;
     min-height: 44px;
     min-width: 44px;
-    transition: all 0.3s ease;
+    transition: color 150ms ease;
 }
 
 .footer-social a:hover {
@@ -2121,6 +2121,11 @@ body,
 .skill-badge,
 .tech-badge {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* A project card's hover lift answers at once; only the theme's colour fade stays slow. */
+.featured-project-card {
+    transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease, background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Project Modal Styles */
@@ -3285,4 +3290,16 @@ body:not(.light-theme) .hv-note {
 .compact-project.is-openable:hover {
     border-color: var(--primary-color);
     transform: translateY(-2px);
+}
+
+/* Visitors who ask their device for less motion get none: loops stop and changes land at once.
+   The intro, ladybug, view transitions and phone demos also check this in js. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
 }

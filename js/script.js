@@ -88,7 +88,7 @@ function initializeSmoothScrolling() {
             if (targetSection) {
                 window.scrollTo({
                     top: targetSection.offsetTop,
-                    behavior: 'smooth'
+                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
                 });
             }
         });
