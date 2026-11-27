@@ -87,7 +87,8 @@ function initializeSmoothScrolling() {
             
             if (targetSection) {
                 window.scrollTo({
-                    top: targetSection.offsetTop,
+                    // the bar along the top on a phone held sideways sets scroll-padding-top (style.css)
+                    top: targetSection.offsetTop - (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0),
                     behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
                 });
             }

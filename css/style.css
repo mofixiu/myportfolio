@@ -3303,3 +3303,67 @@ body:not(.light-theme) .hv-note {
         transition-duration: 0.001ms !important;
     }
 }
+
+/* A phone held sideways is short, so the dock leaves the reading area for a bar along the top, with the
+   brand pinned at its left like the other sites' top bars. The hero keeps its buttons side by side. */
+@media (orientation: landscape) and (max-height: 500px) {
+    html {
+        scroll-padding-top: 4.25rem;
+    }
+
+    body {
+        padding-top: 53px;
+    }
+
+    .dock,
+    body:not(.light-theme) .dock {
+        border-radius: 0;
+        border-width: 0 0 1px;
+        bottom: auto;
+        box-shadow: none;
+        justify-content: flex-end;
+        left: 0;
+        max-width: none;
+        padding: 4px max(1.25rem, env(safe-area-inset-right)) 4px max(1.25rem, env(safe-area-inset-left));
+        right: 0;
+        top: 0;
+        transform: none;
+    }
+
+    /* the other sites' links stay in the footer, so the bar always has room for the brand */
+    .dock::before,
+    .dock-wide {
+        display: none;
+    }
+
+    /* the hero stops isolating its layers so the pinned brand can sit above the bar */
+    .hero-section {
+        isolation: auto;
+    }
+
+    .site-brand {
+        position: fixed;
+        top: 8px;
+        z-index: 1031;
+    }
+
+    .site-brand .brand-mark {
+        --brand-mark-size: 36px;
+    }
+
+    .hero-section > .container {
+        padding-top: 1rem;
+    }
+
+    .hero-main {
+        padding: 1.5rem 0 3rem;
+    }
+
+    .hv-cta {
+        flex-direction: row;
+    }
+
+    .hv-cta .btn {
+        width: auto;
+    }
+}
